@@ -13,34 +13,34 @@ datasource db {
 
 model Inventory {
   id         Int      @unique @default(autoincrement())
-  Item       Item[]
-  Count      Int
-  BusinessId Int
-  Business   Business @relation(fields: [BusinessId], references: [id])
+  item       Item[]
+  count      Int
+  businessId Int
+  business   Business @relation(fields: [businessId], references: [id])
 
-  @@index([BusinessId])
+  @@index([businessId])
 }
 
 model User {
   id         Int      @unique @default(autoincrement())
-  Name       String
-  Email      String
-  Password   String
-  BusinessId Int
-  Business   Business @relation(fields: [BusinessId], references: [id])
+  name       String
+  email      String
+  password   String
+  businessId Int
+  business   Business @relation(fields: [businessId], references: [id])
 
-  @@index([BusinessId])
+  @@index([businessId])
 }
 
 model Item {
   id          Int       @unique @default(autoincrement())
-  Name        String
+  name        String
   SKU         Int
-  ExpDate     String
-  InventoryId Int
-  inventory   Inventory @relation(fields: [InventoryId], references: [id])
+  expDate     String
+  inventoryId Int
+  inventory   Inventory @relation(fields: [inventoryId], references: [id])
 
-  @@index([InventoryId])
+  @@index([inventoryId])
 }
 
 model Business {
@@ -48,6 +48,6 @@ model Business {
   type     String      @db.VarChar(255)
   name     String      @db.VarChar(255)
   location String      @db.VarChar(255)
-  Admin    User[]
-  Products Inventory[]
+  admin    User[]
+  products Inventory[]
 }
