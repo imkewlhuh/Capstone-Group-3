@@ -14,7 +14,7 @@ export default function itemRouter(passport) {
                     data: {
                         SKU: req.body.SKU,
                         expDate: req.body.expDate,
-                        listId: req.itemList.id
+                        listId: req.body.listId
                     }
                 });
 
@@ -32,5 +32,51 @@ export default function itemRouter(passport) {
         }
     );
 
-    
+    //Get All Items
+    router.get("/", async (_req, res) => {
+        try {
+            const items = await prisma.item.findMany({
+                orderBy: {
+                    listId: "asc"
+                }
+            });
+
+            if (items) {
+                res.status(200).json({
+                    success: true,
+                    items
+                });
+            };
+        } catch (e) {
+            res.status(500).json({
+                success: false,
+                message: "Could not find items"
+            });
+        };
+    });
+
+    //Get Item by SKU
+    router.get("/:SKU", async (req, res) => {
+        const SKU = req.params.SKU;
+
+        try {
+            const item = await prisma.item.findFirstOrThrow({
+                where: {
+                    SKU: parseInt(SKU)
+                }
+            });
+
+            if (item) {
+                res.status(200).json({
+                    success: true,
+                    item
+                });
+            };
+        } catch (e) {
+            res.status(500).json({
+                success: false,
+                message: "Could not find SKU"
+            });
+        };
+    });
 }
