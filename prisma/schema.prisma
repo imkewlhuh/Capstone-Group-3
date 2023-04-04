@@ -11,7 +11,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Inventory {
+model ItemList {
   id         Int      @unique @default(autoincrement())
   name       String
   item       Item[]
@@ -34,12 +34,12 @@ model User {
 }
 
 model Item {
-  id          Int       @unique @default(autoincrement())
-  name        String
-  SKU         Int
-  expDate     String
-  listId Int
-  inventory   Inventory @relation(fields: [listId], references: [id])
+  id        Int      @unique @default(autoincrement())
+  name      String
+  SKU       Int
+  expDate   String
+  listId    Int
+  inventory ItemList @relation(fields: [listId], references: [id])
 
   @@index([listId])
 }
@@ -50,5 +50,5 @@ model Business {
   name     String      @db.VarChar(255)
   location String      @db.VarChar(255)
   admin    User[]
-  products Inventory[]
+  products ItemList[]
 }
