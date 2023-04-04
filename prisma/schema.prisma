@@ -6,32 +6,48 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model Inventory {
-  Item Item[]
-  Count Int
+  id         Int      @unique @default(autoincrement())
+  Item       Item[]
+  Count      Int
+  BusinessId Int
+  Business   Business @relation(fields: [BusinessId], references: [id])
+
+  @@index([BusinessId])
 }
 
-model User{
-  id Int @unique @default(autoincrement())
-  Name String
-  Email String
-  Password String
+model User {
+  id         Int      @unique @default(autoincrement())
+  Name       String
+  Email      String
+  Password   String
+  BusinessId Int
+  Business   Business @relation(fields: [BusinessId], references: [id])
+
+  @@index([BusinessId])
+}
+
+model Item {
+  id          Int       @unique @default(autoincrement())
+  Name        String
+  SKU         Int
+  ExpDate     String
+  InventoryId Int
+  inventory   Inventory @relation(fields: [InventoryId], references: [id])
+
+  @@index([InventoryId])
 }
 
 model Business {
-  id Int @unique @default(autoincrement())
-  type String @db.Varchar(255)
-  name String @db.VarChar(255)
-  location String @db.Varchar(255)
-  Admin User[]
+  id       Int         @unique @default(autoincrement())
+  type     String      @db.VarChar(255)
+  name     String      @db.VarChar(255)
+  location String      @db.VarChar(255)
+  Admin    User[]
   Products Inventory[]
-  // description String @db.VarChar(255)
-  // userId Int @unique
-  // user User @relation(fields: [userId], [Admin], references: [id])
-  // @@index([userId])
 }
