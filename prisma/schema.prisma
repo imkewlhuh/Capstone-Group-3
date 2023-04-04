@@ -11,8 +11,9 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Inventory {
+model InventoryList {
   id         Int      @unique @default(autoincrement())
+  name       String
   item       Item[]
   count      Int
   businessId Int
@@ -26,7 +27,7 @@ model User {
   name       String
   email      String
   password   String
-  businessId Int
+  businessId Int @unique
   business   Business @relation(fields: [businessId], references: [id])
 
   @@index([businessId])
@@ -34,11 +35,10 @@ model User {
 
 model Item {
   id          Int       @unique @default(autoincrement())
-  name        String
   SKU         Int
   expDate     String
   inventoryId Int
-  inventory   Inventory @relation(fields: [inventoryId], references: [id])
+  inventory   InventoryList @relation(fields: [inventoryId], references: [id])
 
   @@index([inventoryId])
 }
@@ -48,6 +48,6 @@ model Business {
   type     String      @db.VarChar(255)
   name     String      @db.VarChar(255)
   location String      @db.VarChar(255)
-  admin    User[]
-  products Inventory[]
+  admin    User?
+  products InventoryList[]
 }
