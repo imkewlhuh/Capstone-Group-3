@@ -19,15 +19,15 @@
   "homepage": "https://github.com/imkewlhuh/Capstone-Group-3#readme",
   "dependencies": {
     "@prisma/client": "^4.12.0",
-    "argon2": "^0.30.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1"
   },
   "devDependencies": {
+    "argon2": "^0.30.3",
+    "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.22",
     "prisma": "^4.12.0"
   }
