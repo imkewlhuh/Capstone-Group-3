@@ -27,7 +27,7 @@ model User {
   name       String
   email      String
   password   String
-  businessId Int
+  businessId Int      @unique
   business   Business @relation(fields: [businessId], references: [id])
 
   @@index([businessId])
@@ -35,8 +35,7 @@ model User {
 
 model Item {
   id       Int      @unique @default(autoincrement())
-  name     String
-  SKU      Int
+  SKU      Int      @unique
   expDate  String
   listId   Int
   itemList ItemList @relation(fields: [listId], references: [id])
@@ -49,6 +48,6 @@ model Business {
   type     String     @db.VarChar(255)
   name     String     @db.VarChar(255)
   location String     @db.VarChar(255)
-  admin    User[]
+  admin    User?
   products ItemList[]
 }
