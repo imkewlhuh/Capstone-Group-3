@@ -32,6 +32,37 @@ export default function itemRouter(passport) {
         }
     );
 
+    router.delete("/:itemsId", passport.authenticate("jwt", { session: false }),
+    
+    async function (request, response) {
+      const itemsId = parseInt(request.params.itemsId);
+      try {
+        await prisma.item.deleteMany({
+          where: {
+            id: itemsId,
+            listId: request.list.id
+          },
+        });
+
+        response.status(200).json({
+          success: true,
+        });
+      } catch (e) {
+        console.log(e);
+        if (e.code == "P2025") {
+          response.status(404).json({
+            success: false,
+          });
+        } else {
+          response.status(500).json({
+            success: false,
+          });
+        }
+      }
+    }
+  );
+
+    
     //Get All Items
     router.get("/", async (_req, res) => {
         try {
