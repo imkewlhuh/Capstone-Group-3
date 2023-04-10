@@ -1,6 +1,5 @@
 import express from "express";
 import prisma from "../db/index.js";
-import argon2, { verify } from "argon2";
 
 export default function setupBusinessRouter(passport) {
   const router = express.Router();

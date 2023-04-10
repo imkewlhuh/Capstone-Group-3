@@ -110,4 +110,6 @@ export default function itemRouter(passport) {
             });
         };
     });
-}
+
+    return router;
+};
