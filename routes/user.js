@@ -1,17 +1,20 @@
 import express from "express";
-import prisma from "../db/index.js";
+import { prisma } from "../db/index.js";
 import argon2, { verify } from "argon2";
 
 const router = express.Router();
 
 //delete a user 
 router.delete("/:user", async (request, response) => {
+    const id = request.params.user;
+
     try {
         const deleteUser = await prisma.user.delete({
             where: {
-                username: request.body.username
+                id: parseInt(id)
             }
         });
+
         if (deleteUser) {
             response.status(200).json({
                 success: true,
@@ -21,20 +24,20 @@ router.delete("/:user", async (request, response) => {
             response.status(500).json({
                 success: false,
                 message: "Something went wrong, user was not deleted!"
-            })
-        }
-            } catch (e) {
-                console.log(e);
-                response.status(500).json({
-                    success: false,
-                    message: "Something went wrong!"
-                });
-            };
-        })
+            });
+        };
+    } catch (e) {
+        console.log(e);
+        response.status(500).json({
+            success: false,
+            message: "Something went wrong!"
+        });
+    };
+})
 
 
- ///signup or create user route 
-  router.post("/signup", async (request, response) => {
+///signup or create user route 
+router.post("/signup", async (request, response) => {
     try {
         const foundUser = await prisma.user.findFirst({
             where: {
