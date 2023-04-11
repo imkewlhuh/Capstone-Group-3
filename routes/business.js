@@ -1,16 +1,65 @@
 import express from "express";
-import prisma from "../db/index.js";
+import { prisma } from "../db/index.js";
 
 export default function setupBusinessRouter(passport) {
   const router = express.Router();
 
+  //Get All Businesses
+  router.get("/", async (_req, res) => {
+    try {
+      const businesses = await prisma.business.findMany({
+        orderBy: {
+          id: "asc"
+        }
+      });
+
+      if (businesses) {
+        res.status(200).json({
+          success: true,
+          businesses
+        });
+      };
+    } catch (e) {
+      res.status(500).json({
+        success: false,
+        message: "Could not find businesses"
+      });
+    };
+  });
+
+  //Get Business by Id
+  router.get("/:businessId", async (req, res) => {
+    const id = req.params.businessId;
+
+    try {
+      const business = await prisma.business.findFirstOrThrow({
+        where: {
+          id: parseInt(id)
+        }
+      });
+
+      if (business) {
+        res.status(200).json({
+          success: true,
+          business
+        });
+      };
+    } catch (e) {
+      res.status(500).json({
+        success: false,
+        message: "Could not find business"
+      });
+    };
+  });
+
+  //Update Business
   router.put(
-    "/:id",
+    "/:businessId",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-      const id = req.params.id;
+      const id = req.params.businessId;
 
-      const editBusiness = await prisma.business.updateMany({
+      const editBusiness = await prisma.business.update({
         where: {
           id: Number(id),
         },
@@ -19,7 +68,8 @@ export default function setupBusinessRouter(passport) {
           name: req.body.name,
           location: req.body.location,
           admin: req.body.admin,
-        },
+          products: req.body.products
+        }
       });
 
       res.status(200).json({
