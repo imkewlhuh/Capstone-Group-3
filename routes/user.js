@@ -4,6 +4,46 @@ import argon2, { verify } from "argon2";
 
 const router = express.Router();
 
+//update a user
+router.put("/:userId", async (request, response) => {
+    try {
+      const updateUser = await prisma.user.updateMany({
+        where: {
+          userId: request.user.id,
+          id: parseInt(request.params.userId)
+        },
+        data: {
+          name: request.body.name,
+          userId: request.user.id
+        },
+      })
+  
+      if (updateUser) {
+        const userList = await prisma.user.findMany({
+          where: {
+            userId: request.user.id,
+          }
+        })
+        response.status(200).json({
+          success: true,
+          message: "User information was sucessfully updated!",
+          petsList
+        })
+      } else {
+        response.status(400).json({
+          success: false,
+          message: "User was not able to be updated."
+        })
+      }
+    } catch (err) {
+      console.log(err)
+      response.status(400).json({
+        success: false,
+        message: "Something went wrong"
+      })
+    }
+  })
+
 //delete a user 
 router.delete("/:user", async (request, response) => {
     const id = request.params.user;
