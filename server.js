@@ -14,6 +14,7 @@ export default function createServer() {
 
     setupJWTStrategy(passport);
 
+     app.use("/auth", authRouter)
     app.use("/business", businessRouter(passport));
 
     return app;

@@ -30,5 +30,7 @@ export default function setupBusinessRouter(passport) {
     }
   );
 
+  
+
   return router;
 }
