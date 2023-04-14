@@ -7,42 +7,39 @@ const router = express.Router();
 //update a user
 router.put("/:userId", async (request, response) => {
     try {
-      const updateUser = await prisma.user.updateMany({
+      const updateUser = await prisma.user.update({
         where: {
-          userId: request.user.id,
           id: parseInt(request.params.userId)
         },
         data: {
           name: request.body.name,
-          userId: request.user.id
+          email: request.body.email,
+          password: request.body.password,
+          businessId: request.body.businessId,
+          business: request.body.business
         },
-      })
+      });
   
       if (updateUser) {
-        const userList = await prisma.user.findMany({
-          where: {
-            userId: request.user.id,
-          }
-        })
         response.status(200).json({
           success: true,
           message: "User information was sucessfully updated!",
-          petsList
-        })
+          updateUser
+        });
       } else {
-        response.status(400).json({
+        response.status(500).json({
           success: false,
           message: "User was not able to be updated."
-        })
-      }
+        });
+      };
     } catch (err) {
-      console.log(err)
-      response.status(400).json({
+      console.log(err);
+      response.status(500).json({
         success: false,
         message: "Something went wrong"
-      })
-    }
-  })
+      });
+    };
+  });
 
 //delete a user 
 router.delete("/:user", async (request, response) => {

@@ -79,36 +79,38 @@ export default function setupBusinessRouter(passport) {
     }
   );
 
+  //Delete Business
   router.delete("/:businessId", passport.authenticate("jwt", { session: false }),
-    
-  async function (request, response) {
-    const businessId = parseInt(request.params.businessId);
-    try {
-      await prisma.business.deleteMany({
-        where: {
-          id: businessId,
-          admin: request.admin.user,
-          products: request.item.list
-        },
-      });
 
-      response.status(200).json({
-        success: true,
-      });
-    } catch (e) {
-      console.log(e);
-      if (e.code == "P2025") {
-        response.status(404).json({
-          success: false,
-        });
-      } else {
-        response.status(500).json({
-          success: false,
-        });
+    async function (request, response) {
+      const businessId = parseInt(request.params.businessId);
+      try {
+        if (businessId === request.user.businessId) {
+          await prisma.business.delete({
+            where: {
+              id: businessId,
+            },
+          });
+
+          response.status(200).json({
+            success: true,
+          });
+        };
+
+      } catch (e) {
+        console.log(e);
+        if (e.code == "P2025") {
+          response.status(404).json({
+            success: false,
+          });
+        } else {
+          response.status(500).json({
+            success: false,
+          });
+        }
       }
     }
-  }
-);
+  );
 
   return router;
 }

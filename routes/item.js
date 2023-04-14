@@ -21,24 +21,26 @@ export default function itemRouter(passport) {
         if (newItem) {
           res.status(201).json({
             success: true,
+            message: "Successfully added item"
           });
-        }
+        };
       } catch (e) {
         res.status(500).json({
           success: false,
           message: "Failed to add item",
         });
-      }
+      };
     }
   );
 
+  //Update Item
   router.put(
-    "/:Itemid",
+    "/:itemId",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-      const id = req.params.id;
+      const id = req.params.itemId;
 
-      const editItem = await prisma.item.updateMany({
+      const editItem = await prisma.item.update({
         where: {
           id: Number(id),
         },
@@ -46,7 +48,7 @@ export default function itemRouter(passport) {
           SKU: req.body.SKU,
           expDate: req.body.expDate,
           listId: req.body.listId,
-          itemList: req.body.ItemList
+          itemList: req.body.itemList
         },
       });
 
@@ -57,6 +59,7 @@ export default function itemRouter(passport) {
     }
   );
 
+  //Delete item
   router.delete(
     "/:itemsId",
     passport.authenticate("jwt", { session: false }),
@@ -64,10 +67,9 @@ export default function itemRouter(passport) {
     async function (request, response) {
       const itemsId = parseInt(request.params.itemsId);
       try {
-        await prisma.item.deleteMany({
+        await prisma.item.delete({
           where: {
             id: itemsId,
-            listId: request.list.id,
           },
         });
 
@@ -84,8 +86,8 @@ export default function itemRouter(passport) {
           response.status(500).json({
             success: false,
           });
-        }
-      }
+        };
+      };
     }
   );
 
@@ -128,14 +130,14 @@ export default function itemRouter(passport) {
           success: true,
           item,
         });
-      }
+      };
     } catch (e) {
       res.status(500).json({
         success: false,
         message: "Could not find SKU",
       });
-    }
+    };
   });
 
   return router;
-}
+};
