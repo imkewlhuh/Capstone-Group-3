@@ -4,6 +4,37 @@ import { prisma } from "../db/index.js";
 export default function itemListRouter(passport) {
     const router = express.Router();
 
+    //get itemList 
+    router.get("/:itemList", passport.authenticate("jwt", {session: false}), async (request, response) => {
+        try{ 
+            const itemList = await prisma.itemList.findMany({
+                where: {
+                    // id: parseInt(id),
+                    businessId: request.user.businessId
+                }
+            })
+            if(itemList){
+                response.status(200).json({
+                    success: true,
+                    message: "Item list fetched!",
+                    item: itemList
+                })
+            } else{
+                response.status(400).json({
+                    success: false, 
+                    message: "Oh no, something went wrong!"
+                })
+            }
+        } catch (error){
+            console.log(error)
+            response.status(400).json({
+                success: false, 
+                message: "Could not get item list!"
+            })
+        }
+    })
+
+    
     //Update itemList
     router.put(
         "/:itemListId",

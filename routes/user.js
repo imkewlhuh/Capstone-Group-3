@@ -4,6 +4,7 @@ import argon2 from "argon2";
 
 const router = express.Router();
 
+
 //update a user
 router.put("/:userId", async (request, response) => {
     try {
