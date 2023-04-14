@@ -22,7 +22,7 @@ export default function createServer() {
     app.use("/business", businessRouter(passport));
     app.use("/item", itemRouter(passport));
     app.use("/itemList", itemListRouter(passport));
-    app.use("/user", authRouter(passport));
+    app.use("/user", authRouter);
 
     return app;
 };
