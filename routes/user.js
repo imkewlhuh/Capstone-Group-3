@@ -78,12 +78,12 @@ router.post("/signup", async (request, response) => {
     try {
         const foundUser = await prisma.user.findFirst({
             where: {
-                username: request.body.username
+                name: request.body.name
             }
         });
 
         if (foundUser) {
-            response.status(400).json({
+            response.status(401).json({
                 success: false,
                 message: "User already exists!"
             });
@@ -95,7 +95,7 @@ router.post("/signup", async (request, response) => {
                 if (hashPassword) {
                     const newUser = await prisma.user.create({
                         data: {
-                            username: request.body.username,
+                            name: request.body.name,
                             password: hashPassword
                         }
                     });
@@ -108,13 +108,13 @@ router.post("/signup", async (request, response) => {
                             newUser
                         });
                     } else {
-                        response.status(400).json({
+                        response.status(500).json({
                             success: false,
                             message: "Something went wrong. Unable to create user."
                         });
                     };
                 } else {
-                    response.status(400).json({
+                    response.status(500).json({
                         success: false,
                         message: "Bad password"
                     });
@@ -136,5 +136,55 @@ router.post("/signup", async (request, response) => {
         });
     };
 });
+
+//Login route
+router.post("/login", async (request, response) => {
+    try {
+      const foundUser = await prisma.user.findFirstOrThrow({
+        where: {
+          name: request.body.name,
+        },
+      });
+  
+      try {
+        const verifiedPassword = await argon2.verify(
+          foundUser.password,
+          request.body.password
+        );
+  
+        if (verifiedPassword) {
+          const token = jwt.sign(
+            {
+              user: {
+                name: foundUser.name,
+                id: foundUser.id,
+              },
+            },
+            "group3Capstone"
+          );
+  
+          response.status(200).json({
+            success: true,
+            token,
+          });
+        } else {
+          response.status(401).json({
+            success: false,
+            message: "Wrong username or password",
+          });
+        };
+      } catch (e) {
+        response.status(500).json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+    } catch (e) {
+      response.status(401).json({
+        success: false,
+        message: "Wrong username or password",
+      });
+    };
+  });
 
 export default router;

@@ -107,10 +107,10 @@ export default function setupBusinessRouter(passport) {
           response.status(500).json({
             success: false,
           });
-        }
-      }
+        };
+      };
     }
   );
 
   return router;
-}
+};
