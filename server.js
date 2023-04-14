@@ -10,7 +10,9 @@ import passport from "passport";
 
 export default function createServer() {
     const app = express();
-    app.use(cors())
+
+    app.use(cors());
+    
     app.use(express.json());
 
     app.use(morgan("tiny"));
@@ -20,7 +22,7 @@ export default function createServer() {
     app.use("/business", businessRouter(passport));
     app.use("/item", itemRouter(passport));
     app.use("/itemList", itemListRouter(passport));
-    app.use("/user", authRouter(passport));
+    app.use("/user", authRouter);
 
     return app;
 };
