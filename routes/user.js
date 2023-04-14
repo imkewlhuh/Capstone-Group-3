@@ -4,6 +4,34 @@ import argon2 from "argon2";
 
 const router = express.Router();
 
+//get single user/ router
+router.get("/:userId", async (request, response)=>{
+    const userId = request.params.userId
+    const user = await prisma.user.findFirst({
+        where: {id : userId}
+    })
+
+    //if (user.length >= 1){
+      response.status(200).json({
+        success: true,
+        user
+      })
+    
+})
+
+// Get all users router
+router.get("/", async (_request, response) => {
+  const user = await prisma.user.findMany({
+    orderBy: {id : "asc"}
+  })
+
+  //if (user.length >= 1){
+      response.status(200).json({
+          success: true,
+          user
+        })
+      })
+
 //update a user
 router.put("/:userId", async (request, response) => {
     try {
