@@ -10,7 +10,9 @@ import passport from "passport";
 
 export default function createServer() {
     const app = express();
-    app.use(cors())
+
+    app.use(cors());
+    
     app.use(express.json());
 
     app.use(morgan("tiny"));
