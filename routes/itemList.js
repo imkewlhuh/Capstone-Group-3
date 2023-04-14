@@ -6,10 +6,12 @@ export default function itemListRouter(passport) {
 
     //get itemList 
     router.get("/:itemList", passport.authenticate("jwt", {session: false}), async (request, response) => {
+        const id = request.params.itemList;
+
         try{ 
             const itemList = await prisma.itemList.findMany({
                 where: {
-                    // id: parseInt(id),
+                    id: parseInt(id),
                     businessId: request.user.businessId
                 }
             })
@@ -17,19 +19,19 @@ export default function itemListRouter(passport) {
                 response.status(200).json({
                     success: true,
                     message: "Item list fetched!",
-                    item: itemList
+                    itemList
                 })
             } else{
                 response.status(400).json({
                     success: false, 
-                    message: "Oh no, something went wrong!"
+                    message: "Could not get item list!"
                 })
             }
         } catch (error){
             console.log(error)
             response.status(400).json({
                 success: false, 
-                message: "Could not get item list!"
+                message: "Oh no, something went wrong!"
             })
         }
     })
