@@ -1,6 +1,6 @@
 import express from "express";
 import { prisma } from "../db/index.js";
-import argon2, { verify } from "argon2";
+import argon2 from "argon2";
 
 const router = express.Router();
 
@@ -185,6 +185,6 @@ router.post("/login", async (request, response) => {
         message: "Wrong username or password",
       });
     };
-  });
+});
 
 export default router;
