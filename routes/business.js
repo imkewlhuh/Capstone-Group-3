@@ -4,6 +4,39 @@ import { prisma } from "../db/index.js";
 export default function setupBusinessRouter(passport) {
   const router = express.Router();
 
+
+  // Create Business router
+  router.post("/", passport.authenticate("jwt", { session: false}),
+         async (request, response) => {
+            try{
+                const newBusiness = await prisma.business.create({
+                    data: {
+                      type: req.body.type,
+                      name: req.body.name,
+                      location: req.body.location,
+                      admin: req.body.admin,
+                      products: req.body.products
+                    }
+                });
+                if(newBusiness){
+                    response.status(201).json({
+                        success: true,
+                        message: "Find a new business!"
+                    })
+                } else {
+                    response.status(500).json({
+                        succes: false,
+                        message: "failed to find new business!"
+                    })
+                }
+            } catch(e){
+                response.status(500).json({
+                    success: false,
+                    message: "failed to find new business",
+                  });
+             }
+         })
+
   //Get All Businesses
   router.get("/", async (_req, res) => {
     try {

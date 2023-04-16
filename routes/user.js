@@ -16,6 +16,7 @@ router.get("/:userId", async (request, response)=>{
         success: true,
         user
       })
+      
     
 })
 
