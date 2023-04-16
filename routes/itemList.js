@@ -4,6 +4,37 @@ import { prisma } from "../db/index.js";
 export default function itemListRouter(passport) {
     const router = express.Router();
 
+
+    // Create itemList 
+  router.post("/", passport.authenticate("jwt", { session: false}),
+  async (request, response) => {
+     try{
+         const newItemList = await prisma.itemList.create({
+             data: {
+                name: req.body.name,
+                item: req.body.item,
+                count: req.body.count,
+                businessId: req.body.businessId
+             }
+         });
+         if(newItemList){
+             response.status(201).json({
+                 success: true,
+                 message: "Find a new itemList!"
+             })
+         } else {
+             response.status(500).json({
+                 succes: false,
+                 message: "failed to find new itemList!"
+             })
+         }
+     } catch(e){
+         response.status(500).json({
+             success: false,
+             message: "failed to find new itemList",
+           });
+      }
+  })
     //get itemList 
     router.get("/:itemList", passport.authenticate("jwt", {session: false}), async (request, response) => {
         const id = request.params.itemList;
@@ -35,6 +66,9 @@ export default function itemListRouter(passport) {
             })
         }
     })
+
+    //create itemList
+    router.post()
 
     
     //Update itemList
