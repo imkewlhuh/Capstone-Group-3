@@ -12,7 +12,6 @@ export default function itemListRouter(passport) {
          const newItemList = await prisma.itemList.create({
              data: {
                 name: request.body.name,
-                item: request.body.item,
                 count: request.body.count,
                 businessId: request.body.businessId
              }

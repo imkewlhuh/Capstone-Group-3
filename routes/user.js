@@ -1,14 +1,15 @@
 import express from "express";
 import { prisma } from "../db/index.js";
+import jwt from "jsonwebtoken";
 import argon2 from "argon2";
 
 const router = express.Router();
 
 //get single user/ router
 router.get("/:userId", async (request, response)=>{
-    const userId = request.params.userId
+    const userId = request.params.userId;
     const user = await prisma.user.findFirst({
-        where: {id : userId}
+        where: {id : parseInt(userId)}
     })
 
     //if (user.length >= 1){
@@ -44,8 +45,7 @@ router.put("/:userId", async (request, response) => {
           name: request.body.name,
           email: request.body.email,
           password: request.body.password,
-          businessId: request.body.businessId,
-          business: request.body.business
+          businessId: request.body.businessId
         },
       });
   
@@ -125,7 +125,9 @@ router.post("/signup", async (request, response) => {
                     const newUser = await prisma.user.create({
                         data: {
                             name: request.body.name,
-                            password: hashPassword
+                            email: request.body.email,
+                            password: hashPassword,
+                            businessId: request.body.businessId
                         }
                     });
 

@@ -14,8 +14,6 @@ export default function setupBusinessRouter(passport) {
                       type: request.body.type,
                       name: request.body.name,
                       location: request.body.location,
-                      admin: request.body.admin,
-                      products: request.body.products
                     }
                 });
                 if(newBusiness){
@@ -118,7 +116,6 @@ export default function setupBusinessRouter(passport) {
     async function (request, response) {
       const businessId = parseInt(request.params.businessId);
       try {
-        if (businessId === request.user.businessId) {
           await prisma.business.delete({
             where: {
               id: businessId,
@@ -128,7 +125,6 @@ export default function setupBusinessRouter(passport) {
           response.status(200).json({
             success: true,
           });
-        };
 
       } catch (e) {
         console.log(e);

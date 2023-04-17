@@ -6,7 +6,7 @@ export default function itemRouter(passport) {
 
   //Create Item
   router.post(
-    "/",
+    "/new",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
       try {
@@ -48,7 +48,6 @@ export default function itemRouter(passport) {
           SKU: req.body.SKU,
           expDate: req.body.expDate,
           listId: req.body.listId,
-          itemList: req.body.itemList
         },
       });
 
