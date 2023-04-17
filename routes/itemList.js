@@ -6,35 +6,36 @@ export default function itemListRouter(passport) {
 
 
     // Create itemList 
-  router.post("/", passport.authenticate("jwt", { session: false}),
+  router.post("/new", passport.authenticate("jwt", { session: false}),
   async (request, response) => {
      try{
          const newItemList = await prisma.itemList.create({
              data: {
-                name: req.body.name,
-                item: req.body.item,
-                count: req.body.count,
-                businessId: req.body.businessId
+                name: request.body.name,
+                item: request.body.item,
+                count: request.body.count,
+                businessId: request.body.businessId
              }
          });
          if(newItemList){
              response.status(201).json({
                  success: true,
-                 message: "Find a new itemList!"
-             })
+                 message: "Added a new itemList!"
+             });
          } else {
              response.status(500).json({
                  succes: false,
-                 message: "failed to find new itemList!"
-             })
-         }
+                 message: "failed to add new itemList!"
+             });
+         };
      } catch(e){
          response.status(500).json({
              success: false,
-             message: "failed to find new itemList",
+             message: "failed to add new itemList",
            });
-      }
-  })
+      };
+  });
+
     //get itemList 
     router.get("/:itemList", passport.authenticate("jwt", {session: false}), async (request, response) => {
         const id = request.params.itemList;
@@ -45,31 +46,27 @@ export default function itemListRouter(passport) {
                     id: parseInt(id),
                     businessId: request.user.businessId
                 }
-            })
+            });
             if(itemList){
                 response.status(200).json({
                     success: true,
                     message: "Item list fetched!",
                     itemList
-                })
+                });
             } else{
                 response.status(400).json({
                     success: false, 
                     message: "Could not get item list!"
-                })
-            }
+                });
+            };
         } catch (error){
-            console.log(error)
+            console.log(error);
             response.status(400).json({
                 success: false, 
                 message: "Oh no, something went wrong!"
-            })
-        }
-    })
-
-    //create itemList
-    router.post()
-
+            });
+        };
+    });
     
     //Update itemList
     router.put(
@@ -109,7 +106,7 @@ export default function itemListRouter(passport) {
                             message: "Failed to update list"
                         });
                     };
-                }
+                };
             } catch (e) {
                 res.status(500).json({
                     success: false,

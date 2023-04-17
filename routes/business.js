@@ -6,36 +6,36 @@ export default function setupBusinessRouter(passport) {
 
 
   // Create Business router
-  router.post("/", passport.authenticate("jwt", { session: false}),
+  router.post("/new", passport.authenticate("jwt", { session: false}),
          async (request, response) => {
             try{
                 const newBusiness = await prisma.business.create({
                     data: {
-                      type: req.body.type,
-                      name: req.body.name,
-                      location: req.body.location,
-                      admin: req.body.admin,
-                      products: req.body.products
+                      type: request.body.type,
+                      name: request.body.name,
+                      location: request.body.location,
+                      admin: request.body.admin,
+                      products: request.body.products
                     }
                 });
                 if(newBusiness){
                     response.status(201).json({
                         success: true,
-                        message: "Find a new business!"
-                    })
+                        message: "Added a new business!"
+                    });
                 } else {
                     response.status(500).json({
                         succes: false,
-                        message: "failed to find new business!"
-                    })
-                }
+                        message: "failed to add new business!"
+                    });
+                };
             } catch(e){
                 response.status(500).json({
                     success: false,
-                    message: "failed to find new business",
+                    message: "failed to add new business",
                   });
-             }
-         })
+             };
+         });
 
   //Get All Businesses
   router.get("/", async (_req, res) => {
