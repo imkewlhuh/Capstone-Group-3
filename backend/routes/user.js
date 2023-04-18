@@ -1,5 +1,5 @@
 import express from "express";
-import { prisma } from "../db/index.js";
+import { prisma } from "../backend/db/index.js";
 import jwt from "jsonwebtoken";
 import argon2 from "argon2";
 
