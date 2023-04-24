@@ -1,5 +1,5 @@
 import express from "express";
-import { prisma } from "../backend/db/index.js";
+import { prisma } from "../db/index.js";
 
 export default function itemListRouter(passport) {
     const router = express.Router();
