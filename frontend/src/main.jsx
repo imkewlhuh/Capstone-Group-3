@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 //Add your imports from "/pages" below this line
-import Home from './pages/home';
+import Home from './pages/Home';
 import SignUp from './pages/signUp';
 
 //Creating Router instance
