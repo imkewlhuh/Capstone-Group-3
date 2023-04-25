@@ -1,6 +1,7 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.css'
 //Add your imports from "/pages" below this line
 import Home from './pages/home';
 import SignUp from './pages/signUp';
