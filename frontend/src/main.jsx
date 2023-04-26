@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
-import './App.css'
+import '../css/App.css'
 //Add your imports from "/pages" below this line
 import Home from './pages/home';
 import SignUp from './pages/signUp';
@@ -19,7 +18,7 @@ const router = createBrowserRouter([
       //add a new object with url in path and imported page in element
       {
         path: "/login",
-        element: <div>This is the Login Page</div>
+        element: <LoginPage />
       },
       {
         path: "/signup",
