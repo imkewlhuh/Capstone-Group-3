@@ -6,7 +6,6 @@ const Home = () => {
     return (
         <div div className='home-greeting container'>
             <Sidebar/>
-            <h1>Welcome!</h1>
             <Outlet />
             </div>
     )
