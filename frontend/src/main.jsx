@@ -27,6 +27,42 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <div>Company Dashboard</div>
+      },
+      {
+        path: "/inventory",
+        element: <div>Inventory page</div>
+      },
+      {
+        path: "/orders",
+        element: <div>Your Orders</div>
+      },
+      {
+        path: "/suppliers",
+        element: <div>Suppliers</div>
+      },
+      {
+        path: "/sustainability",
+        element: <div>Sustainability</div>
+      },
+      {
+        path: "/integrations",
+        element: <div>Integrations</div>
+      },
+      {
+        path: "/analytics",
+        element: <div>Analytics</div>
+      },
+      {
+        path: "/teams",
+        element: <div>Teams</div>
+      },
+      {
+        path: "/settings",
+        element: <div>Settings</div>
+      },
+      {
+        path: "/help",
+        element: <div>Help Center</div>
       }
     ]
   }
