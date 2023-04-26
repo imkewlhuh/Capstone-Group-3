@@ -6,6 +6,7 @@ import './App.css'
 //Add your imports from "/pages" below this line
 import Home from './pages/home';
 import SignUp from './pages/signUp';
+import LoginPage from './pages/LoginPage.jsx';
 
 //Creating Router instance
 const router = createBrowserRouter([
