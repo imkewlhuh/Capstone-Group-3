@@ -4,11 +4,22 @@
     box-sizing: border-box;
 }
 
+:root {
+    --blue-dash: #151B4C;
+    --dark-bg: #121212f0;
+}
+
 body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     height: 100dvh;
+    transition: 0.4s;
+}
+
+.dark {
+    background-color: var(--dark-bg);
+    color: white;
 }
 
 .signUp {
