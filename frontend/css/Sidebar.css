@@ -3,6 +3,7 @@
   width: 3.5em;
   background-color: var(--blue-dash);
   color: white;
+  z-index: 20;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,13 +18,13 @@
   height: 100%;
   padding: 1em 0;
   position: fixed;
+  left: -0.9em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .sidebar nav ul {
-  transform: translateX(-7%);
   display: flex;
   flex-direction: column;
   row-gap: 0.8em;
@@ -38,13 +39,17 @@
   color: white;
   display: flex;
   column-gap: 1.8em;
+  
 }
 
 .sidebar nav ul li a span {
   opacity: 0;
-  transition: 0.3s linear;
+  position: fixed;
+  left: -2em;
+  transition: left 0.3s ease-in-out, opacity 0.15s ease-in-out 0.11s;
 }
 
 .sidebar:hover nav ul li a span {
   opacity: 1;
+  left: 4em;
 }

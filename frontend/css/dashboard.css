@@ -1,0 +1,162 @@
+.dashboard {
+    width: 100vw;
+    min-height: 100dvh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 4em;
+    padding: 1em;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 16em;
+}
+
+.searchBar {
+    height: 2em;
+    border: 1.5px solid var(--blue-dash);
+    border-radius: 50px;
+    padding-left: 20px;
+}
+
+.user {
+    border: 1.5px solid black;
+    border-radius: 50px;
+    width: 6em;
+    height: 2.2em;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.dark .user {
+    background-color: var(--blue-dash);
+    border: 1px solid black;
+}
+
+.bell {
+    position: relative;
+    transform: translateY(0.13em) scale(0.8);
+    cursor: pointer;
+}
+
+.bell::after {
+    content: "";
+    position: absolute;
+    top: 0em;
+    left: -0.4em;
+    height: 1.8em;
+    width: 1.8em;
+    border: 1.5px solid black;
+    border-radius: 50%;
+}
+
+.dark .bell::after {
+    border-color: white;
+}
+
+.user :nth-child(2) {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.subHeader {
+    height: 4em;
+    width: 100%;
+    padding: 0 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.subHeader h2 {
+    color: var(--blue-dash);
+}
+
+.dark .subHeader h2 {
+    color: white;
+}
+ 
+.subButtons {
+    width: 20em;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dashlet {
+    width: 9em;
+    height: 2em;
+    border: solid var(--blue-dash);
+    background-color: white;
+    font-weight: 500;
+    font-size: 1.2em;
+    box-shadow: 2px 3px 2px var(--box-shadow);
+    transition: 0.3s;
+}
+
+.dark .dashlet {
+    background-color: var(--blue-dash);
+    color: white;
+}
+
+.dashlet:hover {
+    background-color: lightgrey;
+}
+
+.dark .dashlet:hover {
+    background-color: #0b134e;
+}
+
+.export {
+    background-color: var(--light-grn);
+    color: var(--dark-grn);
+    width: 7em;
+    height: 2.5em;
+    border-radius: 50px;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 3px 3px var(--box-shadow);
+    transition: 0.3s;
+}
+
+.export:hover, .dark .export {
+    background-color: var(--dark-grn);
+    color: var(--light-grn);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 6em;
+}
+
+.productTable {
+    max-width: 90%;
+    background-color: white;
+    box-shadow: 0px 3px 5px var(--box-shadow);
+}
+
+.statusBox {
+    background-color: lightgray;
+    text-align: center;
+    max-width: fit-content;
+    padding: 0 0.5em;
+}
+
+.actionBox {
+    background-color: var(--light-red);
+    color: white;
+    max-width: fit-content;
+    padding: 0.5em;
+}
