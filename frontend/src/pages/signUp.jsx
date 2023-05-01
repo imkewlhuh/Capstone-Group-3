@@ -39,8 +39,8 @@ export default function SignUp(props) {
                     </div>
                     <button type="button" onClick={togglePass} className="btn btn-secondary input-group-text">
                         {show ?
-                            <i class="bi bi-eye-slash"></i> :
-                            <i class="bi bi-eye"></i>
+                            <i className="bi bi-eye-slash"></i> :
+                            <i className="bi bi-eye"></i>
                         }
                     </button>
                 </div>

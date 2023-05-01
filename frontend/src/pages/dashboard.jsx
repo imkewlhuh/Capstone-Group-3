@@ -23,12 +23,12 @@ export default function DashBoard() {
             {/*Header*/}
             <header className="header">
                 <div className="search">
-                    <i class="bi bi-arrow-left"></i>
+                    <i className="bi bi-arrow-left"></i>
                     <input className="searchBar" type="text" placeholder="search" />
                 </div>
                 <div className="user">
-                    <i class="bi bi-bell bell"></i>
-                    <i class="bi bi-person-circle"></i>
+                    <i className="bi bi-bell bell"></i>
+                    <i className="bi bi-person-circle"></i>
                 </div>
             </header>
             <hr />
