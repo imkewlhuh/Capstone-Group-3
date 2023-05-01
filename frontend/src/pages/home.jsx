@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
     return (
-        <div div className='home-greeting container'>
+        <div className='home-greeting container'>
             <Sidebar/>
             <Outlet />
             </div>
