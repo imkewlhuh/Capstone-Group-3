@@ -7,6 +7,7 @@ import Home from './pages/home';
 import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
+import Inventory from './pages/inventory';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/inventory",
-        element: <div>Inventory page</div>
+        element: <Inventory/>
       },
       {
         path: "/orders",
