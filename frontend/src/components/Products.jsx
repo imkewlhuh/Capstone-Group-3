@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 
 const Products = ({ productItems }) => {
   return (
-    <Row xs={1} md={2} className="g-4">
+    <Row xs={4} md={4} className="g-4">
       {productItems.map((productItem) => (
         <Col key={productItem.id}>
           <Card border="primary" key={productItem.id}>
@@ -16,8 +16,13 @@ const Products = ({ productItems }) => {
               src={productItem.image}
             />
             <Card.Body>
-              <Card.Title className="text-center">{productItem.name}</Card.Title>
-              <Card.Text className="text-center"> Units: {productItem.units} | Price: ${productItem.price}</Card.Text>
+              <Card.Title className="text-center">
+                {productItem.name}
+              </Card.Title>
+              <Card.Text className="text-center">
+                {" "}
+                Units: {productItem.units} | Price: ${productItem.price}
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
@@ -27,4 +32,3 @@ const Products = ({ productItems }) => {
 };
 
 export default Products;
-
