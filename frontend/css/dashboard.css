@@ -69,7 +69,9 @@
 
 .subHeader {
     height: 4em;
-    width: 100%;
+    width: 90%;
+    position: relative;
+    left: 6em;
     padding: 0 1em;
     display: flex;
     align-items: center;
@@ -134,6 +136,11 @@
     color: var(--light-grn);
 }
 
+.dark .export:hover {
+    background-color: var(--light-grn);
+    color: var(--dark-grn);
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -147,11 +154,20 @@
     box-shadow: 0px 3px 5px var(--box-shadow);
 }
 
+.dark .productTable {
+    background-color: var(--box-shadow);
+}
+
+.dark th, .dark tr {
+    color: white;
+}
+
 .statusBox {
     background-color: lightgray;
     text-align: center;
     max-width: fit-content;
     padding: 0 0.5em;
+    color: black;
 }
 
 .actionBox {

@@ -46,6 +46,7 @@ export default function DashBoard() {
 
             {/*Content*/}
             <div className="content">
+
                 {/*Product Table*/}
                 <div className="productTable">
                     <table className="table table-sm">
