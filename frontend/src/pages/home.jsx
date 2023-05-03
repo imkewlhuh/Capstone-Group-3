@@ -3,11 +3,10 @@ import Sidebar from "../components/Sidebar.jsx";
 import { Outlet } from "react-router-dom";
 import "../../css/home.css";
 
+
 const Home = () => {
     return (
         <div div className='home-greeting'>
-            <Sidebar/>
-            <Outlet/>
             <div className="topnav">
                 <button id="loginbutton">Log in</button>
                 <button id="signupbutton">Sign Up</button>
