@@ -35,12 +35,7 @@ const Home = () => {
                 <h1>Stay updated, set alerts, and keep track of expiration dates.</h1>
                 <p1>Description</p1>
             </div>
-        <div className='home-greeting container'>
-            <Sidebar/>
-            <Outlet />
             </div>
-            
     )
 }
-
 export default Home
