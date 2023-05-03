@@ -7,6 +7,8 @@ import Home from './pages/home';
 import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
+import Inventory from './pages/inventory';
+import Layout from './pages/layout';
 import data from './Data/Data';
 import Products from './components/Products';
 
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
   {
     //Landing page/Home page
     path: "/",
-    element: <Home />,
+    element: <Layout />,
     children: [
       //Rest of pages belong here, when you finish making a page
       //add a new object with url in path and imported page in element
@@ -32,6 +34,8 @@ const router = createBrowserRouter([
         element: <DashBoard />
       },
       {
+        path: "/inventory",
+        element: <Inventory/>
         path: "/products",
         element: <Products productItems={data.productItems} />
       },
@@ -66,8 +70,12 @@ const router = createBrowserRouter([
       {
         path: "/help",
         element: <div>Help Center</div>
-      }
+      },
     ]
+  },
+  {
+    path: "/home",
+    element: <Home/>
   }
 ])
 
