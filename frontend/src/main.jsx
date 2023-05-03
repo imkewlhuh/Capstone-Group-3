@@ -9,6 +9,8 @@ import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import Layout from './pages/layout';
+import data from './Data/Data';
+import Products from './components/Products';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -34,6 +36,8 @@ const router = createBrowserRouter([
       {
         path: "/inventory",
         element: <Inventory/>
+        path: "/products",
+        element: <Products productItems={data.productItems} />
       },
       {
         path: "/orders",
