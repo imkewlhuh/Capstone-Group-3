@@ -13,7 +13,7 @@ function LoginPage() {
               Please Enter your name
             </div>
           </div>
-
+          
           <div className="form-group was-validated mb-2">
             <label htmlFor='password' className='form-label'>Password</label>
             <input type="password" className='form-control' required />
