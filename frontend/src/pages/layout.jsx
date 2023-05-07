@@ -2,13 +2,13 @@ import React from "react";
 import Sidebar from "../components/Sidebar.jsx";
 import { Outlet } from "react-router-dom";
 
-const Home = () => {
+const Layout = () => {
     return (
-        <div div className='home-greeting container'>
+        <div div className='container'>
             <Sidebar/>
             <Outlet />
             </div>
     )
 }
 
-export default Home
+export default Layout

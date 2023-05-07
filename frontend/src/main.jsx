@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import '../css/App.css'
 //Add your imports from "/pages" below this line
-import Home from './pages/home';
+import Layout from './pages/layout';
 import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     //Landing page/Home page
     path: "/",
-    element: <Home />,
+    element: <Layout />,
     children: [
       //Rest of pages belong here, when you finish making a page
       //add a new object with url in path and imported page in element
