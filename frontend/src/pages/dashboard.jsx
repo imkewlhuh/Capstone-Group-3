@@ -61,13 +61,13 @@ export default function DashBoard() {
             {/*Header*/}
             <header className="header">
                 <div className="dashTitle">
-                    <i class="bi bi-pip" style={{ transform: "scaleY(-1) translateY(-20%) scale(2.5)" }}></i>
+                    <i className="bi bi-pip" style={{ transform: "scaleY(-1) translateY(-20%) scale(2.5)" }}></i>
                     <h2>Dashboard</h2>
                 </div>
                 <div className="user">
-                    <i class="bi bi-bell bell"></i>
-                    <i class="bi bi-search magnify"></i>
-                    <i class="bi bi-person-circle avatar"></i>
+                    <i className="bi bi-bell bell"></i>
+                    <i className="bi bi-search magnify"></i>
+                    <i className="bi bi-person-circle avatar"></i>
                 </div>
             </header>
             <hr />
@@ -124,7 +124,7 @@ export default function DashBoard() {
                                 products.map((product, i) => {
                                     if (i === 0) {
                                         return (
-                                            <thead key={i}>
+                                            <thead key={i + 10}>
                                                 <tr>
                                                     {
                                                         product.map(title => {
@@ -144,30 +144,30 @@ export default function DashBoard() {
                                                         product.map((row, j) => {
                                                             if (j === 0) {
                                                                 return (
-                                                                    <th key={j + 10}><img style={{ maxWidth: "4.4em" }} src={row} /></th>
+                                                                    <th key={j + 30}><img style={{ maxWidth: "4.4em" }} src={row} /></th>
                                                                 );
                                                             } else if (j === 1) {
                                                                 return (
-                                                                    <td key={j + 20}>
+                                                                    <td key={j + 40}>
                                                                         <p>{row.name}</p>
                                                                         <p style={{ color: "#40A0F9" }}>{row.SKU}</p>
                                                                     </td>
                                                                 );
                                                             } else if (j === 4) {
                                                                 return (
-                                                                    <td>
+                                                                    <td key={j + 50}>
                                                                         <div className="statusBox">{row}</div>
                                                                     </td>
                                                                 );
                                                             } else if (j === 5 && row != "") {
                                                                 return (
-                                                                    <td>
+                                                                    <td key={j + 60}>
                                                                         <div className="actionBox">{row}</div>
                                                                     </td>
                                                                 );
                                                             } else {
                                                                 return (
-                                                                    <td key={j + 40}>{row}</td>
+                                                                    <td key={j + 70}>{row}</td>
                                                                 );
                                                             };
                                                         })
@@ -183,7 +183,7 @@ export default function DashBoard() {
                 </div>
 
 
-                <div className="hstack gap-4 justify-content-flex-start">
+                <div className="topRow">
                     {/* Alerts */}
                     <div className="alerts card">
                         <div className="card-body">
@@ -206,17 +206,17 @@ export default function DashBoard() {
                             <div className="hstack card-text p-2">
                                 <div className="usersBox">
                                     <h6>2.3k</h6>
-                                    <i class="bi bi-emoji-laughing"></i>
+                                    <i className="bi bi-emoji-laughing"></i>
                                     <p>Customers</p>
                                 </div>
                                 <div className="usersBox">
                                     <h6>15</h6>
-                                    <i class="bi bi-people"></i>
+                                    <i className="bi bi-people"></i>
                                     <p>Team</p>
                                 </div>
                                 <div className="usersBox">
                                     <h6>32</h6>
-                                    <i class="bi bi-person-lines-fill"></i>
+                                    <i className="bi bi-person-lines-fill"></i>
                                     <p>Suppliers</p>
                                 </div>
                             </div>
@@ -229,14 +229,14 @@ export default function DashBoard() {
                     <div className="purchases card">
                         <div className="card-body">
                             <h5 className="card-title">Purchase Overview</h5>
-                            <div className="purchaseContent p-1">
+                            <div className="purchaseContent">
                                 <div className="purchaseBox">
                                     <div className="vstack">
                                         <h6>28</h6>
                                         <p>Purchases</p>
                                     </div>
                                     <div className="bag">
-                                        <i class="bi bi-bag-check-fill"></i>
+                                        <i className="bi bi-bag-check-fill"></i>
                                     </div>
                                 </div>
                                 <div className="purchaseBox">
@@ -245,8 +245,8 @@ export default function DashBoard() {
                                         <p>Returned</p>
                                     </div>
                                     <div className="return vstack">
-                                        <i style={{ transform: "rotate(180deg) scale(1.3)", transformOrigin: "40% 60%" }} class="bi bi-arrow-return-right"></i>
-                                        <i class="bi bi-cash"></i>
+                                        <i style={{ transform: "rotate(180deg) scale(1.3)", transformOrigin: "40% 60%" }} className="bi bi-arrow-return-right"></i>
+                                        <i className="bi bi-cash"></i>
                                     </div>
                                 </div>
                                 <div className="purchaseBox">
@@ -255,7 +255,7 @@ export default function DashBoard() {
                                         <p>Canceled</p>
                                     </div>
                                     <div className="cancel">
-                                        <i class="bi bi-bag-x"></i>
+                                        <i className="bi bi-bag-x"></i>
                                     </div>
                                 </div>
                                 <div className="purchaseBox">
@@ -264,7 +264,7 @@ export default function DashBoard() {
                                         <p>Delivered</p>
                                     </div>
                                     <div className="delivered">
-                                        <i class="bi bi-box-seam"></i>
+                                        <i className="bi bi-box-seam"></i>
                                     </div>
                                 </div>
                             </div>
@@ -286,7 +286,6 @@ export default function DashBoard() {
                                         <td>SALES</td>
                                     </tr>
                                 </thead>
-                                <br />
                                 <tbody>
                                     <tr>
                                         <th>
@@ -297,7 +296,7 @@ export default function DashBoard() {
                                             <p style={{ color: "#40A0F9" }}>{products[1][1].SKU}</p>
                                         </td>
                                         <td>324</td>
-                                        <td><i class="bi bi-file-excel"></i></td>
+                                        <td><i className="bi bi-file-excel"></i></td>
                                     </tr>
                                     <tr>
                                         <th>
@@ -308,7 +307,7 @@ export default function DashBoard() {
                                             <p style={{ color: "#40A0F9" }}>{products[1][1].SKU}</p>
                                         </td>
                                         <td>231</td>
-                                        <td><i class="bi bi-file-excel"></i></td>
+                                        <td><i className="bi bi-file-excel"></i></td>
                                     </tr>
                                     <tr>
                                         <th>
@@ -319,7 +318,7 @@ export default function DashBoard() {
                                             <p style={{ color: "#40A0F9" }}>{products[1][1].SKU}</p>
                                         </td>
                                         <td>197</td>
-                                        <td><i class="bi bi-file-excel"></i></td>
+                                        <td><i className="bi bi-file-excel"></i></td>
                                     </tr>
                                 </tbody>
                             </table>

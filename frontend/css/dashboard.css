@@ -226,6 +226,16 @@
     padding: 0.5em;
 }
 
+.topRow {
+    display: flex;
+    justify-content: center;
+    max-width: 90vw;
+}
+
+.card {
+    height: auto!important;
+}
+
 .alerts, .users, .purchases {
     font-weight: 500;
     box-shadow: 1px 2px 4px var(--box-shadow);
@@ -248,6 +258,10 @@
     font-weight: 700;
     font-size: 1.5em;
     color: red;
+}
+
+.users {
+    width: 30%!important;
 }
 
 .users .hstack {
@@ -300,12 +314,12 @@
 }
 
 .purchases {
-    width: 35%;
+    width: 30%!important;
 }
 .purchaseContent {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 0.5em;
 }
@@ -313,7 +327,7 @@
 .purchaseBox {
     display: flex;
     align-items: baseline;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 45%;
 }
 
@@ -348,7 +362,7 @@
 }
 
 .return {
-    width: fit-content;
+    width: 3em;
     background-color: #40a0f97e;
 }
 
@@ -373,7 +387,7 @@
 }
 
 .sales {
-    width: 55%;
+    width: 60%!important;
     line-height: 0.5em;
     box-shadow: 0px 3px 5px var(--box-shadow);
     border-radius: 5px;
@@ -387,8 +401,8 @@
 .bottomRow {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    max-width: 90vw;
 }
 
 .calendar {
