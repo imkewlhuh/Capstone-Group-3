@@ -261,7 +261,7 @@
 }
 
 .users {
-    width: 30%!important;
+    width: 33%!important;
 }
 
 .users .hstack {
@@ -278,7 +278,7 @@
     align-items: center;
     justify-content: center;
     gap: 1em;
-    min-width: 30%;
+    min-width: 33%;
 }
 
 .usersBox i {
@@ -314,21 +314,23 @@
 }
 
 .purchases {
-    width: 30%!important;
+    width: 33%!important;
 }
 .purchaseContent {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5em;
+
 }
 
 .purchaseBox {
     display: flex;
     align-items: baseline;
     justify-content: center;
-    width: 45%;
+    gap: 0.2em;
+    width: 48%;
 }
 
 .purchaseBox :nth-child(1){
