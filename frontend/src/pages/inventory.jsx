@@ -16,7 +16,7 @@ function ConditionalComponent(props){
   
   function InventoryComponent(props){
     return(
-      <div className="container">
+      <div className="itemContainer">
         <img src={props.thumbnailImg}/>
         <div className="content">
           <p>{props.item}</p>

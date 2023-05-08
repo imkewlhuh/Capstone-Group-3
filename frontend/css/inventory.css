@@ -3,7 +3,7 @@
   margin: 20px;
 }
 
-.container{
+.itemContainer{
   border:solid 1px transparent;
   border-radius: 10px;
   padding: 10px;
@@ -13,15 +13,15 @@
   align-content: center;
 }
 
-.container:hover{
+.itemContainer:hover{
   border-color: lightgray;
 }
 
-.container > img{
+.itemContainer > img{
   width: 300px;
   height: auto;
 }
 
-.container > .content > p:first-child{
+.itemContainer > .content > p:first-child{
   font-weight: bold;
 }
