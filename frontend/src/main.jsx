@@ -7,6 +7,9 @@ import Layout from './pages/layout';
 import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
+import Inventory from './pages/inventory';
+import data from './Data/Data';
+import Products from './components/Products';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -31,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/inventory",
-        element: <div>Inventory page</div>
+        element: <Inventory/>
+      },
+      {
+        path: "/products",
+        element: <Products productItems={data.productItems} />
       },
       {
         path: "/orders",
@@ -64,8 +71,12 @@ const router = createBrowserRouter([
       {
         path: "/help",
         element: <div>Help Center</div>
-      }
+      },
     ]
+  },
+  {
+    path: "/home",
+    element: <Home/>
   }
 ])
 
