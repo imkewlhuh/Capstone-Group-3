@@ -8,6 +8,7 @@ import Home from './pages/home';
 import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
+import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/inventory",
+        element: <Inventory />
+      },
+      {
+        path: "inventory/products",
         element: <Products productItems={data.productItems} />
       },
       {
