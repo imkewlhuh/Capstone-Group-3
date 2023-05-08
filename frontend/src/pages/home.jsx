@@ -1,7 +1,4 @@
 import React from "react";
-import Sidebar from "../components/Sidebar.jsx";
-import { Outlet } from "react-router-dom";
-import ReactDOM from "react-dom";
 import "../../css/home.css";
 
 
@@ -39,4 +36,4 @@ const Home = () => {
             </div>
     )
 }
-export default Home
+export default Home;

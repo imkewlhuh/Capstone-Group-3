@@ -12,6 +12,11 @@
     --light-grn: #D6ECDF;
     --light-red: rgb(202, 46, 33, 0.56);
     --box-shadow: rgb(0, 0, 0, 0.3);
+    --light-gry: rgb(240, 240, 240);
+    --magenta-icon: #CD60FF;
+    --blue-icon: #2690F4;
+    --dark-pink: #D844DB;
+    --green-icon: #4CB863;
 }
 
 body {
