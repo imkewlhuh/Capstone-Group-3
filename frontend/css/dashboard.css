@@ -236,6 +236,7 @@
     font-weight: 500;
     box-shadow: 1px 2px 4px var(--box-shadow);
     height: auto!important;
+    border: 0!important;
 }
 
 .dark .alerts, .dark .users, .dark .purchases {
@@ -390,6 +391,7 @@
     width: 60%!important;
     line-height: 0.5em;
     box-shadow: 0px 3px 5px var(--box-shadow);
+    border: 0!important;
     border-radius: 5px;
 }
 
