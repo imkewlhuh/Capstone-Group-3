@@ -232,13 +232,10 @@
     max-width: 90vw;
 }
 
-.card {
-    height: auto!important;
-}
-
 .alerts, .users, .purchases {
     font-weight: 500;
     box-shadow: 1px 2px 4px var(--box-shadow);
+    height: auto!important;
 }
 
 .dark .alerts, .dark .users, .dark .purchases {
@@ -389,6 +386,7 @@
 }
 
 .sales {
+    height: auto!important;
     width: 60%!important;
     line-height: 0.5em;
     box-shadow: 0px 3px 5px var(--box-shadow);
@@ -403,7 +401,7 @@
 .bottomRow {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     max-width: 90vw;
 }
 
