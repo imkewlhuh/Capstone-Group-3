@@ -9,94 +9,105 @@
     justify-content: space-between;
     width: 100%;
     height: 4em;
-    padding: 1em;
+    padding-top: 0.5em;
 }
 
-.search {
+.dashTitle {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 16em;
-}
-
-.searchBar {
-    height: 2em;
-    border: 1.5px solid var(--blue-dash);
-    border-radius: 50px;
-    padding-left: 20px;
+    gap: 1em;
 }
 
 .user {
-    border: 1.5px solid black;
-    border-radius: 50px;
-    width: 6em;
-    height: 2.2em;
+    width: 8em;
     display: flex;
     align-items: baseline;
+    padding: 0.5em 0;
     justify-content: space-evenly;
+    transition: 0.5s;
 }
 
 .dark .user {
     background-color: var(--blue-dash);
     border: 1px solid black;
+    border-radius: 50px;
 }
 
-.bell {
+.bell, .magnify, .avatar {
     position: relative;
-    transform: translateY(0.13em) scale(0.8);
+    transform: scale(0.8);
     cursor: pointer;
 }
 
-.bell::after {
+.bell::after, .magnify::after, .avatar::after {
     content: "";
     position: absolute;
-    top: 0em;
-    left: -0.4em;
-    height: 1.8em;
-    width: 1.8em;
+    top: -0.1em;
+    left: -0.5em;
+    height: 2em;
+    width: 2em;
     border: 1.5px solid black;
     border-radius: 50%;
 }
 
-.dark .bell::after {
+.dark .bell::after, .dark .magnify::after, .dark .avatar::after {
     border-color: white;
 }
 
-.user :nth-child(2) {
-    transform: scale(1.5);
-    cursor: pointer;
+.content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100vw;
+    padding: 0 1em;
 }
 
 .subHeader {
     height: 4em;
-    width: 100%;
+    width: 90%;
+    position: relative;
     padding: 0 1em;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    border-bottom: 1px solid black;
 }
 
-.subHeader h2 {
+.welcome {
     color: var(--blue-dash);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 18em;
 }
 
-.dark .subHeader h2 {
+.dark .welcome {
     color: white;
 }
- 
+
+.warehouse {
+    height: 2em;
+    border: 1.5px solid var(--blue-dash);
+    border-radius: 50px;
+    padding-left: 1em;
+    width: 100%;
+}
+
+
 .subButtons {
-    width: 20em;
+    width: 22em;
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
+    row-gap: 0.9em;
 }
 
 .dashlet {
     width: 9em;
     height: 2em;
     border: solid var(--blue-dash);
+    border-radius: 5px;
     background-color: white;
     font-weight: 500;
     font-size: 1.2em;
@@ -120,9 +131,9 @@
 .export {
     background-color: var(--light-grn);
     color: var(--dark-grn);
-    width: 7em;
+    width: 9em;
     height: 2.5em;
-    border-radius: 50px;
+    border-radius: 5px;
     border: 0px;
     font-weight: 700;
     box-shadow: 0px 3px 3px var(--box-shadow);
@@ -134,17 +145,70 @@
     color: var(--light-grn);
 }
 
-.content {
+.dark .export:hover {
+    background-color: var(--light-grn);
+    color: var(--dark-grn);
+}
+
+.period {
+    width: 95%;
+    height: 2em;
+    border-radius: 0px;
+    border: 1px solid gray;
+    padding-left: 0.5em;
+    font-weight: 500;
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.box {
+    font-weight: 700;
     display: flex;
     flex-direction: column;
-    position: relative;
-    left: 6em;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 2px 4px var(--box-shadow);
+}
+
+.dark .box {
+    background-color: var(--box-shadow);
+}
+
+.box :nth-child(2) {
+    font-size: 2em;
+    font-weight: 800;
 }
 
 .productTable {
     max-width: 90%;
     background-color: white;
     box-shadow: 0px 3px 5px var(--box-shadow);
+    border-radius: 5px;
+    padding: 0.3em;
+}
+
+.topSales h2 {
+    color: var(--blue-dash);
+}
+
+.dark .topSales h2 {
+    color: white;
+}
+
+.dark .productTable {
+    background-color: var(--box-shadow);
+}
+
+.dark th, .dark tr {
+    color: white;
 }
 
 .statusBox {
@@ -152,6 +216,7 @@
     text-align: center;
     max-width: fit-content;
     padding: 0 0.5em;
+    color: black;
 }
 
 .actionBox {
@@ -159,4 +224,193 @@
     color: white;
     max-width: fit-content;
     padding: 0.5em;
+}
+
+.topRow {
+    display: flex;
+    justify-content: center;
+    max-width: 90vw;
+}
+
+.card {
+    height: auto!important;
+}
+
+.alerts, .users, .purchases {
+    font-weight: 500;
+    box-shadow: 1px 2px 4px var(--box-shadow);
+}
+
+.dark .alerts, .dark .users, .dark .purchases {
+    background-color: var(--box-shadow);
+    color: white;
+}
+
+.alerts p {
+    display: flex;
+    padding: 0 1.5em;
+    gap: 2em;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.alerts span {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: red;
+}
+
+.users {
+    width: 30%!important;
+}
+
+.users .hstack {
+    justify-content: center;
+}
+
+.usersBox {
+    border: 1px solid ;
+    border-radius: 15px;
+    padding: 1em;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    min-width: 30%;
+}
+
+.usersBox i {
+    transform: scale(3) translateY(-0.2em);
+}
+
+.usersBox h6 {
+    font-weight: 800;
+}
+
+.users .hstack :nth-child(1) {
+    border-color: #4A91FA;
+}
+
+.users .hstack :nth-child(1) i {
+    color: #4A91FA;
+}
+
+.users .hstack :nth-child(2) {
+    border-color: #D174EE;
+}
+
+.users .hstack :nth-child(2) i {
+    color: #D174EE;
+}
+
+.users .hstack :nth-child(3) {
+    border-color: #198754;
+}
+
+.users .hstack :nth-child(3) i {
+    color: #FFC107;
+}
+
+.purchases {
+    width: 30%!important;
+}
+.purchaseContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.purchaseBox {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 45%;
+}
+
+.purchaseBox :nth-child(1){
+    align-items: center;
+}
+
+.purchases h6 {
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.bag, .return, .cancel, .delivered {
+    height: 4em;
+    width: 4em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bag i, .return i, .cancel i, .delivered i {
+    transform: scale(2) translateY(-10%);
+}
+
+.bag {
+    background-color: #CD60FF7F;
+}
+
+.bag i {
+    color: var(--magenta-icon);
+}
+
+.return {
+    width: 3em;
+    background-color: #40a0f97e;
+}
+
+.return i {
+    color: var(--blue-icon);
+}
+
+.cancel {
+    background-color: #96dca47d;
+}
+
+.cancel i {
+    color: var(--green-icon);
+}
+
+.delivered {
+    background-color: #d944db5c;
+}
+
+.delivered i {
+    color: var(--dark-pink);
+}
+
+.sales {
+    width: 60%!important;
+    line-height: 0.5em;
+    box-shadow: 0px 3px 5px var(--box-shadow);
+    border-radius: 5px;
+}
+
+.dark .sales {
+    background-color: var(--box-shadow);
+    color: white;
+}
+
+.bottomRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 90vw;
+}
+
+.calendar {
+    box-shadow: 1px 2px 4px var(--box-shadow);
+}
+
+.dark .calendar {
+    background-color: var(--box-shadow);
+    color: white;
+    border: 0;
 }
