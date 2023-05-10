@@ -1,16 +1,21 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import '../css/App.css'
+import '../css/App.css';
 //Add your imports from "/pages" below this line
 import Layout from './pages/layout';
 import Home from './pages/home';
-import SignUp from './pages/signUp';
+import AuthLayout from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
+import UserField from "./components/userField";
+import BusinessField from "./components/businessField";
+import TeamField from './components/teamField';
+import InventoryField from './components/inventoryField';
+
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -21,14 +26,6 @@ const router = createBrowserRouter([
     children: [
       //Rest of pages belong here, when you finish making a page
       //add a new object with url in path and imported page in element
-      {
-        path: "/login",
-        element: <LoginPage />
-      },
-      {
-        path: "/signup",
-        element: <SignUp />
-      },
       {
         path: "/dashboard",
         element: <DashBoard />
@@ -78,8 +75,34 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home/>
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/auth/login",
+        element: <LoginPage />
+      },
+      {
+        path: "/auth/signup",
+        element: <UserField />
+      },
+      {
+        path: "/auth/business",
+        element: <BusinessField />
+      },
+      {
+        path: "/auth/inventory",
+        element: <InventoryField />
+      },
+      {
+        path: "/auth/team",
+        element: <TeamField />
+      }
+    ]
   }
-])
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
