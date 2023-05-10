@@ -11,6 +11,7 @@ import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
+import Teams from './components/Teams';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/teams",
-        element: <div>Teams</div>
+        element: <Teams />
       },
       {
         path: "/settings",
