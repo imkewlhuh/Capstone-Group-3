@@ -59,7 +59,7 @@ export default function DashBoard() {
         <div className="dashboard container">
 
             {/*Header*/}
-            <header className="header">
+            <header className="dashHeader">
                 <div className="dashTitle">
                     <i className="bi bi-pip" style={{ transform: "scaleY(-1) translateY(-20%) scale(2.5)" }}></i>
                     <h2>Dashboard</h2>
