@@ -3,7 +3,7 @@
     min-height: 100dvh;
 }
 
-.header {
+.dashHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -165,6 +165,38 @@
     gap: 2em;
 }
 
+.info > :nth-child(1) {
+    background: linear-gradient(35deg, rgb(215, 126, 110), rgb(218, 107, 140));
+}
+
+.info > :nth-child(2) {
+    background: linear-gradient(35deg, rgb(136, 178, 208), rgb(151, 223, 160));
+}
+
+.info > :nth-child(3) {
+    background: linear-gradient(45deg, rgb(221, 147, 212), rgb(155, 104, 234));
+}
+
+.info > :nth-child(4) {
+    background: linear-gradient(45deg, rgb(217, 156, 81), rgb(220, 110, 99));
+}
+
+.info > :nth-child(5) {
+    background: linear-gradient(115deg, rgb(220, 110, 99), rgb(217, 156, 81));
+}
+
+.info > :nth-child(6) {
+    background: linear-gradient(120deg, rgb(155, 104, 234), rgb(221, 147, 212));
+}
+
+.info > :nth-child(7) {
+    background: linear-gradient(115deg, rgb(151, 223, 160), rgb(136, 178, 208));
+}
+
+.info > :nth-child(8) {
+    background: linear-gradient(125deg, rgb(218, 107, 140), rgb(215, 126, 110));
+}
+
 .box {
     font-weight: 700;
     display: flex;
@@ -174,15 +206,11 @@
     width: 20%;
     padding: 1em;
     border-radius: 10px;
-    background-color: white;
+    color: white;
     box-shadow: 1px 2px 4px var(--box-shadow);
 }
 
-.dark .box {
-    background-color: var(--box-shadow);
-}
-
-.box :nth-child(2) {
+.box :nth-child(1) {
     font-size: 2em;
     font-weight: 800;
 }

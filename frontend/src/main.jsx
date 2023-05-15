@@ -12,6 +12,7 @@ import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
 import Teams from './components/Teams';
+import Sustainability from './pages/sustainability';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/sustainability",
-        element: <div>Sustainability</div>
+        element: <Sustainability />
       },
       {
         path: "/integrations",

@@ -59,7 +59,7 @@ export default function DashBoard() {
         <div className="dashboard container">
 
             {/*Header*/}
-            <header className="header">
+            <header className="dashHeader">
                 <div className="dashTitle">
                     <i className="bi bi-pip" style={{ transform: "scaleY(-1) translateY(-20%) scale(2.5)" }}></i>
                     <h2>Dashboard</h2>
@@ -103,8 +103,8 @@ export default function DashBoard() {
                         boxes && boxes.map((box, i) => {
                             return (
                                 <div key={i} className="box">
-                                    <p>{box.title}</p>
                                     <p>{box.amount}</p>
+                                    <p>{box.title}</p>
                                 </div>
                             )
                         })
