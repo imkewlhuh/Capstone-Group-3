@@ -103,8 +103,8 @@ export default function DashBoard() {
                         boxes && boxes.map((box, i) => {
                             return (
                                 <div key={i} className="box">
-                                    <p>{box.title}</p>
                                     <p>{box.amount}</p>
+                                    <p>{box.title}</p>
                                 </div>
                             )
                         })
