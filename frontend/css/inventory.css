@@ -1,27 +1,59 @@
+.inventoryheader{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.subheader1{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.searchbar{
+    display: flex;
+    align-items: flex-start;
+}
+
+.importfiles{
+    display: flex;
+    align-items: flex-end;
+}
+
+.totalinfo{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+
 .app-container{
-  /* display: flex; */
+  display: flex;
   margin: 20px;
 }
 
-.container{
+.itemContainer{
   border:solid 1px transparent;
   border-radius: 10px;
   padding: 10px;
   transition: border-color 0.2s linear;
   align-items: center;
- 
   align-content: center;
 }
 
-.container:hover{
+.itemContainer:hover{
   border-color: lightgray;
 }
 
-.container > img{
+.itemContainer > img{
   width: 300px;
   height: auto;
 }
 
-.container > .content > p:first-child{
+.itemContainer > .content > p:first-child{
   font-weight: bold;
 }

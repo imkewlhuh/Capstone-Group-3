@@ -1,6 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import "../../css/inventory.css";
+import { FaBell, FaUser, FaSearch} from "react-icons/fa";
 
 function ConditionalComponent(props){
     return (
@@ -16,7 +17,7 @@ function ConditionalComponent(props){
   
   function InventoryComponent(props){
     return(
-      <div className="container">
+      <div className="itemContainer">
         <img src={props.thumbnailImg}/>
         <div className="content">
           <p>{props.item}</p>
@@ -51,17 +52,23 @@ function ConditionalComponent(props){
 
 export default function Inventory(){
     return (
-        <div className="inventory-container">
-            <header className="header">
-                <h1>Inventory- All Items</h1>
-            </header>
-            
-            <div classname='subheader'>
-            <input className="searchBar" type="text" placeholder="Search all items"/>
-            <button className="importfiles">Import Files</button>
-            <button className="addnew">Add New</button>
+    <div className="inventory-container">
+       <div className="inventoryHeader">
+        <h1 className="mb-0">Inventory</h1>
+      </div>
+      <div className="subheader1">
+        <div class="input-group">
+            <div class="form-outline">
+            <input type="search" id="form1" class="form-control"/>
+            <label class="form-label" for="form1">Search</label>
             </div>
-
+                <button type="button" class="btn btn-primary">
+                <i class="FaSearch"></i>
+                </button>
+        </div>
+            <FaBell size={20} className="me-3"/>
+            <FaUser size={20} />
+      </div>
             <div className="totalinfo">
                 Folders: 6
                 Items: 0
@@ -85,6 +92,6 @@ export default function Inventory(){
                 <InventoryComponent/>
                 </div>
 
-        </div>
+    </div>
     )
 };
