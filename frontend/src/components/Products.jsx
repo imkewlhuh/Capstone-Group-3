@@ -138,57 +138,60 @@ const Products = () => {
           <h3>Items</h3>
           <p>Total Quantity: {totalQuantity} | Total Items: {productItems.length}</p>
         </Col>
+        <Col className="text-center">
+          <h3>Value</h3>
+          <p>Total Value: ${totalValue}</p>
+        </Col>
         <Col className="d-flex justify-content-end">
           <ButtonToolbar>
             <Button variant="warning">Import Files</Button>
             <Button variant="success" className="ms-2">
               Add New
-            </
-Button>
-</ButtonToolbar>
-</Col>
-</Row>
-<Row xs={3} md={3} className="g-4 mt-3">
-{productItems.map((productItem) => (
-<Col key={productItem.id}>
-<Card border="Secondary" key={productItem.id}>
-<Card.Img
-className="product-image"
-variant="top"
-src={productItem.image}
-/>
-<Card.Body>
-<Card.Title className="text-center">
-{productItem.name}
-</Card.Title>
-<Card.Text className="text-center">
-Units: {productItem.units} | Price: ${productItem.price}
-</Card.Text>
-<div className="yellow-box">
-<div className="price-tag-box">
-<FaTags size={18} color="black" className="price-tag" />
-<span className="tag-text">
-{getCustomText(productItem.id) ||
-productItem.customText1 ||
-"Red "}
-</span>
-</div>
-<div className="price-tag-box">
-<FaTags size={18} color="black" className="price-tag" />
-<span className="tag-text">
-{getCustomText(productItem.id) ||
-productItem.customText2 ||
-"Headphone"}
-</span>
-</div>
-</div>
-</Card.Body>
-</Card>
-</Col>
-))}
-</Row>
-</>
-);
+            </Button>
+          </ButtonToolbar>
+        </Col>
+      </Row>
+     
+ <Row xs={3} md={3} className="g-4 mt-3">
+        {productItems.map((productItem) => (
+          <Col key={productItem.id}>
+            <Card border="Secondary" key={productItem.id}>
+              <Card.Img
+                className="product-image"
+                variant="top"
+                src={productItem.image}
+              />
+              <Card.Body>
+                <Card.Title className="text-center">
+                  {productItem.name}
+                </Card.Title>
+                <Card.Text className="text-center">
+                  Units: {productItem.units} | Price: ${productItem.price}
+                </Card.Text>
+                <div className="yellow-box">
+                  <div className="price-tag-box">
+                    <FaTags size={18} color="black" className="price-tag" />
+                    <span className="tag-text">
+                      {getCustomText(productItem.id) ||
+                        productItem.customText1 ||
+                        "Red "}
+                    </span>
+                  </div>
+                  <div className="price-tag-box">
+                    <FaTags size={18} color="black" className="price-tag" />
+                    <span className="tag-text">
+                      {getCustomText(productItem.id) ||
+                        productItem.customText2 ||
+                        "Headphone"}
+                    </span>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </>
+  );
 };
-
 export default Products;
