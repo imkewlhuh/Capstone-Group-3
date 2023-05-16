@@ -2,6 +2,12 @@ import React from "react"
 import { useState } from "react"
 import "../../css/inventory.css";
 import { FaBell, FaUser, FaSearch} from "react-icons/fa";
+import Card from "react-bootstrap/Card";
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import "../../css/Products.css";
 
 function ConditionalComponent(props){
     return (
@@ -28,6 +34,22 @@ function ConditionalComponent(props){
     )
   }
   
+function InventoryCard(props) {
+    return (
+      <Card style={{width: '18rem'}}>
+        <Card.Img variant="top" src="https://via.placeholder.com/600x400" />
+        <Card.Body>
+          <Card.Title>{props.item}</Card.Title>
+          <Card.Text>{props.itemUnits}</Card.Text>
+          <Card.Text>{props.itemTotal}</Card.Text>
+        </Card.Body>
+      </Card>
+    );
+  }
+
+
+
+
   let sampleData = [
     {
       thumbnailImg: "https://via.placeholder.com/600x400",
@@ -50,25 +72,35 @@ function ConditionalComponent(props){
   ];
 
 
-export default function Inventory(){
+  export default function Inventory(){
     return (
     <div className="inventory-container">
        <div className="inventoryHeader">
-        <h1 className="mb-0">Inventory</h1>
+            <div className="inventoryhello">
+                <h1 className="mb-0">Inventory</h1>
+            </div>
+            <div className="buttonicons">
+                <i className="bi bi-bell bell"></i>
+                <i className="bi bi-search magnify"></i>
+                <i className="bi bi-person-circle avatar"></i>
+            </div>
       </div>
+
       <div className="subheader1">
         <div class="input-group">
             <div class="form-outline">
             <input type="search" id="form1" class="form-control"/>
             <label class="form-label" for="form1">Search</label>
             </div>
-                <button type="button" class="btn btn-primary">
-                <i class="FaSearch"></i>
-                </button>
+                {/* <button type="button" class="btn btn-primary">
+                    <i class="FaSearch"></i>
+                </button> */}
         </div>
-            <FaBell size={20} className="me-3"/>
-            <FaUser size={20} />
-      </div>
+        <div className="importadd">
+        <Button variant="warning">IMPORT FILES</Button>{' '}
+        <Button variant="success">ADD NEW +</Button>{' '}
+        </div>
+     </div>
             <div className="totalinfo">
                 Folders: 6
                 Items: 0
@@ -79,7 +111,7 @@ export default function Inventory(){
             <div className='app-container'>
                 {
                 sampleData.map(element=>{
-                    return  <InventoryComponent
+                    return  <InventoryCard
                     thumbnailImg={element.thumbnailImg} 
                     item={element.item}
                     itemUnits={element.itemUnits}
@@ -87,9 +119,7 @@ export default function Inventory(){
                     />
                 })
                 }
-                <InventoryComponent/>
-                <InventoryComponent/>
-                <InventoryComponent/>
+
                 </div>
 
     </div>
