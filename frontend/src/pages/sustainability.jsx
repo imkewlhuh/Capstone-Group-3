@@ -25,7 +25,7 @@ export default function Sustainability(props) {
                     <h1>Track your inventory.</h1>
                 </div>
 
-                <img className="recycleImg" />
+                <img className="recycleImg" src="/images/recycle.png" />
             </div>
 
 
@@ -104,21 +104,21 @@ export default function Sustainability(props) {
 
                 <div className="greenOptions">
                     <div className="greenOption">
-                        <img />
+                        <img src="/images/renewable.png" />
                         <h5 style={{fontWeight: "700"}}>Donate low selling stocks</h5>
                         <p>Donate your low-selling inventory surplus to make a positive impact on the world, save on taxes, and do good for your business and community. This reduces waste, frees up storage space, makes a difference in people's lives, and earns you tax deductions.</p>
                         <button type="button" className="greenButton">Find organizations</button>
                     </div>
 
                     <div className="greenOption">
-                        <img />
+                        <img src="/images/recycleBin.png" />
                         <h5 style={{fontWeight: "700"}}>Source sustainably</h5>
                         <p>Reduce your business’s carbon footprint by sourcing through sustainable suppliers. Communicate your commitment to sustainability, set goals for suppliers, and conduct audits for compliance. By doing so, you can improve your brand reputation, increase customer loyalty, and create a better future for our planet.</p>
                         <button type="button" className="greenButton">Find suppliers</button>
                     </div>
 
                     <div className="greenOption">
-                        <img />
+                        <img src="/images/electric.png"/>
                         <h5 style={{fontWeight: "700"}}>Don't overstock</h5>
                         <p>Track your inventory through our analytics. Restock when stock levels are low and find alternatives for distributing or repurposing underperforming stocks. Organize a discounted sale and get notified before products expire.</p>
                         <button type="button" className="greenButton">Organize a sale</button>

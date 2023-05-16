@@ -57,7 +57,7 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .titles {
@@ -69,6 +69,10 @@
 
 .titles :nth-child(2) {
     text-decoration: underline;
+}
+
+.recycleImg {
+    max-width: 17em;
 }
 
 .cardAlerts {
@@ -220,8 +224,7 @@
 }
 
 .greenOption img {
-    width: 13em;
-    height: 13em;
+    max-width: 13em;
 }
 
 .greenButton {
