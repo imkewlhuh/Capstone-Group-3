@@ -7,6 +7,8 @@ import {
   FaEnvelope,
   FaBell,
   FaUser,
+  FaPencilAlt,
+  FaRegBell,
 } from "react-icons/fa";
 import { BsPerson } from "react-icons/bs";
 
@@ -22,6 +24,7 @@ function Teams() {
           tasks: 131,
           products: 31,
           insights: 27,
+          imageUrl: "images/alet-brown.jpg",
         },
         {
           name: "John Smith",
@@ -30,6 +33,7 @@ function Teams() {
           tasks: 105,
           products: 35,
           insights: 56,
+          imageUrl: "images/john-smith.jpg",
         },
         {
           name: "Emma Davis",
@@ -38,6 +42,7 @@ function Teams() {
           tasks: 101,
           products: 67,
           insights: 45,
+          imageUrl:"images/emma-davis.jpg",
         },
         {
           name: "Sarah Lee",
@@ -46,6 +51,7 @@ function Teams() {
           tasks: 125,
           products: 80,
           insights: 59,
+          imageUrl: "images/sarah-lee.jpg",
         },
       ],
     },
@@ -59,6 +65,7 @@ function Teams() {
           tasks: 134,
           products: 65,
           insights: 39,
+          imageUrl:"images/leo-demarco.jpg",
         },
         {
           name: "Michael Lee",
@@ -67,6 +74,7 @@ function Teams() {
           tasks: 150,
           products: 56,
           insights: 78,
+          imageUrl: "images/michael-lee.jpg",
         },
         {
           name: "Lucy Kim",
@@ -75,6 +83,7 @@ function Teams() {
           tasks: 180,
           products: 68,
           insights: 59,
+          imageUrl: "images/lucy-kim.jpg",
         },
         {
           name: "David Johnson",
@@ -83,6 +92,7 @@ function Teams() {
           tasks: 120,
           products: 89,
           insights: 77,
+          imageUrl:"images/david-johnson.jpg",
         },
       ],
     },
@@ -91,31 +101,44 @@ function Teams() {
   return (
     <Container>
       <Row>
-        <Col>
-          <div className="d-flex align-items-center mb-4">
-            <h2 className="mr-2">Teams</h2>
-            <FaUsers size={24} />
-          </div>
+        <Col className="d-flex align-items-center">
+          <h2 className="mr-2">Teams</h2>
+          <FaUsers size={24} />
         </Col>
         <Col className="d-flex justify-content-start align-items-center">
-          <Button variant="primary" className="mr-2">
-            <FaFilter /> Filter Users
-          </Button>
-          <Form className="d-flex align-items-center">
-            <Form.Control type="text" placeholder="Search" className="mr-2" />
-            <FaSearch className="search-icon" />
-          </Form>
+          <div className="d-flex align-items-center mr-3">
+            <Form.Check type="checkbox" className="mr-2" />
+            <FaPencilAlt size={16} className="mr-2" />
+            <span>Select</span>
+          </div>
+          <div className="d-flex align-items-center">
+            <span className="ml-3">View All</span>
+          </div>
         </Col>
         <Col className="d-flex justify-content-end align-items-center">
-          <div className="d-flex align-items-center mr-3">
-            <FaBell className="icon-button" />
-          </div>
-          <div className="d-flex align-items-center mr-3">
-            <FaUser className="icon-button" />
-          </div>
-          <div className="d-flex align-items-center mr-3">
+          <div className="d-flex align-items-center">
+            <FaBell className="icon-button mr-3" />
             <FaSearch className="icon-button" />
           </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-start align-items-center">
+          <Button variant="light" className="mr-2">
+            <FaFilter /> Filter Users
+          </Button>
+          <Form className="d-flex align-items-center position-relative">
+            <Form.Control type="text" placeholder="Search" className="mr-2" />
+            <FaSearch
+              className="search-icon"
+              style={{
+                position: "absolute",
+                right: "8px",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+            />
+          </Form>
         </Col>
       </Row>
       {teams.map((team) => (
@@ -128,11 +151,11 @@ function Teams() {
           <Row>
             {team.members.map((member, index) => (
               <Col key={index} xs={12} md={6} lg={3}>
-                <Card border="warning">
+                <Card border="dark">
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex align-items-center">
-                      <Form.Check type="checkbox" className="mr-2" />
-                      <BsPerson size={20} className="mr-2" />
+                      <Form.Check type="checkbox" className="mr-3" />
+                      <BsPerson size={20} className="mr-3" />
                     </div>
                     <div>
                       <FaEnvelope size={24} />
@@ -140,7 +163,7 @@ function Teams() {
                   </div>
                   <Card.Img
                     variant="top"
-                    src="https://via.placeholder.com/150x150"
+                    src={member.imageUrl}
                     className="rounded-circle mx-auto my-3"
                     style={{ width: "80px", height: "80px" }}
                   />

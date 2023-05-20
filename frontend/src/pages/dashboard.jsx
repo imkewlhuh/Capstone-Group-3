@@ -1,3 +1,4 @@
+import React from 'react';
 import "../../css/dashboard.css";
 import Calendar from 'moedim';
 
@@ -57,7 +58,6 @@ export default function DashBoard() {
 
     return (
         <div className="dashboard container">
-
             {/*Header*/}
             <header className="dashHeader">
                 <div className="dashTitle">
