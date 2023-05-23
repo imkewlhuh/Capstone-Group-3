@@ -13,6 +13,7 @@ import data from './Data/Data';
 import Products from './components/Products';
 import Teams from './components/Teams';
 import Sustainability from './pages/sustainability';
+import HelpCenter from './pages/HelpCenter';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -73,7 +74,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/help",
-        element: <div>Help Center</div>
+        element: <HelpCenter />
       },
     ]
   },
