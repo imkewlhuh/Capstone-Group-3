@@ -1,21 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import '../css/App.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "../css/App.css";
 //Add your imports from "/pages" below this line
-import Layout from './pages/layout';
-import Home from './pages/home';
-import AuthLayout from './pages/signUp';
-import LoginPage from './pages/LoginPage.jsx';
-import DashBoard from './pages/dashboard';
-import Inventory from './pages/inventory';
-import data from './Data/Data';
-import Products from './components/Products';
-import UserField from "./components/userField";
-import BusinessField from "./components/businessField";
-import TeamField from './components/teamField';
-import InventoryField from './components/inventoryField';
+import Layout from "./pages/layout";
+import Home from "./pages/home";
+import AuthLayout from "./pages/signUp";
+import LoginPage from "./pages/LoginPage.jsx";
+import DashBoard from "./pages/dashboard";
+import Inventory from "./pages/inventory";
+import data from "./Data/Data";
+import Products from "./components/Products";
+import Teams from "./components/Teams";
+import Sustainability from "./pages/sustainability";
+import HelpCenter from "./pages/HelpCenter";
+import UserField from "./components/signup-fields/user";
+import BusinessField from "./components/signup-fields/business";
+import TeamField from "./components/signup-fields/team";
+import InventoryField from "./components/signup-fields/inventory";
 
+import { fetchProductListTypes } from "./actions/products";
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -28,84 +32,94 @@ const router = createBrowserRouter([
       //add a new object with url in path and imported page in element
       {
         path: "/dashboard",
-        element: <DashBoard />
+        element: <DashBoard />,
       },
       {
         path: "/inventory",
-        element: <Inventory />
+        element: <Inventory />,
       },
       {
         path: "inventory/products",
-        element: <Products productItems={data.productItems} />
+        element: <Products productItems={data.productItems} />,
       },
       {
         path: "/orders",
-        element: <div>Your Orders</div>
+        element: <div>Your Orders</div>,
       },
       {
         path: "/suppliers",
-        element: <div>Suppliers</div>
+        element: <div>Suppliers</div>,
       },
       {
         path: "/sustainability",
-        element: <div>Sustainability</div>
+        element: <Sustainability />,
       },
       {
         path: "/integrations",
-        element: <div>Integrations</div>
+        element: <div>Integrations</div>,
       },
       {
         path: "/analytics",
-        element: <div>Analytics</div>
+        element: <div>Analytics</div>,
       },
       {
         path: "/teams",
-        element: <div>Teams</div>
+        element: <Teams />,
       },
       {
         path: "/settings",
-        element: <div>Settings</div>
+        element: <div>Settings</div>,
       },
       {
         path: "/help",
-        element: <div>Help Center</div>
+        element: <HelpCenter />,
       },
-    ]
+    ],
   },
   {
     path: "/home",
-    element: <Home/>
+    element: <Home />,
   },
   {
     path: "/auth",
     element: <AuthLayout />,
     children: [
       {
-        path: "/auth/login",
-        element: <LoginPage />
+        path: "login",
+        element: <LoginPage />,
       },
       {
-        path: "/auth/signup",
-        element: <UserField />
+        path: "signup",
+        children: [
+          {
+            path: "",
+            element: <UserField />,
+          },
+          {
+            path: "business",
+            element: <BusinessField />,
+          },
+          {
+            path: "inventory",
+            element: <InventoryField />,
+            loader: async () => {
+              const productTypes = await fetchProductListTypes();
+
+              return productTypes;
+            },
+          },
+          {
+            path: "team",
+            element: <TeamField />,
+          },
+        ],
       },
-      {
-        path: "/auth/business",
-        element: <BusinessField />
-      },
-      {
-        path: "/auth/inventory",
-        element: <InventoryField />
-      },
-      {
-        path: "/auth/team",
-        element: <TeamField />
-      }
-    ]
-  }
+    ],
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

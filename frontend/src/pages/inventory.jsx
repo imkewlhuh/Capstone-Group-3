@@ -57,9 +57,9 @@ export default function Inventory(){
             </header>
             
             <div classname='subheader'>
-            <input className="searchBar" type="text" placeholder="Search all items"/>
-            <button className="importfiles">Import Files</button>
-            <button className="addnew">Add New</button>
+                <input className="searchBar" type="text" placeholder="Search all items"/>
+                <button className="importfiles">Import Files</button>
+                <button className="addnew">Add New</button>
             </div>
 
             <div className="totalinfo">

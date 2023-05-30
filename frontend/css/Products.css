@@ -38,11 +38,36 @@
   margin: 10px 0px;
   padding-bottom: 20px;
   font-size: 18px;
-  line-height:30px;
+  line-height: 30px;
 }
 
 .product-units {
-    margin: 10px 0px;
-    padding-bottom: 10px;
-    font-size: 18px;
-  }
+  margin: 10px 0px;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.yellow-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.price-tag-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Add this CSS for the text inside the price tag */
+.tag-content {
+  display: flex;
+  align-items: center;
+}
+
+.tag-text {
+  margin-left: 5px;
+}
