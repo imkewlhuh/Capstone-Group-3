@@ -14,10 +14,12 @@ import Products from "./components/Products";
 import Teams from "./components/Teams";
 import Sustainability from "./pages/sustainability";
 import HelpCenter from "./pages/HelpCenter";
-import UserField from "./components/userField";
-import BusinessField from "./components/businessField";
-import TeamField from "./components/teamField";
-import InventoryField from "./components/inventoryField";
+import UserField from "./components/signup-fields/user";
+import BusinessField from "./components/signup-fields/business";
+import TeamField from "./components/signup-fields/team";
+import InventoryField from "./components/signup-fields/inventory";
+
+import { fetchProductListTypes } from "./actions/products";
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -83,24 +85,34 @@ const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       {
-        path: "/auth/login",
+        path: "login",
         element: <LoginPage />,
       },
       {
-        path: "/auth/signup",
-        element: <UserField />,
-      },
-      {
-        path: "/auth/business",
-        element: <BusinessField />,
-      },
-      {
-        path: "/auth/inventory",
-        element: <InventoryField />,
-      },
-      {
-        path: "/auth/team",
-        element: <TeamField />,
+        path: "signup",
+        children: [
+          {
+            path: "",
+            element: <UserField />,
+          },
+          {
+            path: "business",
+            element: <BusinessField />,
+          },
+          {
+            path: "inventory",
+            element: <InventoryField />,
+            loader: async () => {
+              const productTypes = await fetchProductListTypes();
+
+              return productTypes;
+            },
+          },
+          {
+            path: "team",
+            element: <TeamField />,
+          },
+        ],
       },
     ],
   },
