@@ -11,6 +11,7 @@ import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
+import AddNew from './pages/addnew';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
         path: "/help",
         element: <div>Help Center</div>
       },
+      {
+        path:"/addnew",
+        element: <AddNew/>
+      }
     ]
   },
   {

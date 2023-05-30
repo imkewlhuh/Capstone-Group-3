@@ -12,8 +12,26 @@
     display: flex;
     align-items: baseline;
     padding: 0.5em 0;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
 }
+
+.moreinfo{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: space-between;
+}
+
+.totalinfo{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: space-between;
+}
+
 
 .importadd{
     width: 20em;

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import "../../css/Products.css";
+
 
 function ConditionalComponent(props){
     return (
@@ -36,7 +36,7 @@ function ConditionalComponent(props){
   
 function InventoryCard(props) {
     return (
-      <Card style={{width: '18rem'}}>
+      <Card style={{width: '400px'}}>
         <Card.Img variant="top" src="https://via.placeholder.com/600x400" />
         <Card.Body>
           <Card.Title>{props.item}</Card.Title>
@@ -101,13 +101,14 @@ function InventoryCard(props) {
         <Button variant="success">ADD NEW +</Button>{' '}
         </div>
      </div>
+     <div className="moreinfo">
             <div className="totalinfo">
                 Folders: 6
                 Items: 0
                 Quantity: 992 Units 
                 Total Value: 123,123.02
             </div>
-
+    </div>
             <div className='app-container'>
                 {
                 sampleData.map(element=>{
@@ -119,8 +120,7 @@ function InventoryCard(props) {
                     />
                 })
                 }
-
-                </div>
+            </div>
 
     </div>
     )
