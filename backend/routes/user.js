@@ -101,7 +101,6 @@ router.delete("/:user", async (request, response) => {
 
 ///signup or create user route
 router.post("/signup", async (request, response) => {
-  console.log(request.body);
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
@@ -122,9 +121,9 @@ router.post("/signup", async (request, response) => {
           try {
             const newBusiness = await prisma.business.create({
               data: {
-                name: "something",
+                name: request.body.businessName || request.body.name,
                 type: request.body.businessType,
-                location: "something address",
+                location: request.body.businessLocation || null,
               },
             });
 
