@@ -33,16 +33,3 @@ body {
     background-color: var(--dark-bg);
     color: white;
 }
-
-.signUp {
-    display: flex;
-    flex-direction: column;
-}
-
-.invalidPass {
-    position: absolute;
-}
-
-.signUp > .input-group > button {
-    opacity: 0.8;
-}

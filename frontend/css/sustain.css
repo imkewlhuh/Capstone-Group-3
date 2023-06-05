@@ -1,0 +1,236 @@
+.sustain {
+    height: 100dvh;
+    width: 96vw;
+    position: relative;
+    left: -1.7em;
+}
+
+.sustainHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 4em;
+    padding: 0 1em;
+}
+
+.user {
+    width: 8em;
+    display: flex;
+    align-items: baseline;
+    padding: 0.5em 0;
+    justify-content: space-evenly;
+    transition: 0.5s;
+}
+
+.dark .user {
+    background-color: var(--blue-dash);
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+.bell, .magnify, .avatar {
+    position: relative;
+    transform: scale(0.8);
+    cursor: pointer;
+}
+
+.bell::after, .magnify::after, .avatar::after {
+    content: "";
+    position: absolute;
+    top: -0.1em;
+    left: -0.5em;
+    height: 2em;
+    width: 2em;
+    border: 1.5px solid black;
+    border-radius: 50%;
+}
+
+.dark .bell::after, .dark .magnify::after, .dark .avatar::after {
+    border-color: white;
+}
+
+.sustainBanner {
+    background: linear-gradient(160deg, rgb(59, 175, 120), rgb(65, 187, 28));
+    width: 100%;
+    height: 16em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.titles {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.titles :nth-child(2) {
+    text-decoration: underline;
+}
+
+.recycleImg {
+    max-width: 17em;
+}
+
+.cardAlerts {
+    height: 25em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.cardAlerts img {
+    height: 4em;
+    width: 4em;
+}
+
+.card-alert {
+    background-color: #41BB24;
+    width: 25%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5em 0 3em;
+    border-radius: 15px;
+    box-shadow: 0px 0px 2px 1.5px var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-alert h5 {
+    color: white;
+}
+
+.card-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+    height: 60%;
+}
+
+.card-items::before, .soldOut-items::before {
+    content: '';
+    background-color: white;
+    height: 20em;
+    width: 35em;
+    position: absolute;
+    top: 5em;
+    border-radius: 50%;
+}
+
+.dark .card-items::before, 
+.dark .soldOut-items::before, 
+.dark .watchBox, 
+.dark .beanieBox {
+    background-color: var(--box-shadow);
+}
+
+.watchBox {
+    background-color: var(--light-gry);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    border-radius: 15px;
+    padding-top: 0.5em;
+    z-index: 2;
+}
+
+.view {
+    position: absolute;
+    bottom: 0;
+    right: 1.5em;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.soldOut-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    width: 100%;
+    height: 60%;
+}
+
+.beanieBox {
+    background-color: var(--light-gry);
+    width: 90%;
+    height: 4.5em;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5em 0.5em;
+    z-index: 2;
+}
+
+.beanieBox img {
+    height: 3em;
+    width: 3em;
+}
+
+.beanieText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
+    height: 90%;
+    line-height: 0.4em;
+}
+
+.beanieName {
+    font-weight: 500;
+}
+
+.remaining {
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.greenWays {
+    background-color: #3EB555;
+    color: white;
+    text-align: center;
+    padding: 2em;
+}
+
+.greenOptions {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    gap: 2em;
+}
+
+.greenOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    gap: 1em;
+}
+
+.greenOption img {
+    max-width: 13em;
+}
+
+.greenButton {
+    background-color: #AEDC2A;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    padding: 0.5em 1.5em;
+}
