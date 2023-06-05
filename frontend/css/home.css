@@ -1,6 +1,9 @@
 .topnav{
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* margin: 15px; */
+    background-color: #151B4C;
+
 }
 
 .hipanel{
@@ -8,6 +11,7 @@
     align-items: center;
     border: 2px solid green;
     padding: 50px;
+    background-color: #7984FF;
 }
 
 .secondpanel{
@@ -18,6 +22,7 @@
 .thirdpanel{
     text-align: center;
     padding: 50px;
+    background-color: #FFC107;
 }
 
 .fourthpanel{
@@ -28,4 +33,5 @@
 .finalpanel{
     text-align: center;
     padding: 50px;
+    background-color: #67E07F;
 }

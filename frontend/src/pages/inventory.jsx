@@ -77,7 +77,7 @@ function InventoryCard(props) {
     <div className="inventory-container">
        <div className="inventoryHeader">
             <div className="inventoryhello">
-                <h1 className="mb-0">Inventory</h1>
+                <h1 className="mb-0">Inventory - All Items</h1>
             </div>
             <div className="buttonicons">
                 <i className="bi bi-bell bell"></i>
@@ -89,8 +89,8 @@ function InventoryCard(props) {
       <div className="subheader1">
         <div class="input-group">
             <div class="form-outline">
-            <input type="search" id="form1" class="form-control"/>
-            <label class="form-label" for="form1">Search</label>
+            <input type="search" id="form1" class="form-control" placeholder="Search all items"/>
+            {/* <label class="form-label" for="form1">Search</label> */}
             </div>
                 {/* <button type="button" class="btn btn-primary">
                     <i class="FaSearch"></i>
