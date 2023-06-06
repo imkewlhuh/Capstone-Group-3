@@ -1,11 +1,40 @@
 .wrapper {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
 }
+
 .login {
-  width: 300px;
-  padding:20px;
-  height: min-content;
-  border-radius: 5px;
-  color:black;
-  background-color: rgb(238, 241, 243);
+  width: 70%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  position: relative;
+}
+
+.input {
+  border: 1px solid black;
+}
+
+.forgotPass {
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  right: 2em;
+  top: 12.5em;
+}
+
+.forgotPass:hover {
+  text-decoration: underline;
+}
+
+.loginBtn {
+  width: 50%;
+  align-self: center;
+  margin-top: 3em;
 }

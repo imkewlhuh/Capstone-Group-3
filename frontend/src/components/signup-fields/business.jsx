@@ -40,14 +40,14 @@ export default function BusinessField() {
           <>
             <input
               type="radio"
-              class="btn-check"
+              className="btn-check"
               id="personal-outlined"
               value="personal"
               {...register("businessType", { required: true })}
             />
             <label
-              class="businessBtn btn btn-outline mb-3"
-              for="personal-outlined"
+              className="businessBtn btn btn-outline mb-3"
+              htmlFor="personal-outlined"
             >
               <h4>Personal</h4>
               <p>I am managing my own items at home</p>
@@ -55,14 +55,14 @@ export default function BusinessField() {
 
             <input
               type="radio"
-              class="btn-check"
+              className="btn-check"
               id="business-outlined"
               value="business"
               {...register("businessType", { required: true })}
             />
             <label
-              class="businessBtn btn btn-outline mb-5"
-              for="business-outlined"
+              className="businessBtn btn btn-outline mb-5"
+              htmlFor="business-outlined"
             >
               <h4>Business</h4>
               <p>I am managing items in a workspace</p>
