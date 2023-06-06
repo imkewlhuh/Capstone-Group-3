@@ -1,8 +1,21 @@
 import React from 'react';
 import "../../css/dashboard.css";
 import Calendar from 'moedim';
+import { fetchUser } from '../actions/fetchUser';
+import { useEffect, useState } from 'react';
 
 export default function DashBoard() {
+    const [name, setName] = useState();
+
+    useEffect(() => {
+        const token = sessionStorage.getItem("token");
+        const fetch = async () => {
+            const user = await fetchUser(token);
+            console.log(user.user);
+            setName(user.user.name);
+        }
+        fetch();
+    }, [])
     //Info Boxes Data
     const boxes = [
         {
@@ -80,7 +93,7 @@ export default function DashBoard() {
                 {/*Sub Header*/}
                 <div className="subHeader mb-5">
                     <div className="welcome">
-                        <h2>Welcome User!</h2>
+                        <h2>Welcome {name}!</h2>
                         <select className="warehouse">
                             <option>Choose a warehouse</option>
                         </select>

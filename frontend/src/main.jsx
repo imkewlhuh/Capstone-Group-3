@@ -14,11 +14,15 @@ import Products from "./components/Products";
 import Teams from "./components/Teams";
 import Sustainability from "./pages/sustainability";
 import HelpCenter from "./pages/HelpCenter";
-import UserField from "./components/signup-fields/user";
-import BusinessField from "./components/signup-fields/business";
-import TeamField from "./components/signup-fields/team";
-import InventoryField from "./components/signup-fields/inventory";
-
+// import UserField from "./components/signup-fields/user";
+// import BusinessField from "./components/signup-fields/business";
+// import TeamField from "./components/signup-fields/team";
+// import InventoryField from "./components/signup-fields/inventory";
+//
+import UserField from "./components/userField";
+import BusinessField from "./components/businessField";
+import TeamField from "./components/teamField";
+import InventoryField from "./components/inventoryField";
 import { fetchProductListTypes } from "./actions/products";
 
 //Creating Router instance

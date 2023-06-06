@@ -8,7 +8,7 @@ export default function InventoryField(props) {
         e.preventDefault();
 
         if (e.target.checkValidity()) {
-            navigate("/auth/team");
+            navigate("/auth/signup/team");
         };
 
         e.target.classList.add('was-validated');

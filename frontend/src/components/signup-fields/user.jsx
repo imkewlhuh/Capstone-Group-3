@@ -26,7 +26,7 @@ export default function UserField() {
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(userSchema),
   });
@@ -49,6 +49,7 @@ export default function UserField() {
       <form
         onSubmit={handleSubmit(handleUserSubmit)}
         className="signUp needs-validation my-3"
+        noValidate
       >
         <div className="formInput mb-2">
           <label htmlFor="name" className="form-label">
