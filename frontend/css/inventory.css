@@ -1,57 +1,98 @@
-.header{
-    width: 100%;
-    justify-content: center;
+.inventoryHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 4em;
+  padding-top: 0.5em;
 }
 
-.subheader{
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.buttonicons{
+  width: 8em;
+  display: flex;
+  align-items: baseline;
+  padding: 0.5em 0;
+  justify-content: space-between;
+
 }
 
-.searchbar{
-    display: flex;
-    align-items: flex-start;
-}
-
-.importfiles{
-    display: flex;
-    align-items: flex-end;
+.moreinfo{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: space-between;
 }
 
 .totalinfo{
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    font-weight: bold;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: space-between;
+}
+
+
+.importadd{
+  width: 20em;
+  display: flex;
+  align-items: baseline;
+  padding: 0.5em 0;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.subheader1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 4em;
+  padding-top: 0.5em;
+}
+
+.searchbar{
+  display: flex;
+  align-items: flex-start;
+}
+
+.importfiles{
+  display: flex;
+  align-items: flex-end;
+}
+
+.totalinfo{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 
 .app-container{
-  display: flex;
-  margin: 20px;
+display: flex;
+margin: 20px;
 }
 
-.itemContainer{
-  border:solid 1px transparent;
-  border-radius: 10px;
-  padding: 10px;
-  transition: border-color 0.2s linear;
-  align-items: center;
-  align-content: center;
-}
+/* .itemContainer{
+border:solid 1px transparent;
+border-radius: 10px;
+padding: 10px;
+transition: border-color 0.2s linear;
+align-items: center;
+align-content: center;
+} */
 
 .itemContainer:hover{
-  border-color: lightgray;
+border-color: lightgray;
 }
 
 .itemContainer > img{
-  width: 300px;
-  height: auto;
+width: 300px;
+height: auto;
 }
 
 .itemContainer > .content > p:first-child{
-  font-weight: bold;
+font-weight: bold;
 }

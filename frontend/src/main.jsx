@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../css/App.css";
 //Add your imports from "/pages" below this line
-import Layout from "./pages/layout";
-import Home from "./pages/home";
+import Layout from './pages/layout';
+import Home from './pages/home';
+import SignUp from './pages/signUp';
+import LoginPage from './pages/LoginPage.jsx';
+import DashBoard from './pages/dashboard';
+import Inventory from './pages/inventory';
+import data from './Data/Data';
+import Products from './components/Products';
+import AddNew from './pages/addnew';
+
 import AuthLayout from "./pages/signUp";
-import LoginPage from "./pages/LoginPage.jsx";
-import DashBoard from "./pages/dashboard";
-import Inventory from "./pages/inventory";
-import data from "./Data/Data";
-import Products from "./components/Products";
 import Teams from "./components/Teams";
 import Sustainability from "./pages/sustainability";
 import HelpCenter from "./pages/HelpCenter";
