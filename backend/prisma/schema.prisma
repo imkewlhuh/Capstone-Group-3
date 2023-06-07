@@ -47,7 +47,27 @@ model Business {
   id       Int        @unique @default(autoincrement())
   type     String     @db.VarChar(255)
   name     String     @db.VarChar(255)
-  location String     @db.VarChar(255)
+  location String?     @db.VarChar(255)
   admin    User[]
   products ItemList[]
+  businessToProductType ProductTypeToBusiness[]
+}
+
+model ProductType {
+  id Int @unique @default(autoincrement())
+  productType String
+
+  businessToProductType ProductTypeToBusiness[]
+}
+
+model ProductTypeToBusiness {
+  businessId Int      
+  business   Business @relation(fields: [businessId], references: [id])
+
+  productTypeId Int
+  productType   ProductType @relation(fields: [productTypeId], references: [id])
+
+  @@id([businessId, productTypeId])
+  @@index([businessId])
+  @@index([productTypeId])
 }

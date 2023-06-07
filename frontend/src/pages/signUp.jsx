@@ -1,51 +1,56 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import "../../css/signUpForm.css";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-export default function SignUp(props) {
-    const [show, setShow] = useState(false);
-    const togglePass = () => setShow(!show);
+const bgColors = {
+  login: "#7984FF",
+  signup: "#40A0F9",
+  businessType: "#FFC107",
+  inventory: "#CD60FF",
+  team: "#96DCA4"
+}
 
-    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        if (e.target.checkValidity()) {
-            navigate("/dashboard");
-        }
+export default function AuthLayout() {
+  const [color, setColor] = useState();
+  const location = useLocation();
+  
+  useEffect(() => {
+    const url = location.pathname;
 
-        e.target.classList.add('was-validated');
-    };
+    if (url.includes("login")) {
+      setColor(bgColors.login);
+    }
 
-    return (
-        <div className="container">
-            <h1>Create An Account</h1>
-            <form onSubmit={handleSubmit} className="signUp needs-validation my-5" noValidate>
-                <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="name" placeholder="Please enter your name" required />
-                    <label for="name" className="form-label">Enter your name</label>
-                    <div className="invalid-feedback">Please enter your name!</div>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="email" placeholder="Please enter your email" required />
-                    <label for="email" className="form-label">Enter your email</label>
-                    <div className="invalid-feedback">Invalid email!</div>
-                </div>
-                <div className="input-group mb-5">
-                    <div className="form-floating">
-                        <input type={show ? "text" : "password"} className="form-control" id="password" placeholder="Create your password" required />
-                        <label for="password" className="form-label">Create your password</label>
-                        <div className="invalid-feedback invalidPass">Invalid password!</div>
-                    </div>
-                    <button type="button" onClick={togglePass} className="btn btn-secondary input-group-text">
-                        {show ?
-                            <i className="bi bi-eye-slash"></i> :
-                            <i className="bi bi-eye"></i>
-                        }
-                    </button>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+    if (url.includes("signup")) {
+      setColor(bgColors.signup);
+    }
+
+    if (url.includes("business")) {
+      setColor(bgColors.businessType);
+    }
+
+    if (url.includes("inventory")) {
+      setColor(bgColors.inventory);
+    }
+
+    if (url.includes("team")) {
+      setColor(bgColors.team);
+    }
+
+  }, [location])
+
+  return (
+    <div className="signUpForm">
+      <div className="formHalf container">
+        <Outlet />
+      </div>
+      <div className="logoHalf" style={{backgroundColor: `${color}`}}>
+        <div className="logoGraphic">
+          <img src="/images/mainLogo.png" />
         </div>
-    )
+      </div>
+    </div>
+  );
 }
