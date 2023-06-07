@@ -11,7 +11,6 @@ import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
-import AddNew from './pages/addnew';
 
 import AuthLayout from "./pages/signUp";
 import Teams from "./components/Teams";
