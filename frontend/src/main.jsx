@@ -14,6 +14,7 @@ import Products from './components/Products';
 import Teams from './components/Teams';
 import Sustainability from './pages/sustainability';
 import HelpCenter from './pages/HelpCenter';
+import Settings from './pages/Settings';
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <div>Settings</div>
+        element: <Settings />
       },
       {
         path: "/help",
