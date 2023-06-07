@@ -207,10 +207,7 @@ const HelpCenter = () => {
                       marginBottom: "-4px",
                     }}
                   >
-                    <FaLightbulb
-                      size={30}
-                      style={{ color: "yellow" }}
-                    />
+                    <FaLightbulb size={30} style={{ color: "yellow" }} />
                   </div>
                   <Card.Title style={{ fontWeight: "bold" }}>FAQ</Card.Title>
                 </div>
