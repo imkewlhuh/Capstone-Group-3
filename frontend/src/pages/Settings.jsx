@@ -69,8 +69,8 @@ const Settings = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div style={{ marginLeft: '20px' }}>
             <FaCog style={{ fontSize: '2rem' }} />
@@ -91,7 +91,7 @@ const Settings = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', width: '100%' }}>
         <button
           style={{
             fontSize: '1.2rem',
@@ -122,7 +122,7 @@ const Settings = () => {
           Permissions
         </button>
       </div>
-      <div style={{ marginTop: '10px', background: 'lightgray', padding: '10px', display: 'flex' }}>
+      <div style={{ marginTop: '10px', background: 'lightgray', padding: '10px', display: 'flex', alignItems: 'flex-start', flex: 1 }}>
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
           <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center' }}>
             <div style={{ flex: 1, fontWeight: 'bold' }}>Name</div>
@@ -204,5 +204,4 @@ const Settings = () => {
 };
 
 export default Settings;
-
 
