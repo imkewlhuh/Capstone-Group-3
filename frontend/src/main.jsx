@@ -5,7 +5,6 @@ import "../css/App.css";
 //Add your imports from "/pages" below this line
 import Layout from './pages/layout';
 import Home from './pages/home';
-import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
@@ -15,7 +14,6 @@ import Teams from './components/Teams';
 import Sustainability from './pages/sustainability';
 import HelpCenter from './pages/HelpCenter';
 import Settings from './pages/Settings';
-import AddNew from './pages/addnew';
 import AuthLayout from "./pages/signUp";
 import UserField from "./components/userField";
 import BusinessField from "./components/businessField";
