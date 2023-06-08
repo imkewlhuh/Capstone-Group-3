@@ -1,6 +1,6 @@
-import { signup, login } from "../actions/auth";
+import { signup, login } from "../../actions/auth";
 import { useNavigate } from "react-router-dom";
-import { useUserStore, useBusinessStore } from "../stores/signup-store";
+import { useUserStore, useBusinessStore } from "../../stores/signup-store";
 
 export default function TeamField(props) {
     const navigate = useNavigate();

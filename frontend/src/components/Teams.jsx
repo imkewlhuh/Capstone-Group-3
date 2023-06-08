@@ -11,6 +11,7 @@ import {
   FaRegBell,
 } from "react-icons/fa";
 import { BsPerson } from "react-icons/bs";
+import Header from "./header";
 
 function Teams() {
   const teams = [
@@ -101,10 +102,7 @@ function Teams() {
   return (
     <Container>
       <Row>
-        <Col className="d-flex align-items-center">
-          <h2 className="mr-2">Teams</h2>
-          <FaUsers size={24} />
-        </Col>
+        <Header title="Teams" />
         <Col className="d-flex justify-content-start align-items-center">
           <div className="d-flex align-items-center mr-3">
             <Form.Check type="checkbox" className="mr-2" />

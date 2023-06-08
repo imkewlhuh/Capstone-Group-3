@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaCog, FaBell, FaSearch, FaUser, FaCheckSquare, FaRegSquare, FaPlus, FaTrashAlt, FaPen } from 'react-icons/fa';
+import Header from '../components/header';
 
 const Settings = () => {
   const [checkboxes, setCheckboxes] = useState(Array(9).fill(false));
@@ -70,27 +71,7 @@ const Settings = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div style={{ marginLeft: '20px' }}>
-            <FaCog style={{ fontSize: '2rem' }} />
-          </div>
-          <div>
-            <h1 style={{ margin: '0', marginLeft: '10px' }}>Settings</h1>
-          </div>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
-          <div style={circleStyle}>
-            <FaBell style={{ fontSize: '1.5rem' }} />
-          </div>
-          <div style={circleStyle}>
-            <FaSearch style={{ fontSize: '1.5rem' }} />
-          </div>
-          <div style={circleStyle}>
-            <FaUser style={{ fontSize: '1.5rem' }} />
-          </div>
-        </div>
-      </div>
+      <Header title="Settings" />
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', width: '100%' }}>
         <button
           style={{

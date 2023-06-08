@@ -15,10 +15,10 @@ import Sustainability from './pages/sustainability';
 import HelpCenter from './pages/HelpCenter';
 import Settings from './pages/Settings';
 import AuthLayout from "./pages/signUp";
-import UserField from "./components/userField";
-import BusinessField from "./components/businessField";
-import TeamField from "./components/teamField";
-import InventoryField from "./components/inventoryField";
+import UserField from "./components/signup-fields/userField";
+import BusinessField from "./components/signup-fields/businessField";
+import InventoryField from "./components/signup-fields/inventoryField"
+import TeamField from "./components/signup-fields/teamField";
 import { fetchProductListTypes } from "./actions/products";
 
 //Creating Router instance
@@ -100,13 +100,17 @@ const router = createBrowserRouter([
             element: <BusinessField />,
           },
           {
+            path: "business/form",
+            element: <h1></h1>
+          },
+          {
             path: "inventory",
             element: <InventoryField />,
-            loader: async () => {
-              const productTypes = await fetchProductListTypes();
+            // loader: async () => {
+            //   const productTypes = await fetchProductListTypes();
 
-              return productTypes;
-            },
+            //   return productTypes;
+            // },
           },
           {
             path: "team",

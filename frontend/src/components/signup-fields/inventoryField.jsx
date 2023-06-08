@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Select from 'react-select';
 
 export default function InventoryField(props) {
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -9,7 +11,9 @@ export default function InventoryField(props) {
 
         if (e.target.checkValidity()) {
             navigate("/auth/signup/team");
-        };
+        } else {
+            setError(true);
+        }
 
         e.target.classList.add('was-validated');
     };
@@ -44,11 +48,12 @@ export default function InventoryField(props) {
                 <Select
                     options={options}
                     isMulti
-                    className="form-select-sm"
+                    className="form"
                     required
+                    onChange={() => setError(false)}
                 />
-
-                <div className="invalid-feedback invalidInventory">Please enter a field.</div>
+                
+                <div style={{display: error ? "block" : "none"}} className="invalid-feedback invalidInventory">Please enter a field.</div>
 
                 <button type="submit" className="btn btn-dark">Next</button>
             </form>

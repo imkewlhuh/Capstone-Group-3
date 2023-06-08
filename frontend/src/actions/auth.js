@@ -16,12 +16,12 @@ async function signup(signupBody) {
       console.log(signupResponse.data);
       return signupResponse.data;
     } else {
-      return {};
+      return false;
     }
   } catch (e) {
     console.log(e);
 
-    return {};
+    return false;
   }
 };
 

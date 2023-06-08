@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "../stores/signup-store";
+import { useUserStore } from "../../stores/signup-store";
 
 export default function UserField(props) {
     const [show, setShow] = useState(false);

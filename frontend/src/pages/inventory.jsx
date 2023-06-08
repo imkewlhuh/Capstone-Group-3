@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Header from "../components/header";
 
 
 function ConditionalComponent(props){
@@ -75,16 +76,7 @@ function InventoryCard(props) {
   export default function Inventory(){
     return (
     <div className="inventory-container">
-       <div className="inventoryHeader">
-            <div className="inventoryhello">
-                <h1 className="mb-0">Inventory - All Items</h1>
-            </div>
-            <div className="buttonicons">
-                <i className="bi bi-bell bell"></i>
-                <i className="bi bi-search magnify"></i>
-                <i className="bi bi-person-circle avatar"></i>
-            </div>
-      </div>
+       <Header title="Inventory - All Items" />
 
       <div className="subheader1">
         <div class="input-group">
