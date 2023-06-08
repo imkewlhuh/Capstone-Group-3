@@ -1,5 +1,5 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "../../css/inventory.css";
 import { FaBell, FaUser, FaSearch} from "react-icons/fa";
 import Card from "react-bootstrap/Card";
@@ -8,6 +8,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Header from "../components/header";
+import { createItemList, deleteItemList, getAllItemLists, getItemList, updateItemList } from "../api/itemList";
+import { fetchUser } from "../api/fetchUser";
 
 
 function ConditionalComponent(props){
@@ -74,6 +76,24 @@ function InventoryCard(props) {
 
 
   export default function Inventory(){
+    const [businessId, setBusinessId] = useState();
+    // const [itemLists, setItemLists] = useState();
+
+    useEffect(() => {
+        const token = sessionStorage.getItem("token");
+        const fetch = async () => {
+            const user = await fetchUser(token);
+            console.log(user.user);
+            setBusinessId(user.user.businessId);
+
+            // Can be moved to loader in main.jsx
+            // const itemLists = await getAllItemLists();
+            // console.log(itemLists);
+            // setItemLists(itemLists.data.itemLists);
+        }
+        fetch();
+    }, []);
+
     return (
     <div className="inventory-container">
        <Header title="Inventory - All Items" />

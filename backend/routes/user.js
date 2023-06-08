@@ -17,7 +17,8 @@ export default function authRouter(passport) {
           },
           select: {
             name: true,
-            email: true
+            email: true,
+            businessId: true,
           }
         });
 
