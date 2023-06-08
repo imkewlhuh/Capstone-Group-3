@@ -5,13 +5,44 @@ export default function itemListRouter(passport) {
     const router = express.Router();
 
 
+    //GET All itemLists
+    router.get("/", passport.authenticate("jwt", {session: false}), async (request, response) => {
+
+        try{ 
+            const itemLists = await prisma.itemList.findMany({
+                where: {
+                    businessId: request.user.businessId
+                }
+            });
+            if(itemLists){
+                response.status(200).json({
+                    success: true,
+                    message: "Item lists fetched!",
+                    itemLists
+                });
+            } else{
+                response.status(400).json({
+                    success: false, 
+                    message: "Could not get item lists!"
+                });
+            };
+        } catch (error){
+            console.log(error);
+            response.status(400).json({
+                success: false, 
+                message: "Oh no, something went wrong!"
+            });
+        };
+    });
+    
+
     // Create itemList 
   router.post("/new", passport.authenticate("jwt", { session: false}),
   async (request, response) => {
      try{
          const newItemList = await prisma.itemList.create({
              data: {
-                name: request.body.name,
+                name: request.body.name.toLowerCase(),
                 count: request.body.count,
                 businessId: request.body.businessId
              }
@@ -36,13 +67,13 @@ export default function itemListRouter(passport) {
   });
 
     //get itemList 
-    router.get("/:itemList", passport.authenticate("jwt", {session: false}), async (request, response) => {
-        const id = request.params.itemList;
+    router.get("/:listName", passport.authenticate("jwt", {session: false}), async (request, response) => {
+        const name = request.params.listName;
 
         try{ 
             const itemList = await prisma.itemList.findMany({
                 where: {
-                    id: parseInt(id),
+                    name: name.toLowerCase(),
                     businessId: request.user.businessId
                 }
             });
@@ -69,35 +100,34 @@ export default function itemListRouter(passport) {
     
     //Update itemList
     router.put(
-        "/:itemListId",
+        "/:listName",
         passport.authenticate("jwt", { session: false }),
         async (req, res) => {
-            const id = req.params.itemListId;
+            const name = req.params.listName.toLowerCase();
 
             try {
                 const itemList = await prisma.itemList.findFirstOrThrow({
                     where: {
-                        id: parseInt(id),
+                        name: name,
                         businessId: req.user.businessId
                     }
                 });
 
                 if (itemList) {
-                    const updatedList = await prisma.itemList.update({
+                    const updatedList = await prisma.itemList.updateMany({
                         where: {
-                            id: parseInt(id)
+                            name: name,
                         },
                         data: {
                             name: req.body.name,
-                            item: req.body.item,
                             count: req.body.count,
-                            businessId: req.body.businessId
                         }
                     });
 
                     if (updatedList) {
                         res.status(200).json({
-                            success: true
+                            success: true,
+                            message: "List updated"
                         });
                     } else {
                         res.status(500).json({
@@ -117,21 +147,22 @@ export default function itemListRouter(passport) {
 
 //DELETE itemList
 router.delete(
-    "/:itemListId",
+    "/:listName",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-        const id = req.params.itemListId;
+        const name = req.params.listName.toLowerCase();
 
         try {
-            const deleteList = await prisma.itemList.delete({
+            const deleteList = await prisma.itemList.deleteMany({
                 where: {
-                    id: parseInt(id)
+                    name: name
                 }
             });
 
             if (deleteList) {
                 res.status(200).json({
-                    success: true
+                    success: true,
+                    message: "Item List deleted"
                 });
             } else {
                 res.status(500).json({

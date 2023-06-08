@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../css/dashboard.css";
 import Calendar from 'moedim';
-import { fetchUser } from '../actions/fetchUser';
+import { fetchUser } from '../api/fetchUser';
 import { useEffect, useState } from 'react';
 
 export default function DashBoard() {
