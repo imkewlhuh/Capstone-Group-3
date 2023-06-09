@@ -3,10 +3,11 @@ import { useState, useEffect } from "react"
 import "../../css/inventory.css";
 import { FaBell, FaUser, FaSearch} from "react-icons/fa";
 import Card from "react-bootstrap/Card";
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Modal, Button } from "react-bootstrap";
+import IVModal from "../components/IVModal";
 import Header from "../components/header";
 import { createItemList, deleteItemList, getAllItemLists, getItemList, updateItemList } from "../api/itemList";
 import { fetchUser } from "../api/fetchUser";
@@ -49,8 +50,6 @@ function InventoryCard(props) {
       </Card>
     );
   }
-
-
 
 
   let sampleData = [
@@ -109,8 +108,9 @@ function InventoryCard(props) {
                 </button> */}
         </div>
         <div className="importadd">
+
         <Button variant="warning">IMPORT FILES</Button>{' '}
-        <Button variant="success">ADD NEW +</Button>{' '}
+        <IVModal/>
         </div>
      </div>
      <div className="moreinfo">
