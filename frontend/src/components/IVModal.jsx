@@ -18,7 +18,7 @@ export default function IVModal() {
         ADD NEW +
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal dialogClassName='mymodal' show={show} onHide={handleClose}>
         
         <Modal.Header className='mheader' closeButton>
           <Modal.Title >Add Item</Modal.Title>
@@ -55,6 +55,19 @@ export default function IVModal() {
       </Row>
       
         </div>
+
+        <div className='dragdrop'>
+        <div>
+          <p>Drag and drop your file here or Upload</p>
+        </div> 
+
+        <form id="form-file-upload">
+      <input type="file" id="input-file-upload" multiple={true} />
+      <label id="label-file-upload" htmlFor="input-file-upload">
+      </label>
+    </form>
+        </div>
+
 
         <div className='expdate'>
 
