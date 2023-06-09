@@ -5,22 +5,20 @@ import "../css/App.css";
 //Add your imports from "/pages" below this line
 import Layout from './pages/layout';
 import Home from './pages/home';
-import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
-
+import Teams from './components/Teams';
+import Sustainability from './pages/sustainability';
+import HelpCenter from './pages/HelpCenter';
+import Settings from './pages/Settings';
 import AuthLayout from "./pages/signUp";
-import Teams from "./components/Teams";
-import Sustainability from "./pages/sustainability";
-import HelpCenter from "./pages/HelpCenter";
-import UserField from "./components/signup-fields/user";
-import BusinessField from "./components/signup-fields/business";
-import TeamField from "./components/signup-fields/team";
-import InventoryField from "./components/signup-fields/inventory";
-
+import UserField from "./components/signup-fields/userField";
+import BusinessField from "./components/signup-fields/businessField";
+import InventoryField from "./components/signup-fields/inventoryField"
+import TeamField from "./components/signup-fields/teamField";
 import { fetchProductListTypes } from "./actions/products";
 
 //Creating Router instance
@@ -70,7 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <div>Settings</div>,
+        element: <Settings />,
       },
       {
         path: "/help",
@@ -102,13 +100,17 @@ const router = createBrowserRouter([
             element: <BusinessField />,
           },
           {
+            path: "business/form",
+            element: <h1></h1>
+          },
+          {
             path: "inventory",
             element: <InventoryField />,
-            loader: async () => {
-              const productTypes = await fetchProductListTypes();
+            // loader: async () => {
+            //   const productTypes = await fetchProductListTypes();
 
-              return productTypes;
-            },
+            //   return productTypes;
+            // },
           },
           {
             path: "team",

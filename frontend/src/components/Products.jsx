@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { FaBell, FaUser, FaTags } from "react-icons/fa";
+import Header from "./header";
 
 const Products = () => {
   const [customTexts, setCustomTexts] = useState({});
@@ -112,13 +113,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h1 className="mb-0">Inventory-Electronics</h1>
-        <div>
-          <FaBell size={20} className="me-3" />
-          <FaUser size={20} />
-        </div>
-      </div>
+      <Header title="Inventory - Electronics" />
       <Row className="mt-3 align-items-center">
         <Col>
           <Form className="float-start">

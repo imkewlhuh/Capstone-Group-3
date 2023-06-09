@@ -36,7 +36,7 @@ model User {
 model Item {
   id       Int      @unique @default(autoincrement())
   SKU      Int      @unique
-  expDate  String
+  expDate  String?
   listId   Int
   itemList ItemList @relation(fields: [listId], references: [id])
 
@@ -68,4 +68,6 @@ model ProductTypeToBusiness {
   productType   ProductType @relation(fields: [productTypeId], references: [id])
 
   @@id([businessId, productTypeId])
+  @@index([businessId])
+  @@index([productTypeId])
 }

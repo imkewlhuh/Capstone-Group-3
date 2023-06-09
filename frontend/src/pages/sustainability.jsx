@@ -1,3 +1,4 @@
+import Header from "../components/header";
 import "../../css/sustain.css";
 
 export default function Sustainability(props) {
@@ -7,14 +8,7 @@ export default function Sustainability(props) {
         <div className="sustain">
 
             {/*Header*/}
-            <header className="sustainHeader">
-                <h2>Sustainability</h2>
-                <div className="user">
-                    <i className="bi bi-bell bell"></i>
-                    <i className="bi bi-search magnify"></i>
-                    <i className="bi bi-person-circle avatar"></i>
-                </div>
-            </header>
+            <Header title="Sustainability" />
 
 
             {/*Banner*/}
