@@ -16,4 +16,19 @@ const fetchProductListTypes = async () => {
   }
 };
 
-export { fetchProductListTypes };
+const fetchProductList = async (id) => {
+  try {
+    const productList = await axios.get(
+      `http://localhost:8080/itemList/${id}`
+    );
+
+    if (productList.status === 200) {
+      return productList.data;
+    } else {
+      return null;
+    }
+  } catch (e) {
+    return null;
+  }
+};
+export { fetchProductListTypes,fetchProductList };

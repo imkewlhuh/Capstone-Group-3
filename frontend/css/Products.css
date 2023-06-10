@@ -20,7 +20,6 @@
 }
 
 .product-image {
-  width: 100%;
   width: 200px;
   height: 200px;
   display: block;
@@ -32,6 +31,7 @@
 .product-name {
   text-transform: uppercase;
   margin: 10px 0px;
+  text-align: center; /* Center align the product name */
 }
 
 .product-price {
@@ -39,12 +39,14 @@
   padding-bottom: 20px;
   font-size: 18px;
   line-height: 30px;
+  text-align: center; /* Center align the product price */
 }
 
 .product-units {
   margin: 10px 0px;
   padding-bottom: 10px;
   font-size: 18px;
+  text-align: center; /* Center align the product units */
 }
 
 .yellow-box {
@@ -57,12 +59,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: yellow;
+  background-color: orange;
   padding: 10px;
   margin: 5px;
 }
-
-/* Add this CSS for the text inside the price tag */
 .tag-content {
   display: flex;
   align-items: center;
@@ -70,4 +70,130 @@
 
 .tag-text {
   margin-left: 5px;
+}
+
+.top-right-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Right align the top-right icons */
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-left: 10px;
+}
+
+.icon {
+  color: #fff;
+}
+*/ .products {
+  margin: 20px auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: orange;
+  border-radius: 5px;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 10px;
+  margin: 40px 20px;
+  background-color: white;
+}
+
+.product-image {
+  width: 200px;
+  height: 200px;
+  display: block;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-name {
+  text-transform: uppercase;
+  margin: 10px 0px;
+  text-align: center; /* Center align the product name */
+}
+
+.product-price {
+  margin: 10px 0px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center; /* Center align the product price */
+}
+
+.product-units {
+  margin: 10px 0px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  text-align: center; /* Center align the product units */
+}
+
+.yellow-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.price-tag-button {
+  margin-right: 10px;
+}
+.price-tag-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: orange;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px; /* Add border-radius for button-like shape */
+  cursor: pointer; /* Add cursor pointer to indicate interactivity */
+  transition: background-color 0.3s ease; /* Add smooth transition for background color */
+}
+
+.price-tag-box:hover {
+  background-color: darkorange; /* Change background color on hover */
+}
+
+.tag-content {
+  display: flex;
+  align-items: center;
+}
+
+.tag-text {
+  margin-left: 5px;
+}
+
+.top-right-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Right align the top-right icons */
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-left: 10px;
+}
+
+.icon {
+  color: #fff;
 }
