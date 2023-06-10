@@ -110,7 +110,7 @@ function InventoryCard(props) {
         <div className="importadd">
 
         <Button variant="warning">IMPORT FILES</Button>{' '}
-        <IVModal/>
+        <IVModal businessId={businessId}/>
         </div>
      </div>
      <div className="moreinfo">

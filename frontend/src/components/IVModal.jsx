@@ -5,12 +5,21 @@ import "../../css/modal.css";
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import { createItemList } from '../api/itemList';
 
-export default function IVModal() {
+export default function IVModal(props) {
   const [show, setShow] = useState(false);
+  const [name, setName] = useState();
+  const [count, setCount] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleAdd = () => {
+    handleClose(); 
+    console.log(name, count, props.businessId);
+    createItemList({name: name,count: parseInt(count), businessId: props.businessId});
+  }
 
   return (
     <>
@@ -30,7 +39,7 @@ export default function IVModal() {
                 Product Name
             </Row>
             <Row>
-            <input type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket"/>
+            <input onChange={(e) => setName(e.target.value)} type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket"/>
             </Row>
         </div>
 
@@ -39,7 +48,7 @@ export default function IVModal() {
         <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridQuantity">
           <Form.Label>Quantity</Form.Label>
-          <Form.Control />
+          <Form.Control onChange={(e) => setCount(e.target.value)} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridMin">
@@ -93,7 +102,7 @@ export default function IVModal() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button className='invaddb' variant="primary" onClick={handleClose}>
+          <Button className='invaddb' variant="primary" onClick={handleAdd}>
             ADD
           </Button>
         </Modal.Footer>
