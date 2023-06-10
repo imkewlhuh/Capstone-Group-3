@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { FaBell, FaUser, FaTags } from "react-icons/fa";
 import Header from "./header";
+import SingleModal from '../components/singleModal.jsx';
 
 const Products = () => {
   const [customTexts, setCustomTexts] = useState({});
@@ -140,9 +141,7 @@ const Products = () => {
         <Col className="d-flex justify-content-end">
           <ButtonToolbar>
             <Button variant="warning">Import Files</Button>
-            <Button variant="success" className="ms-2">
-              Add New
-            </Button>
+            <SingleModal />
           </ButtonToolbar>
         </Col>
       </Row>
