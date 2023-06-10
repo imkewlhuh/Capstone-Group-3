@@ -1,39 +1,39 @@
 import axios from "axios";
 import { baseURL } from "./constants";
 
-//GET All item lists for logged in user
-export async function getAllItemLists() {
+//GET All items for list ID
+export async function getAllItems(listId) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.get(
-        `${baseURL}/itemList/`,
+        `${baseURL}/item/list/${listId}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 
     console.log(response);
     return response;
-};
+}
 
-//CREATE an item list. Pass in an object with name, count, and businessId
-export async function createItemList(itemList) {
+//Create an item. Pass in object with SKU, exp date, and listId
+export async function addItem(item) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.post(
-        `${baseURL}/itemList/new`,
-        itemList,
+        `${baseURL}/item/new`,
+        item,
         { headers: { Authorization: `Bearer ${token}` } }
     );
-    
+
     console.log(response);
     return response;
 };
 
-//GET item list. Pass in name of item list
-export async function getItemList(name) {
+//Get item by SKU.
+export async function getItemBySKU(SKU) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.get(
-        `${baseURL}/itemList/${name}`,
+        `${baseURL}/item/${SKU}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -41,13 +41,13 @@ export async function getItemList(name) {
     return response;
 };
 
-//UPDATE item list. Pass in name and new object with name, count
-export async function updateItemList(name, updatedList) {
+//UPDATE item. Pass in SKU and new object with SKU, expDate, and listId
+export async function updateItemBySKU(SKU, updatedItem) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.put(
-        `${baseURL}/itemList/${name}`,
-        updatedList,
+        `${baseURL}/item/${SKU}`,
+        updatedItem,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -55,12 +55,12 @@ export async function updateItemList(name, updatedList) {
     return response;
 };
 
-//DELETE item list.
-export async function deleteItemList(name) {
+//DELETE item by SKU
+export async function deleteItemBySKU(SKU) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.delete(
-        `${baseURL}/itemList/${name}`,
+        `${baseURL}/item/${SKU}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 
