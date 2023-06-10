@@ -1,37 +1,220 @@
+.home-greeting{
+    width: 100vw;
+    overflow-x: hidden;
+    
+}
+
 .topnav{
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 1em 7em 1em 3em;
     /* margin: 15px; */
     background-color: #151B4C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.topbuttons{
+        width: 19.5em;
+        display: flex;
+        justify-content: space-between;
+}
+
+.topbutton{
+    background-color: #7984FF;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.3em 3em;
+    transition: 0.2s;
+}
+
+.topbutton:hover{
+    background-color: #7984ff89;
 }
 
 .hipanel{
     text-align: center;
     align-items: center;
-    border: 2px solid green;
-    padding: 50px;
+    width: 100%;
+    padding: 5em 3em;
     background-color: #7984FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    position: relative;
+}
+
+.hipanel::before{
+    content: '';
+    width: 30%;
+    height: 10%;
+    background-color: inherit;
+    position: absolute;
+    bottom: -1em;
+    left: -8em;
+    border-radius: 50%;
+}
+
+.hiside{
+    height: 15em;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hipanel h1{
+    font-weight: 800;
+    display: flex;
+}
+
+.hibuttons{
+    width: 17em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hibutton{
+    background-color: var(--blue-dash);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.4em 2.2em;
+    transition: 0.2s;
+}
+
+.hibutton:hover{
+    background-color: #151b4cd0;
 }
 
 .secondpanel{
     text-align: center;
-    padding: 50px;
+    padding: 2em 3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.secondpanel::before{
+    content: '';
+    position: absolute;
+    left: 4em;
+    top: -4em;
+    background-color: var(--light-bg);
+    height: 110%;
+    width: 110%;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.secondpanel img{
+    z-index: 5;
+}
+
+.secondside{
+    width: 70%;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+.secondside p{
+    padding: 0.5em;
+    width: 70%;
+    height: 50%;
+}
+
+.secondside p span {
+    font-weight: 600;
 }
 
 .thirdpanel{
     text-align: center;
-    padding: 50px;
+    padding: 3em;
     background-color: #FFC107;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.thirdside{
+    width: 50%;
+    height: 17em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thirdside h1{
+    font-weight: 700;
+}
+
+.thirdside p{
+    width: 77%;
+}
+
+.thirdside p span {
+    font-weight: 500;
 }
 
 .fourthpanel{
     text-align: center;
-    padding: 50px
+    padding: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.fourthside{
+    width: 60%;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fourthside h1{
+    font-weight: 700;
+}
+
+.fourthside p{
+    width: 70%;
+}
+
+.fourthside p span{
+    font-weight: 500;
 }
 
 .finalpanel{
     text-align: center;
-    padding: 50px;
+    padding: 3em;
     background-color: #67E07F;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.finalside{
+    width: 60%;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.finalside p{
+    width: 70%;
+}
+
+.finalside p span{
+    font-weight: 500;
 }
