@@ -102,10 +102,10 @@
     content: '';
     position: absolute;
     left: 4em;
-    top: -4em;
+    top: -4.1em;
     background-color: var(--light-bg);
     height: 110%;
-    width: 110%;
+    width: 115%;
     border-radius: 50%;
     z-index: 5;
 }
