@@ -1,15 +1,20 @@
 import React from "react";
 import "../../css/home.css";
-import { Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+    const navigate = useNavigate();
+
+    const login = () => navigate("../auth/login");
+    const signup = () => navigate("../auth/signup");
+
     return (
         <div div className='home-greeting'>
             <div className="topnav">
                 <img style={{ height: "3.5em" }} src="/images/mainLogo.png" />
                 <div className="topbuttons">
-                    <button className="topbutton">Log In</button>{' '}
-                    <button className="topbutton">Sign Up</button>{' '}
+                    <button onClick={login} className="topbutton">Log In</button>{' '}
+                    <button onClick={signup} className="topbutton">Sign Up</button>{' '}
                 </div>
             </div>
             <div className="hipanel">
@@ -21,8 +26,8 @@ const Home = () => {
                     </div>
                     <br />
                     <div className="hibuttons">
-                        <button className="hibutton">Log In</button>{' '}
-                        <button className="hibutton">Sign Up</button>{' '}
+                        <button onClick={login} className="hibutton">Log In</button>{' '}
+                        <button onClick={signup} className="hibutton">Sign Up</button>{' '}
                     </div>
                 </div>
             </div>
