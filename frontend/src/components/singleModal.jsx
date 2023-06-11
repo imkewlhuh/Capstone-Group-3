@@ -14,7 +14,7 @@ export default function SingleModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="success" onClick={handleShow}>
         ADD NEW +
       </Button>
 
@@ -101,3 +101,4 @@ export default function SingleModal() {
     </>
   );
 }
+
