@@ -23,7 +23,7 @@ export default function IVModal(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className='modalbutton' onClick={handleShow}>
         ADD NEW +
       </Button>
 
