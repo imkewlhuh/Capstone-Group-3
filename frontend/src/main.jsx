@@ -20,6 +20,7 @@ import BusinessField from "./components/signup-fields/businessField";
 import InventoryField from "./components/signup-fields/inventoryField"
 import TeamField from "./components/signup-fields/teamField";
 import { fetchProductListTypes } from "./actions/products";
+import { getAllItemLists } from "./api/itemList";
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -106,11 +107,10 @@ const router = createBrowserRouter([
           {
             path: "inventory",
             element: <InventoryField />,
-            // loader: async () => {
-            //   const productTypes = await fetchProductListTypes();
+            loader: async () => {
 
-            //   return productTypes;
-            // },
+              return getAllItemLists;
+            },
           },
           {
             path: "team",

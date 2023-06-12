@@ -11,6 +11,7 @@ import IVModal from "../components/IVModal";
 import Header from "../components/header";
 import { createItemList, deleteItemList, getAllItemLists, getItemList, updateItemList } from "../api/itemList";
 import { fetchUser } from "../api/fetchUser";
+import { useLoaderData } from "react-router-dom"
 
 
 function ConditionalComponent(props){
@@ -46,6 +47,10 @@ function InventoryCard(props) {
           <Card.Title>{props.item}</Card.Title>
           <Card.Text>{props.itemUnits}</Card.Text>
           <Card.Text>{props.itemTotal}</Card.Text>
+          <row>
+          <button type="button" class="btn btn-primary">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+          </row>
         </Card.Body>
       </Card>
     );
@@ -58,23 +63,29 @@ function InventoryCard(props) {
       item: "Jackets",
       itemUnits: "90 Units",
       itemTotal: "$9840",
+      SKU:"12345"
     },
     {
         thumbnailImg: "https://via.placeholder.com/600x400",
         item: "Jackets",
         itemUnits: "90 Units",
         itemTotal: "$9840",
+        SKU: "12355"
     },
     {
         thumbnailImg: "https://via.placeholder.com/600x400",
         item: "Jackets",
         itemUnits: "90 Units",
         itemTotal: "$9840",
+        SKU: "12234"
     }
   ];
 
 
   export default function Inventory(){
+
+    const invitems = useLoaderData()
+
     const [businessId, setBusinessId] = useState();
     // const [itemLists, setItemLists] = useState();
 
@@ -126,9 +137,10 @@ function InventoryCard(props) {
                 sampleData.map(element=>{
                     return  <InventoryCard
                     thumbnailImg={element.thumbnailImg} 
-                    item={element.item}
-                    itemUnits={element.itemUnits}
+                    // item={invitems.name}
+                    // itemUnits={invitems.count}
                     itemTotal={element.itemTotal}
+                    SKU={element.SKU}
                     />
                 })
                 }
