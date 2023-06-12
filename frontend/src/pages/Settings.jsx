@@ -137,81 +137,39 @@ const Settings = () => {
   return (
     <div style={{ display: "flex", minHeight: "100vh" }}>
       {/* Left Side Content */}
-      <div
-        style={{ background: "#f3f3f3", padding: "20px", minWidth: "200px" }}
-      >
+      <div style={{ background: "#f3f3f3", padding: "20px", minWidth: "200px" }}>
         {/* Add your left side content here */}
         <h2>Manage your users and their account permissions here.</h2>
-        <p style={{ textDecoration: "underline", color: "blue" }}>
-          View all users.
-        </p>
+        <p style={{ textDecoration: "underline", color: "blue" }}>View all users.</p>
 
         {/* Added rectangles */}
-        <div
-          style={{ ...rectangleStyle, background: "green", marginTop: "20px" }}
-        >
-          <h3 style={{ color: "white", textAlign: "center" }}>Admin Users</h3>
-          <p style={{ color: "white", textAlign: "center" }}>
-            Admins can add and remove users and manage organization-level
-            settings.
+        <div style={{ ...rectangleStyle, background: "blue", marginTop: "20px" }}>
+          <h3 style={{ color: "black", textAlign: "center" }}>Admin Users</h3>
+          <p style={{ color: "black", textAlign: "center" }}>
+            Admins can add and remove users and manage organization-level settings.
           </p>
         </div>
-        <div
-          style={{ ...rectangleStyle, background: "blue", marginTop: "20px" }}
-        >
-          <h3 style={{ color: "white", textAlign: "center" }}>Account Users</h3>
-          <p style={{ color: "white", textAlign: "center" }}>
-            Account users can access the inventory, check analytics, growth, as
-            well as sustainability.
+        <div style={{ ...rectangleStyle, background: "gray", marginTop: "20px" }}>
+          <h3 style={{ color: "black", textAlign: "center" }}>Account Users</h3>
+          <p style={{ color: "black", textAlign: "center" }}>
+            Account users can access the inventory, check analytics, growth, as well as sustainability.
           </p>
         </div>
       </div>
 
       {/* Right Side Content */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          flex: 1,
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
         <Header title="Settings" />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "20px",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: "100%",
-              borderBottom: "1px solid black",
-              paddingBottom: "5px",
-              marginBottom: "10px",
-            }}
-          >
-            <button
-              style={{
-                ...buttonStyle,
-                background: "#ccc",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-                width: "160px", // Adjust the width to match the rectangle style
-              }}
-            >
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px", width: "100%" }}>
+          <div style={{ display: "flex", alignItems: "center", width: "100%", borderBottom: "1px solid black", paddingBottom: "5px", marginBottom: "10px" }}>
+            <button style={{ ...buttonStyle, background: "blue", justifyContent: "center", alignItems: "center", textAlign: "center", width: "160px" }}>
               User Management
             </button>
 
             <button style={{ ...buttonStyle, background: "lightblue" }}>
               Teams
             </button>
-            <button style={{ ...buttonStyle, background: "lightgreen" }}>
+            <button style={{ ...buttonStyle, background: "lightgray", color: "black" }}>
               Permissions
             </button>
             <div style={{ flex: 1 }}></div>
@@ -222,30 +180,9 @@ const Settings = () => {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            marginTop: "10px",
-            background: "lightgray",
-            padding: "10px",
-            display: "flex",
-            alignItems: "flex-start",
-            flex: 1,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginTop: "10px",
-            }}
-          >
-            <div
-              style={{
-                marginTop: "10px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
+        <div style={{ marginTop: "10px", background: "lightgray", padding: "10px", display: "flex", alignItems: "flex-start", flex: 1 }}>
+          <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
+            <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
               <div style={{ flex: 1, fontWeight: "bold", textAlign: "center" }}>
                 Name
               </div>
@@ -268,83 +205,35 @@ const Settings = () => {
             </div>
             <hr style={{ borderTop: "1px solid black", margin: "10px 0" }} />
             {userData.map((user, index) => (
-              <div
-                key={index}
-                style={{
-                  marginTop: "10px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
+              <div key={index} style={{ marginTop: "10px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
                   <div style={squareStyle}>
                     {checkboxes[index] ? (
-                      <FaCheckSquare
-                        style={{ fontSize: "1.5rem" }}
-                        onClick={() => handleCheckboxChange(index)}
-                      />
+                      <FaCheckSquare style={{ fontSize: "1.5rem" }} onClick={() => handleCheckboxChange(index)} />
                     ) : (
-                      <FaRegSquare
-                        style={{ fontSize: "1.5rem" }}
-                        onClick={() => handleCheckboxChange(index)}
-                      />
+                      <FaRegSquare style={{ fontSize: "1.5rem" }} onClick={() => handleCheckboxChange(index)} />
                     )}
                   </div>
-                  <div
-                    style={{
-                      ...circleStyle,
-                      backgroundImage: `url(${user.imageUrl})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                  <div
-                    style={{
-                      marginLeft: "10px",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
+                  <div style={{ ...circleStyle, backgroundImage: `url(${user.imageUrl})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                  <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column" }}>
                     <h4 style={{ margin: "0", color: "black" }}>{user.name}</h4>
-                    <p
-                      style={{ margin: "0", color: "gray", fontSize: "0.8rem" }}
-                    >
-                      {user.email}
-                    </p>
+                    <p style={{ margin: "0", color: "gray", fontSize: "0.8rem" }}>{user.email}</p>
                   </div>
                 </div>
                 <div style={{ flex: 1 }}>
                   <p style={{ margin: "0", color: "gray" }}>{user.dateAdded}</p>
                 </div>
                 <div style={{ flex: 1 }}>
-                  <p style={{ margin: "0", color: "gray" }}>
-                    {user.lastActive}
-                  </p>
+                  <p style={{ margin: "0", color: "gray" }}>{user.lastActive}</p>
                 </div>
-                <div
-                  style={{
-                    flex: 1,
-                    display: "flex",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  <FaTrashAlt
-                    style={{ marginRight: "10px", cursor: "pointer" }}
-                  />
+                <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+                  <FaTrashAlt style={{ marginRight: "10px", cursor: "pointer" }} />
                   <FaPen style={{ cursor: "pointer" }} />
                 </div>
               </div>
             ))}
           </div>
-          <div
-            style={{
-              marginLeft: "20px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+          <div style={{ marginLeft: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={rectangleStyle}>
               <FaPlus style={{ ...plusIconStyle, color: "blue" }} />
               <p style={{ margin: "0", color: "black" }}>Add User</p>
@@ -357,3 +246,4 @@ const Settings = () => {
 };
 
 export default Settings;
+
