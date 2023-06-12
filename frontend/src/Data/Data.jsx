@@ -49,13 +49,6 @@ const data = {
       units: "40",
       image: "/images/pics/macbookpro.jpg",
     },
-    {
-      id: "8",
-      name: "Acer Laptop",
-      price: 1099,
-      units: "50",
-      image: "/images/pics/acer.jpg",
-    },
   ],
 };
 

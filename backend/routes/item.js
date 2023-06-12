@@ -33,16 +33,16 @@ export default function itemRouter(passport) {
     }
   );
 
-  //Update Item
+  //Update Item by SKU
   router.put(
-    "/:itemId",
+    "/:SKU",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-      const id = req.params.itemId;
+      const SKU = req.params.SKU;
 
       const editItem = await prisma.item.update({
         where: {
-          id: Number(id),
+          SKU: Number(SKU),
         },
         data: {
           SKU: req.body.SKU,
@@ -58,17 +58,17 @@ export default function itemRouter(passport) {
     }
   );
 
-  //Delete item
+  //Delete item by SKU
   router.delete(
-    "/:itemsId",
+    "/:SKU",
     passport.authenticate("jwt", { session: false }),
 
     async function (request, response) {
-      const itemsId = parseInt(request.params.itemsId);
+      const SKU = parseInt(request.params.SKU);
       try {
         await prisma.item.delete({
           where: {
-            id: itemsId,
+            SKU: SKU,
           },
         });
 
@@ -112,6 +112,34 @@ export default function itemRouter(passport) {
       });
     }
   });
+
+  //GET All Items from List ID
+  router.get("/list/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    try {
+      const items = await prisma.item.findMany({
+        where: {
+          listId: id
+        }
+      });
+
+      if (items) {
+        res.status(200).json({
+          success: true,
+          items
+        });
+      };
+    } catch (e) {
+      res.status(400).json({
+        success: false,
+        message: "Could not find items"
+      });
+    };
+  });
+  
 
   //Get Item by SKU
   router.get("/:SKU", async (req, res) => {
