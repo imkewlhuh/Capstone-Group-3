@@ -10,10 +10,17 @@ import { FaBell, FaUser, FaTags } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import Header from "./header";
 import SingleModal from "../components/singleModal.jsx";
+import SingleItem from './singleItem';
+import { useLoaderData,useMatches } from "react-router-dom";
 
 const Products = () => {
   const [customTexts, setCustomTexts] = useState({});
-
+  const productdata=useLoaderData();
+  const matches=useMatches()
+  console.log(matches)
+//   console.log(productdata.data)
+  const productslist=productdata.data.items
+  console.log(productslist)
   const handleCustomTextChange = (itemId, value) => {
     setCustomTexts((prevCustomTexts) => ({
       ...prevCustomTexts,
@@ -128,7 +135,7 @@ const Products = () => {
         <Col>
           <ButtonToolbar className="float-end mt-3">
             <Button variant="warning">Import Files</Button>
-            <SingleModal />
+            <SingleModal list={matches[1].params.listId}/>
           </ButtonToolbar >
         </Col>
       </Row>
@@ -147,9 +154,16 @@ const Products = () => {
         </Col>
       </Row>
       <Row xs={4} md={4} className="g-4 mt-3">
-        {productItems.map((productItem) => (
+        {productslist.map((productItem) => (
           <Col key={productItem.id}>
-            <Card border="Light" key={productItem.id}>
+            <SingleItem  
+            id={productItem.id}
+            name={productItem.name}
+            units={productItem.units}
+            image={productItem.image}
+            price={productItem.price}
+            />
+            {/* <Card border="Light" key={productItem.id}>
               <Card.Img
                 className="product-image"
                 variant="top"
@@ -181,7 +195,7 @@ const Products = () => {
                   </div>
                 </div>
               </Card.Body>
-            </Card>
+            </Card> */}
           </Col>
         ))}
       </Row>

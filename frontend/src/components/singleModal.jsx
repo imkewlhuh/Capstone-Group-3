@@ -5,12 +5,25 @@ import "../../css/modal.css";
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import { addItem } from '../api/item';
 
-export default function SingleModal() {
+export default function SingleModal(props) {
   const [show, setShow] = useState(false);
+  const [count,setCount] = useState(0)
+  const [quantity,setQuantity] = useState(0)
+  const [minimumQuantity,setMinimumQuantity] = useState(0)
+  const [price,setPrice]= useState(0)
+  const [name,setName]= useState("")
+  const [sku,setSKU]= useState("")
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+    
+    const handleAdd = () => {
+      handleClose(); 
+      addItem({name: name,count: parseInt(count), quantity,price,sku,listId:props.list});
+    }
 
   return (
     <>
@@ -30,7 +43,7 @@ export default function SingleModal() {
                 Product Name
             </Row>
             <Row>
-            <input type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket"/>
+            <input type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket" onChange={(e)=>setName(e.target.value)}/>
             </Row>
         </div>
 
@@ -39,18 +52,23 @@ export default function SingleModal() {
         <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridQuantity">
           <Form.Label>Quantity</Form.Label>
-          <Form.Control />
+          <Form.Control onChange={(e)=>setQuantity(e.target.value)}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridMin">
           <Form.Label>Minimum Quantity</Form.Label>
-          <Form.Control placeholder="EX:19293">
-          </Form.Control>
+          <Form.Control placeholder="EX:19293"/>
+          <Form.Control onChange={(e)=>setMinimumQuantity(e.target.value)}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPrice">
           <Form.Label>Price</Form.Label>
-          <Form.Control />
+          <Form.Control onChange={(e)=>setPrice(e.target.value)}/>
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridSKU">
+          <Form.Label>SKU</Form.Label>
+          <Form.Control onChange={(e)=>setSKU(e.target.value)}/>
         </Form.Group>
       </Row>
       
@@ -86,6 +104,7 @@ export default function SingleModal() {
         <Form.Group as={Col} controlId="formGridYear">
           <Form.Label>Date</Form.Label>
           <Form.Control placeholder='EX:2022' />
+          {/* </Form.Control> */}
         </Form.Group>
       </Row>
             
@@ -93,7 +112,7 @@ export default function SingleModal() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button className='invaddb' variant="primary" onClick={handleClose}>
+          <Button className='invaddb' variant="primary" onClick={handleAdd}>
             ADD
           </Button>
         </Modal.Footer>

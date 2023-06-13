@@ -13,7 +13,7 @@ datasource db {
 
 model ItemList {
   id         Int      @unique @default(autoincrement())
-  name       String   @unique
+  name       String  
   item       Item[]
   count      Int
   businessId Int
@@ -35,11 +35,14 @@ model User {
 
 model Item {
   id       Int      @unique @default(autoincrement())
-  SKU      Int      @unique
+  SKU      String     @unique
   expDate  String?
   listId   Int
   itemList ItemList @relation(fields: [listId], references: [id])
-
+  name     String
+  price    Float
+  images   String?
+  quantity Int
   @@index([listId])
 }
 

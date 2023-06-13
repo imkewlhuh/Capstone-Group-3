@@ -9,12 +9,20 @@ export default function itemRouter(passport) {
     "/new",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
+      console.log(req.body)
       try {
         const newItem = await prisma.item.create({
           data: {
-            SKU: req.body.SKU,
+            SKU: req.body.sku,
             expDate: req.body.expDate,
-            listId: req.body.listId,
+            itemList:{
+              connect:{
+                id: parseInt(req.body.listId)
+              }
+            },
+          name: req.body.name,
+            price:parseFloat(req.body.price),
+            quantity:parseInt(req.body.quantity)
           },
         });
 
@@ -25,6 +33,7 @@ export default function itemRouter(passport) {
           });
         };
       } catch (e) {
+       console.log(e)
         res.status(500).json({
           success: false,
           message: "Failed to add item",
