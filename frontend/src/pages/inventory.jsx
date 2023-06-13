@@ -84,7 +84,12 @@ function InventoryCard(props) {
 
   export default function Inventory(){
 
-    const invitems = useLoaderData()
+    const invitems = useLoaderData();
+    console.log(invitems.data.itemLists);
+
+    const itemList = invitems.data.itemLists;
+
+    
 
     const [businessId, setBusinessId] = useState();
     // const [itemLists, setItemLists] = useState();
@@ -134,13 +139,13 @@ function InventoryCard(props) {
     </div>
             <div className='app-container'>
                 {
-                sampleData.map(element=>{
+                itemList.map(element=>{
                     return  <InventoryCard
                     thumbnailImg={element.thumbnailImg} 
-                    // item={invitems.name}
-                    // itemUnits={invitems.count}
-                    itemTotal={element.itemTotal}
-                    SKU={element.SKU}
+                    item={element.name}
+                    itemUnits={element.count}
+                    // itemTotal={element.itemTotal}
+                    
                     />
                 })
                 }

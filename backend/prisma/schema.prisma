@@ -39,7 +39,9 @@ model Item {
   expDate  String?
   listId   Int
   itemList ItemList @relation(fields: [listId], references: [id])
-
+  name     String
+  price    Float
+  images   String
   @@index([listId])
 }
 
