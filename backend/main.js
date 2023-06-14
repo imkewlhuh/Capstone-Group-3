@@ -1,7 +1,10 @@
 import createServer from "./server.js";
+import { baseURL } from "../frontend/src/api/constants.js"
 
 const server = createServer();
 
-server.listen(8080, () => {
-    console.log("App is listening at http://localhost:8080");
+const port = process.env.PORT || 8080;
+
+server.listen(port, () => {
+    console.log(`App is listening at ${baseURL}`);
 });
