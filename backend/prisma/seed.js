@@ -1,16 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client"
+
 
 const prisma = new PrismaClient();
-
 async function main() {
-
   const newBusiness = await prisma.business.create({
     data: {
       name: "Some Business",
       type: "business",
     }
   });
-
  await prisma.itemList.create({
     data: {
       name: "Electronics",
@@ -23,22 +21,19 @@ async function main() {
               name: "Beats Headphones",
               images: "https://placehold.co/100",
               price: 250.00,
-              SKU: "123",
-              quantity: 55
+              SKU: 123
             },
             {
               name: "iPhone 11",
               images: "https://placehold.co/100",
               price: 1200.00,
-              SKU: "1080",
-              quantity: 60
+              SKU: 1080
             },
           ]
         }
       }
     }
   })
-
   await prisma.productType.createMany({
     data: [
       {
@@ -75,3 +70,4 @@ main()
     await prisma.$disconnect();
     process.exit(1);
   });
+

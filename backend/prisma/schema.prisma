@@ -41,7 +41,7 @@ model Item {
   itemList ItemList @relation(fields: [listId], references: [id])
   name     String
   price    Float
-  images   String?
+  images   String
   quantity Int
   @@index([listId])
 }
