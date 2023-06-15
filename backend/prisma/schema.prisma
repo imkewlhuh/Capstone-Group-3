@@ -21,7 +21,13 @@ model ItemList {
 
   @@index([businessId])
 }
-
+model Tags{
+  id      Int    @unique @default(autoincrement())
+  tag     String
+  itemId  Int
+  item    Item  @relation(fields: [itemId], references: [id])
+  @@index([itemId])
+}
 model User {
   id         Int      @unique @default(autoincrement())
   name       String
@@ -43,6 +49,7 @@ model Item {
   price    Float
   images   String
   quantity Int
+  tags     Tags[]
   @@index([listId])
 }
 

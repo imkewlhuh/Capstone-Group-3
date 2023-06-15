@@ -32,82 +32,13 @@ const Products = () => {
     return customTexts[itemId] || "";
   };
 
-  const productItems = [
-    {
-      id: 1,
-      name: "Item 1",
-      units: 40,
-      price: 249,
-      image: "/images/pics/beatsheadphone.png",
-      customText1: "Beats",
-      customText2: "Headphones",
-    },
-    {
-        id: 2,
-        name: "Item 2",
-        units: 55,
-        price: 80,
-        image: "/images/pics/solheadphone.png",
-        customText1: "Sol",
-        customText2: "Headphones",
-      },
-      {
-          id: 3,
-          name: "Item 3",
-          units: 50,
-          price: 99,
-          image: "/images/pics/sennheiser.jpg",
-          customText1: "Sennheiser",
-          customText2: "Headphones",
-        },
-        {
-          id: 4,
-          name: "Item 4",
-          units: 55,
-          price: 1199,
-          image: "/images/pics/iphonex.jpg",
-          customText1: "Iphone",
-          customText2: "Smartphone",
-        },
-        {
-          id: 5,
-          name: "Item 5",
-          units: 50,
-          price: 110,
-          image: "/images/pics/samsung.jpg",
-          customText1: "Samsung",
-          customText2: "Headphones",
-        },
-        {
-          id: 6,
-          name: "Item 6",
-          units: 55,
-          price: 180,
-          image: "/images/pics/oneplus.jpg",
-          customText1: "OnePlus",
-          customText2: "Earbuds",
-        },
-        {
-          id: 7,
-          name: "Item 7",
-          units: 40,
-          price: 2999,
-          image: "/images/pics/macbookpro.jpg",
-          customText1: "MacBook",
-          customText2: "Laptop",
-        },
-  ];
-
-  const totalQuantity = productItems.reduce(
-    (total, productItem) => total + productItem.units,
+  
+  const totalValue = productslist.reduce(
+    (total, productItem) => total + (productItem.quantity * productItem.price),
     0
   );
-  const totalValue = productItems.reduce(
-    (total, productItem) => total + productItem.units * productItem.price,
-    0
-  );
-  const totalUnits = productItems.reduce(
-    (total, productItem) => total + productItem.units,
+  const totalUnits = productslist.reduce(
+    (total, productItem) => total + productItem.quantity,
     0
   );
 
@@ -144,24 +75,26 @@ const Products = () => {
           <h3>Folders: 6</h3>
         </Col>
         <Col className="text-center" xs={3} md={3}>
-          <h3>Items: 7</h3>
+          <h3>Items:{productslist.length}</h3>
         </Col>
         <Col className="text-center" xs={3} md={3}>
           <h3>Quantity: {totalUnits} units</h3>
         </Col>
         <Col className="text-center" xs={3} md={3}>
-          <h3>Total Value: $10,930.02</h3>
+          <h3>Total Value: {totalValue}</h3>
         </Col>
       </Row>
       <Row xs={4} md={4} className="g-4 mt-3">
         {productslist.map((productItem) => (
           <Col key={productItem.id}>
+            {/*Add tags from productItem as a prop*/}
             <SingleItem  
             id={productItem.id}
             name={productItem.name}
-            units={productItem.units}
-            image={productItem.image}
+            units={productItem.quantity}
+            image={productItem.images}
             price={productItem.price}
+            tags={productItem.tags}
             />
             {/* <Card border="Light" key={productItem.id}>
               <Card.Img

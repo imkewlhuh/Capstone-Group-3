@@ -22,7 +22,16 @@ export default function itemRouter(passport) {
             },
           name: req.body.name,
             price:parseFloat(req.body.price),
-            quantity:parseInt(req.body.quantity)
+            quantity:parseInt(req.body.quantity),
+            tags:{
+              createMany:{
+                data:req.body.tags.map((tag) =>{
+                  return {
+                    tag
+                  }
+                })
+              }
+            }
           },
         });
 
@@ -132,6 +141,13 @@ export default function itemRouter(passport) {
       const items = await prisma.item.findMany({
         where: {
           listId: id
+        },
+        include: {
+          tags: {
+            select: {
+              tag: true
+            }
+          }
         }
       });
 
