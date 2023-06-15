@@ -109,10 +109,6 @@ const router = createBrowserRouter([
             element: <BusinessField />,
           },
           {
-            path: "business/form",
-            element: <h1></h1>
-          },
-          {
             path: "inventory",
             element: <InventoryField />,
           },

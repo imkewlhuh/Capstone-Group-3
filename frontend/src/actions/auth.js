@@ -1,9 +1,10 @@
 import axios from "axios";
+import { baseURL } from "../api/constants";
 
 async function signup(signupBody) {
   try {
     const signupResponse = await axios.post(
-      "http://localhost:8080/user/signup",
+      `${baseURL}/user/signup`,
       signupBody,
       {
         headers: {
@@ -28,7 +29,7 @@ async function signup(signupBody) {
 async function login(loginBody) {
   try {
     const loginResponse = await axios.post(
-      "http://localhost:8080/user/login",
+      `${baseURL}/user/login`,
       loginBody,
       {
         headers: {

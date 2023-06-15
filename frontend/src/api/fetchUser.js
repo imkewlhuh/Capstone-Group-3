@@ -1,9 +1,10 @@
 import axios from "axios";
+import { baseURL } from "./constants";
 
 const fetchUser = async (token) => {
   try {
     const user = await axios.get(
-      "http://localhost:8080/user/current",
+      `${baseURL}/user/current`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 

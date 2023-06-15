@@ -1,9 +1,10 @@
 import axios from "axios";
+import { baseURL } from "../api/constants";
 
 const fetchProductListTypes = async () => {
   try {
     const productListTypes = await axios.get(
-      "http://localhost:8080/product-type"
+      `${baseURL}/product-type`
     );
 
     if (productListTypes.status === 200) {
