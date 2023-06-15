@@ -13,24 +13,46 @@ async function main() {
     data: {
       name: "Electronics",
       count: 2,
-      businessId: newBusiness.id,
+      business: {
+        connect: {
+          id: newBusiness.id
+        }
+      },
       item: {
-        createMany: {
-          data: [
+        create: [
             {
               name: "Beats Headphones",
               images: "https://placehold.co/100",
               price: 250.00,
-              SKU: 123
+              SKU: "123",
+              quantity:55,
+              tags:{
+                createMany:{
+                  data: [
+                    {
+                      tag:"Headphones"
+                    }
+                  ]
+                }
+              }
             },
             {
               name: "iPhone 11",
               images: "https://placehold.co/100",
               price: 1200.00,
-              SKU: 1080
+              SKU: "1080",
+              quantity:70,
+              tags:{
+                createMany:{
+                  data:[
+                    {
+                      tag:"Cellphone"
+                    }
+                  ]
+                }
+              }
             },
           ]
-        }
       }
     }
   })

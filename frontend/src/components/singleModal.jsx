@@ -15,6 +15,7 @@ export default function SingleModal(props) {
   const [price,setPrice]= useState(0)
   const [name,setName]= useState("")
   const [sku,setSKU]= useState("")
+  const [tags,setTags]=useState("")
 
 
   const handleClose = () => setShow(false);
@@ -22,7 +23,7 @@ export default function SingleModal(props) {
     
     const handleAdd = () => {
       handleClose(); 
-      addItem({name: name,count: parseInt(count), quantity,price,sku,listId:props.list});
+      addItem({name: name,count: parseInt(count), quantity,price,sku,listId:props.list,tags:tags.split(",")});
     }
 
   return (
@@ -70,8 +71,15 @@ export default function SingleModal(props) {
           <Form.Label>SKU</Form.Label>
           <Form.Control onChange={(e)=>setSKU(e.target.value)}/>
         </Form.Group>
+
       </Row>
+      <Row>
       
+      <Form.Group as={Col} controlId="formGridTags">
+          <Form.Label>Tags (Please separate with commas)</Form.Label>
+          <Form.Control onChange={(e)=>setTags(e.target.value)}/>
+        </Form.Group>
+      </Row>
         </div>
 
         <div className='dragdrop'>

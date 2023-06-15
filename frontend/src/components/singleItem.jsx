@@ -7,39 +7,37 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { FaBell, FaUser, FaTags } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 
-const SingleItem=(productItem) =>{
+const SingleItem=(props) =>{
 
     return (
-        <Card border="Light" key={productItem.id}>
+        <Card border="Light" key={props.id}>
         <Card.Img
           className="product-image"
           variant="top"
-          src={productItem.image}
+          src={props.images}
         />
         <Card.Body>
           <Card.Title className="text-center">
-            {productItem.name}
+            {props.name}
           </Card.Title>
           <Card.Text className="text-center">
-            Units: {productItem.units} | Price: ${productItem.price}
+            Units: {props.units} | Price: ${props.price}
           </Card.Text>
           <div className="yellow-box">
-            <div className="price-tag-box">
-              <FaTags size={18} color="black" className="price-tag" />
-              <span className="tag-text">
-                {/* {getCustomText(productItem.id) ||
-                  productItem.customText1 ||
-                  "Red "} */}
-              </span>
-            </div>
-            <div className="price-tag-box">
-              <FaTags size={18} color="black" className="price-tag" />
-              <span className="tag-text">
-                {/* {getCustomText(productItem.id) || */}
-                  {/* productItem.customText2 ||
-                  "Headphone"} */}
-              </span>
-            </div>
+            {/*Map through tags prop and show the tags*/}
+            {/* {something.map(item => (
+                <p>{item.item}</p>
+            ))} */}
+            {props.tags.map(t =>(
+                   <div className="price-tag-box">
+                   <FaTags size={18} color="black" className="price-tag" />
+                   <span className="tag-text">
+                    {t.tag}
+                   </span>
+                 </div>
+            ))}
+         
+            
           </div>
         </Card.Body>
       </Card>
