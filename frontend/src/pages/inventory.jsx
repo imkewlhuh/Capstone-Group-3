@@ -12,20 +12,10 @@ import Header from "../components/header";
 import { createItemList, deleteItemList, getAllItemLists, getItemList, updateItemList } from "../api/itemList";
 import { fetchUser } from "../api/fetchUser";
 import { useLoaderData } from "react-router-dom"
+import UserField from "../components/signup-fields/userField";
 
 
-function ConditionalComponent(props){
-    return (
-      <div>
-        {props.showComponent1 ? 
-          <div>Component 1</div>
-        :
-          <div>Component 2</div>
-        }
-      </div>
-    )
-  }
-  
+
   function InventoryComponent(props){
     return(
       <div className="itemContainer">
@@ -39,8 +29,10 @@ function ConditionalComponent(props){
     )
   }
   
+
 function InventoryCard(props) {
     return (
+
       <Card style={{width: '400px'}}>
         <Card.Img variant="top" src="https://via.placeholder.com/600x400" />
         <Card.Body>
@@ -48,8 +40,8 @@ function InventoryCard(props) {
           <Card.Text>{props.itemUnits}</Card.Text>
           <Card.Text>{props.itemTotal}</Card.Text>
           <row>
-          <button type="button" class="btn btn-primary">Edit</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-primary" onClick={()=> updateItemList()}>Edit</button>
+          <button type="button" class="btn btn-danger" onClick={()=>deleteItemList(InventoryCard.name)}>Delete</button>
           </row>
         </Card.Body>
       </Card>
@@ -87,7 +79,8 @@ function InventoryCard(props) {
     const invitems = useLoaderData();
     console.log(invitems.data.itemLists);
 
-    const itemList = invitems.data.itemLists;
+    const [itemList, updateItemList, setItemLists] = useState(invitems.data.itemLists)
+    // const itemList = invitems.data.itemLists;
 
     
 
@@ -144,7 +137,7 @@ function InventoryCard(props) {
                     thumbnailImg={element.thumbnailImg} 
                     item={element.name}
                     itemUnits={element.count}
-                    // itemTotal={element.itemTotal}
+                    itemTotal={element.itemTotal}
                     
                     />
                 })
