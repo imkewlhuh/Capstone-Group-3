@@ -14,7 +14,7 @@ const SingleItem=(props) =>{
         <Card.Img
           className="product-image"
           variant="top"
-          src={props.images}
+          src={props.image}
         />
         <Card.Body>
           <Card.Title className="text-center">
