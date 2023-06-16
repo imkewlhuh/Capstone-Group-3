@@ -5,10 +5,8 @@ import {
   FaFilter,
   FaSearch,
   FaEnvelope,
-  FaBell,
   FaUser,
   FaPencilAlt,
-  FaRegBell,
 } from "react-icons/fa";
 import { BsPerson } from "react-icons/bs";
 import Header from "./header";
@@ -19,82 +17,82 @@ function Teams() {
       city: "New York",
       members: [
         {
-          name: "Alet Brown",
-          role: "Account Manager",
-          access: "Products | Tasks | Insights",
-          tasks: 131,
-          products: 31,
-          insights: 27,
-          imageUrl: "images/alet-brown.jpg",
-        },
-        {
-          name: "John Smith",
-          role: "Developer",
-          access: "Products | Tasks | Insights",
-          tasks: 105,
-          products: 35,
-          insights: 56,
-          imageUrl: "images/john-smith.jpg",
-        },
-        {
-          name: "Emma Davis",
-          role: "Designer",
-          access: "Products | Tasks | Insights",
-          tasks: 101,
-          products: 67,
-          insights: 45,
-          imageUrl:"images/emma-davis.jpg",
-        },
-        {
-          name: "Sarah Lee",
-          role: "Marketing Manager",
-          access: "Products | Tasks | Insights",
-          tasks: 125,
-          products: 80,
-          insights: 59,
-          imageUrl: "images/sarah-lee.jpg",
-        },
+            name: "Alet Brown",
+            role: "Account Manager",
+            access: "Products | Tasks | Insights",
+            tasks: 131,
+            products: 31,
+            insights: 27,
+            imageUrl: "images/alet-brown.jpg",
+          },
+          {
+            name: "John Smith",
+            role: "Developer",
+            access: "Products | Tasks | Insights",
+            tasks: 105,
+            products: 35,
+            insights: 56,
+            imageUrl: "images/john-smith.jpg",
+          },
+          {
+            name: "Emma Davis",
+            role: "Designer",
+            access: "Products | Tasks | Insights",
+            tasks: 101,
+            products: 67,
+            insights: 45,
+            imageUrl:"images/emma-davis.jpg",
+          },
+          {
+            name: "Sarah Lee",
+            role: "Marketing Manager",
+            access: "Products | Tasks | Insights",
+            tasks: 125,
+            products: 80,
+            insights: 59,
+            imageUrl: "images/sarah-lee.jpg",
+          },
       ],
     },
     {
       city: "Los Angeles",
       members: [
         {
-          name: "Leo DeMarco",
-          role: "Account Manager",
-          access: "Products | Tasks | Insights",
-          tasks: 134,
-          products: 65,
-          insights: 39,
-          imageUrl:"images/leo-demarco.jpg",
-        },
-        {
-          name: "Michael Lee",
-          role: "Developer",
-          access: "Products | Tasks | Insights",
-          tasks: 150,
-          products: 56,
-          insights: 78,
-          imageUrl: "images/michael-lee.jpg",
-        },
-        {
-          name: "Lucy Kim",
-          role: "Designer",
-          access: "Products | Tasks | Insights",
-          tasks: 180,
-          products: 68,
-          insights: 59,
-          imageUrl: "images/lucy-kim.jpg",
-        },
-        {
-          name: "David Johnson",
-          role: "Marketing Manager",
-          access: "Products | Tasks | Insights",
-          tasks: 120,
-          products: 89,
-          insights: 77,
-          imageUrl:"images/david-johnson.jpg",
-        },
+            name: "Leo DeMarco",
+            role: "Account Manager",
+            access: "Products | Tasks | Insights",
+            tasks: 134,
+            products: 65,
+            insights: 39,
+            imageUrl:"images/leo-demarco.jpg",
+          },
+          {
+            name: "Michael Lee",
+            role: "Developer",
+            access: "Products | Tasks | Insights",
+            tasks: 150,
+            products: 56,
+            insights: 78,
+            imageUrl: "images/michael-lee.jpg",
+          },
+          {
+            name: "Lucy Kim",
+            role: "Designer",
+            access: "Products | Tasks | Insights",
+            tasks: 180,
+            products: 68,
+            insights: 59,
+            imageUrl: "images/lucy-kim.jpg",
+          },
+          {
+            name: "David Johnson",
+            role: "Marketing Manager",
+            access: "Products | Tasks | Insights",
+            tasks: 120,
+            products: 89,
+            insights: 77,
+            imageUrl:"images/david-johnson.jpg",
+          },
       ],
     },
   ];
@@ -103,24 +101,6 @@ function Teams() {
     <Container>
       <Row>
         <Header title="Teams" />
-        <Col className="d-flex justify-content-start align-items-center">
-          <div className="d-flex align-items-center mr-3">
-            <Form.Check type="checkbox" className="mr-2" />
-            <FaPencilAlt size={16} className="mr-2" />
-            <span>Select</span>
-          </div>
-          <div className="d-flex align-items-center">
-            <span className="ml-3">View All</span>
-          </div>
-        </Col>
-        <Col className="d-flex justify-content-end align-items-center">
-          <div className="d-flex align-items-center">
-            <FaBell className="icon-button mr-3" />
-            <FaSearch className="icon-button" />
-          </div>
-        </Col>
-      </Row>
-      <Row>
         <Col className="d-flex justify-content-start align-items-center">
           <Button variant="light" className="mr-2">
             <FaFilter /> Filter Users
@@ -137,6 +117,14 @@ function Teams() {
               }}
             />
           </Form>
+        </Col>
+        <Col className="d-flex justify-content-end align-items-center">
+          <div className="d-flex align-items-center">
+            <Form.Check type="checkbox" className="mr-2" />
+            <span>Select</span>
+            <FaPencilAlt size={16} className="ml-2 mr-2" />
+            <span>View All</span>
+          </div>
         </Col>
       </Row>
       {teams.map((team) => (
@@ -156,7 +144,9 @@ function Teams() {
                       <BsPerson size={20} className="mr-3" />
                     </div>
                     <div>
-                      <FaEnvelope size={24} />
+                      <div className="circle-icon">
+                        <FaEnvelope size={16} />
+                      </div>
                     </div>
                   </div>
                   <Card.Img
@@ -184,4 +174,3 @@ function Teams() {
 }
 
 export default Teams;
-
