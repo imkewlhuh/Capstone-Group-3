@@ -55,15 +55,18 @@ export async function updateItemList(name, updatedList) {
     return response;
 };
 
-//DELETE item list.
+// DELETE item list.
 export async function deleteItemList(name) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.delete(
         `${baseURL}/itemList/${name}`,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
+    
+        
     );
 
     console.log(response);
     return response;
 };
+
