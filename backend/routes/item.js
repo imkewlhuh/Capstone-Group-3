@@ -11,6 +11,7 @@ export default function itemRouter(passport) {
     async (req, res) => {
       console.log(req.body)
       try {
+        const randomNum=Math.floor(Math.random() * (100 - 1) + 1)
         const newItem = await prisma.item.create({
           data: {
             SKU: req.body.sku,
@@ -20,6 +21,7 @@ export default function itemRouter(passport) {
                 id: parseInt(req.body.listId)
               }
             },
+            images: `https://picsum.photos/id/${randomNum}/200`,
           name: req.body.name,
             price:parseFloat(req.body.price),
             quantity:parseInt(req.body.quantity),
