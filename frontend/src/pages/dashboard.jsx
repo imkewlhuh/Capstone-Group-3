@@ -93,7 +93,7 @@ export default function DashBoard() {
                 {/*Sub Header*/}
                 <div className="subHeader mb-5">
                     <div className="welcome">
-                        <h2>Welcome {name}!</h2>
+                        <h2>Welcome {name ? name : "User"}!</h2>
                         <select className="warehouse">
                             <option>Choose a warehouse</option>
                         </select>

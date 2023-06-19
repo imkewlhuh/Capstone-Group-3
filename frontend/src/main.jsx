@@ -39,10 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/inventory",
         element: <Inventory />,
-        loader: async () => {
+        // loader: async () => {
 
-          return await getAllItemLists();
-        },
+        //   return await getAllItemLists();
+        // },
       },
       {
         path: "inventory/:listId/products",

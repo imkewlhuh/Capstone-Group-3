@@ -2,11 +2,11 @@ import axios from "axios";
 import { baseURL } from "./constants";
 
 //GET All item lists for logged in user
-export async function getAllItemLists() {
+export async function getAllItemLists(businessId) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.get(
-        `${baseURL}/itemList/`,
+        `${baseURL}/itemList/business/${businessId}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -23,7 +23,7 @@ export async function createItemList(itemList) {
         itemList,
         { headers: { Authorization: `Bearer ${token}` } }
     );
-    
+
     console.log(response);
     return response;
 };
@@ -41,12 +41,12 @@ export async function getItemList(name) {
     return response;
 };
 
-//UPDATE item list. Pass in name and new object with name, count
-export async function updateItemList(name, updatedList) {
+//UPDATE item list. Pass in id and new object with name, count
+export async function updateItemList(id, updatedList) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.put(
-        `${baseURL}/itemList/${name}`,
+        `${baseURL}/itemList/${id}`,
         updatedList,
         { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -56,17 +56,22 @@ export async function updateItemList(name, updatedList) {
 };
 
 // DELETE item list.
-export async function deleteItemList(name) {
+export async function deleteItemList(id) {
     const token = sessionStorage.getItem("token");
+    console.log(id);
 
-    const response = await axios.delete(
-        `${baseURL}/itemList/${name}`,
-        { headers: { Authorization: `Bearer ${token}` } },
-    
-        
-    );
+    if (id === null || id === undefined) {
+        console.log("Invalid id!");
+    } else {
+        const response = await axios.delete(
+            `${baseURL}/itemList/${id}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+        );
 
-    console.log(response);
-    return response;
+        console.log(response);
+        return response;
+    }
+
+
 };
 
