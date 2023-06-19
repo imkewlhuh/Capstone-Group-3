@@ -52,8 +52,26 @@ function InventoryCard(props) {
   }
 
   return (
-    <Card className="invCard" style={{position: "relative"}} key={props.key} >
-      <Card.Img onMouseEnter={(e) => handleHover("in", e)} onMouseLeave={(e) => handleHover("out", e)} className="mb-3" variant="top" src="https://via.placeholder.com/600x400" />
+    <Card className="invCard" style={{ position: "relative" }} key={props.key} >
+      <Card.Img
+        style={{transform: "scale(1.15)"}}
+        onMouseEnter={(e) => handleHover("in", e)}
+        onMouseLeave={(e) => handleHover("out", e)}
+        className="mb-3"
+        variant="top"
+        src={
+          name.includes("shirt") ?
+          "/images/shirt.png"
+          :
+          name.includes("jacket") ?
+          "/images/jacket.png"
+          :
+          name.includes("coat") ?
+          "/images/coat.png"
+          :
+          "https://via.placeholder.com/600x365"
+        }
+      />
       <Card.Body>
 
         <Card.Title className="mb-5">
@@ -69,12 +87,12 @@ function InventoryCard(props) {
             showEdit ?
               <Form.Control type="number" placeholder={props.count} onChange={(e) => setCount(e.target.value)} />
               :
-              <span style={{fontSize: "1.1em"}}>{props.count}<span> units</span></span>
+              <span style={{ fontSize: "1.1em" }}>{props.count}<span> units</span></span>
           }
         </Card.Text>
 
         {/* <Card.Text>{props.itemTotal}</Card.Text> */}
-        <button type="button" className="listBtn editBtn" onClick={showEdit ? async () => { await updateItemList(props.id, {name: name, count: count}); setShowEdit(false); props.refresh(); } : () => setShowEdit(true)}>{showEdit ? <i className="bi bi-check-square"></i> : <i className="bi bi-pencil-square"></i>}</button>
+        <button type="button" className="listBtn editBtn" onClick={showEdit ? async () => { await updateItemList(props.id, { name: name, count: count }); setShowEdit(false); props.refresh(); } : () => setShowEdit(true)}>{showEdit ? <i className="bi bi-check-square"></i> : <i className="bi bi-pencil-square"></i>}</button>
         <button type="button" className="listBtn delBtn" onClick={async () => { await deleteItemList(props.id); props.refresh(); }}><i className="bi bi-trash"></i></button>
       </Card.Body>
     </Card>
@@ -147,18 +165,18 @@ export default function Inventory() {
       <div className='app-container container'>
         {
           itemLists.length > 0 ?
-          itemLists.map((list, i) => {
-            return (
-              <div key={i}>
-                <InventoryCard
-                  {...list}
-                  refresh={() => setRefresh(!refresh)}
-                />
-              </div>
-            )
-          }) 
-          : 
-          <Alert variant="secondary">No Existing Categories. Add new to manage your inventory!</Alert>
+            itemLists.map((list, i) => {
+              return (
+                <div key={i}>
+                  <InventoryCard
+                    {...list}
+                    refresh={() => setRefresh(!refresh)}
+                  />
+                </div>
+              )
+            })
+            :
+            <Alert variant="secondary">No Existing Categories. Add new to manage your inventory!</Alert>
         }
       </div>
 
