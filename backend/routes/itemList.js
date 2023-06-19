@@ -5,13 +5,14 @@ export default function itemListRouter(passport) {
     const router = express.Router();
 
 
-    //GET All itemLists
-    router.get("/", passport.authenticate("jwt", {session: false}), async (request, response) => {
+    //GET All itemLists for current business
+    router.get("/business/:id", passport.authenticate("jwt", {session: false}), async (request, response) => {
+        const businessId = request.params.id;
 
         try{ 
             const itemLists = await prisma.itemList.findMany({
                 where: {
-                    businessId: request.user.businessId
+                    businessId: parseInt(businessId)
                 }
             });
             if(itemLists){
@@ -100,15 +101,15 @@ export default function itemListRouter(passport) {
     
     //Update itemList
     router.put(
-        "/:listName",
+        "/:listId",
         passport.authenticate("jwt", { session: false }),
         async (req, res) => {
-            const name = req.params.listName.toLowerCase();
+            const id = req.params.listId;
 
             try {
                 const itemList = await prisma.itemList.findFirstOrThrow({
                     where: {
-                        name: name,
+                        id: parseInt(id),
                         businessId: req.user.businessId
                     }
                 });
@@ -116,11 +117,11 @@ export default function itemListRouter(passport) {
                 if (itemList) {
                     const updatedList = await prisma.itemList.updateMany({
                         where: {
-                            name: name,
+                            id: parseInt(id)
                         },
                         data: {
                             name: req.body.name,
-                            count: req.body.count,
+                            count: parseInt(req.body.count),
                         }
                     });
 
@@ -147,15 +148,15 @@ export default function itemListRouter(passport) {
 
 //DELETE itemList
 router.delete(
-    "/:listName",
+    "/:listId",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-        const name = req.params.listName.toLowerCase();
+        const id = req.params.listId;
 
         try {
-            const deleteList = await prisma.itemList.deleteMany({
+            const deleteList = await prisma.itemList.delete({
                 where: {
-                    name: name
+                    id: parseInt(id)
                 }
             });
 

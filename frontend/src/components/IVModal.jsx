@@ -15,28 +15,29 @@ export default function IVModal(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleAdd = () => {
-    handleClose(); 
+  const handleAdd = async () => {
     console.log(name, count, props.businessId);
-    createItemList({name: name,count: parseInt(count), businessId: props.businessId});
+    await createItemList({name: name, count: parseInt(count), businessId: props.businessId});
+    handleClose(); 
+    props.refresh();
   }
 
   return (
     <>
-      <Button className='modalbutton' onClick={handleShow}>
-        ADD NEW +
-      </Button>
+      <button type='button' className='modalbutton' onClick={handleShow}>
+        <p>ADD NEW <span className='modalPlus'>+</span></p>
+      </button>
 
       <Modal dialogClassName='mymodal' show={show} onHide={handleClose}>
         
         <Modal.Header className='mheader' closeButton>
-          <Modal.Title >Add Item</Modal.Title>
+          <Modal.Title >Add Category</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body style={{padding: "1em 3em"}}>
         <div className='ivsearch'>
             <Row>
-                Product Name
+                Category Name
             </Row>
             <Row>
             <input onChange={(e) => setName(e.target.value)} type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket"/>
@@ -78,7 +79,7 @@ export default function IVModal(props) {
         </div>
 
 
-        <div className='expdate'>
+        {/* <div className='expdate'>
 
         <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridMonth">
@@ -98,13 +99,13 @@ export default function IVModal(props) {
         </Form.Group>
       </Row>
             
-        </div>
+        </div> */}
         </Modal.Body>
 
         <Modal.Footer>
-          <Button className='invaddb' variant="primary" onClick={handleAdd}>
+          <button type='button' className='invaddb' onClick={handleAdd}>
             ADD
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>

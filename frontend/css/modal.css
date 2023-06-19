@@ -1,16 +1,45 @@
+.mymodal {
+    min-width: 50vw;
+    box-shadow: 10px 10px 10px var(--box-shadow);
+} 
+
 .mheader{
     background-color: #FFC107;
-}
-
-.invaddb{
-    background-color: #198754;
+    padding: 1em 2em;
 }
 
 .modalbutton{ 
     background-color: #198754;
+    height: 2.4em;
+    width: 9em;
+    color: white;
+    border: 1px solid black;
+    padding: 0.4em 1.1em;
+    border-radius: 5px;
+    font-weight: 700;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    transition: 0.2s;
 }
 
-.mymodal {
-    width: 70vw;
-    max-width: 90vw;
-} 
+.modalbutton:hover{
+    opacity: 0.8;
+}
+
+.modalPlus{
+    color: #FFC107;
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: 900;
+    top: -0.1em;
+    right: 0.9em;
+}
+
+.invaddb{
+    background-color: #198754;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.3em 2em;
+}

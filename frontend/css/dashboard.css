@@ -169,32 +169,68 @@
     background: linear-gradient(35deg, rgb(215, 126, 110), rgb(218, 107, 140));
 }
 
+.dark .info > :nth-child(1) {
+    border: 1.5px solid rgb(218, 107, 140);
+}
+
 .info > :nth-child(2) {
     background: linear-gradient(35deg, rgb(136, 178, 208), rgb(151, 223, 160));
+}
+
+.dark .info > :nth-child(2) {
+    border: 1.5px solid rgb(151, 223, 160);
 }
 
 .info > :nth-child(3) {
     background: linear-gradient(45deg, rgb(221, 147, 212), rgb(155, 104, 234));
 }
 
+.dark .info > :nth-child(3) {
+    border: 1.5px solid rgb(155, 104, 234);
+}
+
 .info > :nth-child(4) {
     background: linear-gradient(45deg, rgb(217, 156, 81), rgb(220, 110, 99));
+}
+
+.dark .info > :nth-child(4) {
+    border: 1.5px solid rgb(220, 110, 99);
 }
 
 .info > :nth-child(5) {
     background: linear-gradient(115deg, rgb(220, 110, 99), rgb(217, 156, 81));
 }
 
+.dark .info > :nth-child(5) {
+    border: 1.5px solid rgb(220, 110, 99);
+}
+
 .info > :nth-child(6) {
     background: linear-gradient(120deg, rgb(155, 104, 234), rgb(221, 147, 212));
+}
+
+.dark .info > :nth-child(6) {
+    border: 1.5px solid rgb(155, 104, 234);
 }
 
 .info > :nth-child(7) {
     background: linear-gradient(115deg, rgb(151, 223, 160), rgb(136, 178, 208));
 }
 
+.dark .info > :nth-child(7) {
+    border: 1.5px solid rgb(151, 223, 160);
+}
+
 .info > :nth-child(8) {
     background: linear-gradient(125deg, rgb(218, 107, 140), rgb(215, 126, 110));
+}
+
+.dark .info > :nth-child(8) {
+    border: 1.5px solid rgb(218, 107, 140);
+}
+
+.dark .box {
+    background: var(--box-shadow);
 }
 
 .box {
