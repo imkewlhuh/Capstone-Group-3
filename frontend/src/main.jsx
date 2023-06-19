@@ -11,7 +11,7 @@ import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
-import AddNew from './pages/addnew';
+//import AddNew from './pages/addnew';
 
 import AuthLayout from "./pages/signUp";
 import Teams from "./components/Teams";
@@ -23,6 +23,7 @@ import TeamField from "./components/signup-fields/team";
 import InventoryField from "./components/signup-fields/inventory";
 
 import { fetchProductListTypes } from "./actions/products";
+import Profile from "./pages/profile/profile";
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/inventory",
         element: <Inventory />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />
       },
       {
         path: "inventory/products",
