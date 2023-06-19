@@ -42,4 +42,9 @@
     border: 0;
     border-radius: 5px;
     padding: 0.3em 2em;
+    transition: 0.2s ease-in-out;
+}
+
+.invaddb:hover{
+    opacity: 0.8;
 }

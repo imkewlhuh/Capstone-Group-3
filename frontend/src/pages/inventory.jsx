@@ -2,7 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import "../../css/inventory.css";
 import {
-  Card, Container, Form
+  Card, Container, Form, Alert
 } from "react-bootstrap";
 import IVModal from "../components/IVModal";
 import Header from "../components/header";
@@ -69,7 +69,7 @@ function InventoryCard(props) {
             showEdit ?
               <Form.Control type="number" placeholder={props.count} onChange={(e) => setCount(e.target.value)} />
               :
-              <p style={{fontSize: "1.1em"}}>{props.count}<span> units</span></p>
+              <span style={{fontSize: "1.1em"}}>{props.count}<span> units</span></span>
           }
         </Card.Text>
 
@@ -144,9 +144,9 @@ export default function Inventory() {
         <p><span>Total Value: </span>123,123.02</p>
       </div>
 
-      <div className='app-container'>
+      <div className='app-container container'>
         {
-          itemLists ?
+          itemLists.length > 0 ?
           itemLists.map((list, i) => {
             return (
               <div key={i}>
@@ -158,7 +158,7 @@ export default function Inventory() {
             )
           }) 
           : 
-          <p>No Existing Categories. Add new to populate</p>
+          <Alert variant="secondary">No Existing Categories. Add new to manage your inventory!</Alert>
         }
       </div>
 

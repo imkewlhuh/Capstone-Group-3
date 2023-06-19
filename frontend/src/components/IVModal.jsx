@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import "../../css/modal.css";
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
+import { Row, Col, Form, Modal } from 'react-bootstrap';
 import { createItemList } from '../api/itemList';
 
 export default function IVModal(props) {
@@ -40,7 +36,7 @@ export default function IVModal(props) {
                 Category Name
             </Row>
             <Row>
-            <input onChange={(e) => setName(e.target.value)} type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket"/>
+            <input onChange={(e) => setName(e.target.value)} type="search" id="form1" className="form-control" placeholder="EX: Brown Jacket"/>
             </Row>
         </div>
 
