@@ -9,12 +9,31 @@ export default function itemRouter(passport) {
     "/new",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
+      console.log(req.body)
       try {
+        const randomNum=Math.floor(Math.random() * (100 - 1) + 1)
         const newItem = await prisma.item.create({
           data: {
-            SKU: req.body.SKU,
+            SKU: req.body.sku,
             expDate: req.body.expDate,
-            listId: req.body.listId,
+            itemList:{
+              connect:{
+                id: parseInt(req.body.listId)
+              }
+            },
+            images: `https://picsum.photos/id/${randomNum}/200`,
+          name: req.body.name,
+            price:parseFloat(req.body.price),
+            quantity:parseInt(req.body.quantity),
+            tags:{
+              createMany:{
+                data:req.body.tags.map((tag) =>{
+                  return {
+                    tag
+                  }
+                })
+              }
+            }
           },
         });
 
@@ -25,6 +44,7 @@ export default function itemRouter(passport) {
           });
         };
       } catch (e) {
+       console.log(e)
         res.status(500).json({
           success: false,
           message: "Failed to add item",
@@ -33,16 +53,16 @@ export default function itemRouter(passport) {
     }
   );
 
-  //Update Item
+  //Update Item by SKU
   router.put(
-    "/:itemId",
+    "/:SKU",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-      const id = req.params.itemId;
+      const SKU = req.params.SKU;
 
       const editItem = await prisma.item.update({
         where: {
-          id: Number(id),
+          SKU: Number(SKU),
         },
         data: {
           SKU: req.body.SKU,
@@ -58,17 +78,17 @@ export default function itemRouter(passport) {
     }
   );
 
-  //Delete item
+  //Delete item by SKU
   router.delete(
-    "/:itemsId",
+    "/:SKU",
     passport.authenticate("jwt", { session: false }),
 
     async function (request, response) {
-      const itemsId = parseInt(request.params.itemsId);
+      const SKU = parseInt(request.params.SKU);
       try {
         await prisma.item.delete({
           where: {
-            id: itemsId,
+            SKU: SKU,
           },
         });
 
@@ -112,6 +132,41 @@ export default function itemRouter(passport) {
       });
     }
   });
+
+  //GET All Items from List ID
+  router.get("/list/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    try {
+      const items = await prisma.item.findMany({
+        where: {
+          listId: id
+        },
+        include: {
+          tags: {
+            select: {
+              tag: true
+            }
+          }
+        }
+      });
+
+      if (items) {
+        res.status(200).json({
+          success: true,
+          items
+        });
+      };
+    } catch (e) {
+      res.status(400).json({
+        success: false,
+        message: "Could not find items"
+      });
+    };
+  });
+  
 
   //Get Item by SKU
   router.get("/:SKU", async (req, res) => {

@@ -1,9 +1,10 @@
 import axios from "axios";
+import { baseURL } from "../api/constants";
 
 async function signup(signupBody) {
   try {
     const signupResponse = await axios.post(
-      "http://localhost:8080/user/signup",
+      `${baseURL}/user/signup`,
       signupBody,
       {
         headers: {
@@ -13,15 +14,41 @@ async function signup(signupBody) {
     );
 
     if (signupResponse.status == 201) {
+      console.log(signupResponse.data);
       return signupResponse.data;
     } else {
-      return {};
+      return false;
     }
   } catch (e) {
     console.log(e);
 
-    return {};
+    return false;
+  }
+};
+
+async function login(loginBody) {
+  try {
+    const loginResponse = await axios.post(
+      `${baseURL}/user/login`,
+      loginBody,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (loginResponse.status == 200) {
+      console.log(loginResponse.data);
+      return loginResponse.data;
+    } else {
+      return false
+    }
+  } catch (e) {
+    console.log(e);
+
+    return false;
   }
 }
 
-export { signup };
+export { signup, login };

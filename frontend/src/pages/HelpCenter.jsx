@@ -2,6 +2,7 @@ import React from "react";
 import { BsSearch, BsBell } from "react-icons/bs";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { FaLightbulb, FaUser, FaDesktop } from "react-icons/fa";
+import Header from "../components/header";
 
 const HelpCenter = () => {
   return (
@@ -16,65 +17,7 @@ const HelpCenter = () => {
       }}
     >
       <Container style={{ justifyContent: "center" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginBottom: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#fff",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              marginRight: "10px",
-            }}
-          >
-            <BsBell size={20} style={{ color: "#333" }} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#fff",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              marginRight: "10px",
-            }}
-          >
-            <BsSearch size={20} style={{ color: "#333" }} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#fff",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-            }}
-          >
-            <FaUser size={20} style={{ color: "#333" }} />
-          </div>
-        </div>
-        <h1
-          style={{
-            marginTop: "20px",
-            marginLeft: "20px",
-            textAlign: "center",
-            color: "#333",
-          }}
-        >
-          Help Center
-        </h1>
+        <Header title="Help Center" />
         <div
           style={{
             display: "flex",
@@ -207,10 +150,7 @@ const HelpCenter = () => {
                       marginBottom: "-4px",
                     }}
                   >
-                    <FaLightbulb
-                      size={30}
-                      style={{ color: "yellow" }}
-                    />
+                    <FaLightbulb size={30} style={{ color: "yellow" }} />
                   </div>
                   <Card.Title style={{ fontWeight: "bold" }}>FAQ</Card.Title>
                 </div>

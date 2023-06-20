@@ -5,25 +5,24 @@ import "../css/App.css";
 //Add your imports from "/pages" below this line
 import Layout from './pages/layout';
 import Home from './pages/home';
-import SignUp from './pages/signUp';
 import LoginPage from './pages/LoginPage.jsx';
 import DashBoard from './pages/dashboard';
 import Inventory from './pages/inventory';
 import data from './Data/Data';
 import Products from './components/Products';
-//import AddNew from './pages/addnew';
-
+import Teams from './components/Teams';
+import Sustainability from './pages/sustainability';
+import HelpCenter from './pages/HelpCenter';
+import Settings from './pages/Settings';
 import AuthLayout from "./pages/signUp";
-import Teams from "./components/Teams";
-import Sustainability from "./pages/sustainability";
-import HelpCenter from "./pages/HelpCenter";
-import UserField from "./components/signup-fields/user";
-import BusinessField from "./components/signup-fields/business";
-import TeamField from "./components/signup-fields/team";
-import InventoryField from "./components/signup-fields/inventory";
-
+import UserField from "./components/signup-fields/userField";
+import BusinessField from "./components/signup-fields/businessField";
+import InventoryField from "./components/signup-fields/inventoryField"
+import TeamField from "./components/signup-fields/teamField";
 import { fetchProductListTypes } from "./actions/products";
 import Profile from "./pages/profile/profile";
+import { getAllItemLists } from "./api/itemList";
+import { getAllItems } from "./api/item";
 
 //Creating Router instance
 const router = createBrowserRouter([
@@ -41,14 +40,21 @@ const router = createBrowserRouter([
       {
         path: "/inventory",
         element: <Inventory />,
+        // loader: async () => {
+
+        //   return await getAllItemLists();
+        // },
       },
       {
         path: "/profile",
         element: <Profile />
       },
       {
-        path: "inventory/products",
+        path: "inventory/:listId/products",
         element: <Products productItems={data.productItems} />,
+        loader: async function({params}){
+        return  await getAllItems(params.listId)
+        }
       },
       {
         path: "/orders",
@@ -76,7 +82,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <div>Settings</div>,
+        element: <Settings />,
       },
       {
         path: "/help",
@@ -110,11 +116,6 @@ const router = createBrowserRouter([
           {
             path: "inventory",
             element: <InventoryField />,
-            loader: async () => {
-              const productTypes = await fetchProductListTypes();
-
-              return productTypes;
-            },
           },
           {
             path: "team",

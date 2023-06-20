@@ -13,7 +13,7 @@ datasource db {
 
 model ItemList {
   id         Int      @unique @default(autoincrement())
-  name       String
+  name       String  
   item       Item[]
   count      Int
   businessId Int
@@ -21,7 +21,13 @@ model ItemList {
 
   @@index([businessId])
 }
-
+model Tags{
+  id      Int    @unique @default(autoincrement())
+  tag     String
+  itemId  Int
+  item    Item  @relation(fields: [itemId], references: [id])
+  @@index([itemId])
+}
 model User {
   id         Int      @unique @default(autoincrement())
   name       String
@@ -35,11 +41,15 @@ model User {
 
 model Item {
   id       Int      @unique @default(autoincrement())
-  SKU      Int      @unique
-  expDate  String
+  SKU      String     @unique
+  expDate  String?
   listId   Int
   itemList ItemList @relation(fields: [listId], references: [id])
-
+  name     String
+  price    Float
+  images   String
+  quantity Int
+  tags     Tags[]
   @@index([listId])
 }
 
@@ -68,4 +78,6 @@ model ProductTypeToBusiness {
   productType   ProductType @relation(fields: [productTypeId], references: [id])
 
   @@id([businessId, productTypeId])
+  @@index([businessId])
+  @@index([productTypeId])
 }

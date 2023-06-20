@@ -20,6 +20,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <nav>
         <ul className="directories">
+          <li><a href='/home' onClick={() => sessionStorage.clear()}><i className="bi bi-box-arrow-left mb-3" style={{ transform: "scale(1.1) translateX(-10%) translateY(-10%)"}}></i><span>Sign out</span></a></li>
           <li><a href="/dashboard"><i className="bi bi-pip" style={{ transform: "scaleY(-1) translateY(-20%)" }}></i><span>Dashboard</span></a></li>
           <li><a href="/inventory"><i className="bi bi-clipboard-check"></i><span>Inventory</span></a></li>
           <li><a href="/orders"><i className="bi bi-shield-fill-check"></i><span>Orders</span></a></li>

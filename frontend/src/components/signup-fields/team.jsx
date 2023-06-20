@@ -59,7 +59,7 @@ export default function TeamField(props) {
         />
         <label
           className="businessBtn btn btn-outline mb-5"
-          for="business-outlined"
+          htmlFor="business-outlined"
         >
           <h5>No, I'm a solo act</h5>
           <p>I am the only person managing my inventory</p>
