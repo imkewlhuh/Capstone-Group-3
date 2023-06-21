@@ -26,7 +26,7 @@ export default function UserField(props) {
 
     return (
         <div className="userField container">
-            <h2>Stay organized. Stay (insert name).</h2>
+            <h2>Stay organized with InventGenie.</h2>
             <form onSubmit={handleSubmit} className="signUp needs-validation my-3" noValidate>
                 <div className="formInput mb-2">
                     <label htmlFor="name" className="form-label">Full name</label>

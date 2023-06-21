@@ -68,13 +68,13 @@ export default function itemListRouter(passport) {
   });
 
     //get itemList 
-    router.get("/:listName", passport.authenticate("jwt", {session: false}), async (request, response) => {
-        const name = request.params.listName;
+    router.get("/:listId", passport.authenticate("jwt", {session: false}), async (request, response) => {
+        const id = request.params.listId;
 
         try{ 
             const itemList = await prisma.itemList.findMany({
                 where: {
-                    name: name.toLowerCase(),
+                    id: parseInt(id),
                     businessId: request.user.businessId
                 }
             });

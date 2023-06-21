@@ -34,13 +34,15 @@ function LoginPage() {
     <Container className="wrapper">
       <h1 className="mb-5">Welcome Back!</h1>
       <Form onSubmit={onSubmit} noValidate validated={validated} className="login">
-        <Form.Group className="mb-2">
+        <Form.Group style={{position: "relative"}} className="mb-4">
           <Form.Label>Enter email</Form.Label>
           <Form.Control onChange={(e) => setEmail(e.target.value)} required className="input" type="email" placeholder="Enter email" />
+          <div className="invalid-feedback invalidLogin">Please enter your email</div>
         </Form.Group>
-        <Form.Group className="mb-5">
+        <Form.Group style={{position: "relative"}} className="mb-5">
           <Form.Label>Enter password</Form.Label>
-          <Form.Control onChange={(e) => setPassword(e.target.value)} required className="input" type="password" placeholder="Enter email" />
+          <Form.Control onChange={(e) => setPassword(e.target.value)} required className="input" type="password" placeholder="Enter password" />
+          <div className="invalid-feedback invalidLogin">Please enter your password</div>
           <Form.Text>
             <a className="forgotPass" href="#">Forgot password?</a>
           </Form.Text>

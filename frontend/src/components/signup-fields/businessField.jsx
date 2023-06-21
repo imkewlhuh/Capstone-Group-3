@@ -17,7 +17,7 @@ export function BusinessForm(props) {
 
     return (
         <div className="businessField container">
-            <h2>What will you use (insert) for?</h2>
+            <h2>Enter your Business Data</h2>
             <p className="mb-5">Let us customize your experience to best fit your needs.</p>
             <form onSubmit={handleSubmit} className="businessForm needs-validation" noValidate>
                 <div className="formInput mb-3">
@@ -88,7 +88,7 @@ export default function BusinessField(props) {
         <>
             {!showForm ?
                 <div className="businessField container" >
-                    <h2>What will you use (insert) for?</h2>
+                    <h2>What will you use InventGenie for?</h2>
                     <p className="mb-5">Let us customize your experience to best fit your needs.</p>
                     <form onSubmit={handleSubmit} className="businessForm needs-validation" noValidate>
                         <input onChange={() => setSelectedType("personal")} type="radio" className="btn-check" name="options-outlined" id="personal-outlined" autoComplete="off" required />

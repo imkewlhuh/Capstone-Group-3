@@ -53,21 +53,21 @@ export default function itemRouter(passport) {
     }
   );
 
-  //Update Item by SKU
+  //Update Item by id
   router.put(
-    "/:SKU",
+    "/:id",
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
-      const SKU = req.params.SKU;
+      const id = req.params.id;
 
       const editItem = await prisma.item.update({
         where: {
-          SKU: Number(SKU),
+          id: Number(id),
         },
         data: {
-          SKU: req.body.SKU,
-          expDate: req.body.expDate,
-          listId: req.body.listId,
+          name: req.body.name,
+          quantity: req.body.quantity,
+          price: req.body.price,
         },
       });
 
@@ -78,17 +78,17 @@ export default function itemRouter(passport) {
     }
   );
 
-  //Delete item by SKU
+  //Delete item by id
   router.delete(
-    "/:SKU",
+    "/:id",
     passport.authenticate("jwt", { session: false }),
 
     async function (request, response) {
-      const SKU = parseInt(request.params.SKU);
+      const id = parseInt(request.params.id);
       try {
         await prisma.item.delete({
           where: {
-            SKU: SKU,
+            id: id,
           },
         });
 
@@ -168,14 +168,14 @@ export default function itemRouter(passport) {
   });
   
 
-  //Get Item by SKU
-  router.get("/:SKU", async (req, res) => {
-    const SKU = req.params.SKU;
+  //Get Item by id
+  router.get("/:id", async (req, res) => {
+    const id = req.params.id;
 
     try {
       const item = await prisma.item.findFirstOrThrow({
         where: {
-          SKU: parseInt(SKU),
+          id: parseInt(id),
         },
       });
 

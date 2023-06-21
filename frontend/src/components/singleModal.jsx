@@ -21,16 +21,17 @@ export default function SingleModal(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
     
-    const handleAdd = () => {
+    const handleAdd = async () => {
+      await addItem({name: name,count: parseInt(count), quantity,price,sku,listId:props.list,tags:tags.split(",")});
       handleClose(); 
-      addItem({name: name,count: parseInt(count), quantity,price,sku,listId:props.list,tags:tags.split(",")});
+      props.refresh();
     }
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
-        ADD NEW +
-      </Button>
+     <button type='button' className='modalbutton' onClick={handleShow}>
+        <p>ADD NEW <span className='modalPlus'>+</span></p>
+      </button>
 
       <Modal dialogClassName='mymodal' show={show} onHide={handleClose}>
         
@@ -44,7 +45,7 @@ export default function SingleModal(props) {
                 Product Name
             </Row>
             <Row>
-            <input type="search" id="form1" class="form-control" placeholder="EX: Brown Jacket" onChange={(e)=>setName(e.target.value)}/>
+            <input type="search" id="form1" className="form-control" placeholder="EX: Brown Jacket" onChange={(e)=>setName(e.target.value)}/>
             </Row>
         </div>
 
@@ -120,9 +121,9 @@ export default function SingleModal(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button className='invaddb' variant="primary" onClick={handleAdd}>
+        <button type='button' className='invaddb' onClick={handleAdd}>
             ADD
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>

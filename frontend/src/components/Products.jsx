@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/Products.css";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -12,13 +12,33 @@ import Header from "./header";
 import SingleModal from "../components/singleModal.jsx";
 import SingleItem from "./singleItem";
 import { useLoaderData, useMatches } from "react-router-dom";
+import { getItemList } from "../api/itemList";
+import { getAllItems } from "../api/item";
+import { Alert, Container } from "react-bootstrap";
 
 const Products = () => {
   const [customTexts, setCustomTexts] = useState({});
+  const [listName, setListName] = useState();
+  const [items, setItems] = useState([]);
+  const [refresh, setRefresh] = useState();
   const productdata = useLoaderData();
   const matches = useMatches();
 
-  const productslist = productdata.data.items;
+  useEffect(() => {
+    let listId = productdata.config.url.split("/");
+    listId = parseInt(listId[listId.length - 1]);
+    console.log(listId);
+    const fetchList = async () => {
+      const list = await getItemList(listId);
+      const itemsData = await getAllItems(listId);
+
+      setListName(list.data.itemList[0].name);
+      setItems(itemsData.data.items);
+    }
+    fetchList();
+  }, [refresh]);
+
+  // const productslist = productdata.data.items;
 
   const handleCustomTextChange = (itemId, value) => {
     setCustomTexts((prevCustomTexts) => ({
@@ -31,7 +51,7 @@ const Products = () => {
     return customTexts[itemId] || "";
   };
 
-  const totalValue = productslist.reduce(
+  const totalValue = items.reduce(
     (total, productItem) => total + productItem.quantity * productItem.price,
     0
   );
@@ -41,14 +61,14 @@ const Products = () => {
     currency: "USD",
   });
 
-  const totalUnits = productslist.reduce(
+  const totalUnits = items.reduce(
     (total, productItem) => total + productItem.quantity,
     0
   );
 
   return (
     <>
-      <Header title="Inventory - Electronics" />
+      <Header title={listName ? `Inventory - ${listName}` : "Inventory - Single Item"} />
       <Row className="mt-3 align-items-center">
         <Col>
           <Form className="float-start">
@@ -68,9 +88,12 @@ const Products = () => {
           </Form>
         </Col>
         <Col>
-          <ButtonToolbar className="float-end mt-3">
-            <Button variant="warning">Import Files</Button>
-            <SingleModal list={matches[1].params.listId} />
+          <ButtonToolbar className="float-end gap-3 mt-3">
+          <button type="button" className="importBtn">IMPORT FILES</button>{' '}
+            <SingleModal  
+              list={matches[1].params.listId}
+              refresh={() => setRefresh(!refresh)}
+            />
           </ButtonToolbar>
         </Col>
       </Row>
@@ -79,7 +102,7 @@ const Products = () => {
           <h3>Folders: 6</h3>
         </Col>
         <Col className="text-center" xs={3} md={3}>
-          <h3>Items: {productslist.length}</h3>
+          <h3>Items: {items.length}</h3>
         </Col>
         <Col className="text-center" xs={3} md={3}>
           <h3>Quantity: {totalUnits} units</h3>
@@ -89,7 +112,9 @@ const Products = () => {
         </Col>
       </Row>
       <Row xs={4} md={4} className="g-4 mt-3">
-        {productslist.map((productItem) => (
+        {
+          items.length > 0 ?
+        items.map((productItem) => (
           <Col key={productItem.id}>
             <SingleItem
               id={productItem.id}
@@ -98,9 +123,15 @@ const Products = () => {
               image={productItem.images}
               price={productItem.price}
               tags={productItem.tags}
+              refresh={() => setRefresh(!refresh)}
             />
           </Col>
-        ))}
+        ))
+        : 
+        <Container>
+        <Alert variant="secondary">No Existing Items. Add new to manage your inventory!</Alert>
+        </Container>
+        }
       </Row>
     </>
   );
