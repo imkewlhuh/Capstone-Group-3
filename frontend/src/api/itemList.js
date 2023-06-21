@@ -28,12 +28,12 @@ export async function createItemList(itemList) {
     return response;
 };
 
-//GET item list. Pass in name of item list
-export async function getItemList(name) {
+//GET item list. Pass in id of item list
+export async function getItemList(id) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.get(
-        `${baseURL}/itemList/${name}`,
+        `${baseURL}/itemList/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 

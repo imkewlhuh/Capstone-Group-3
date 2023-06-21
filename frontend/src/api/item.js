@@ -28,12 +28,12 @@ export async function addItem(item) {
     return response;
 };
 
-//Get item by SKU.
-export async function getItemBySKU(SKU) {
+//Get item by id.
+export async function getItemById(id) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.get(
-        `${baseURL}/item/${SKU}`,
+        `${baseURL}/item/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -41,12 +41,12 @@ export async function getItemBySKU(SKU) {
     return response;
 };
 
-//UPDATE item. Pass in SKU and new object with SKU, expDate, and listId
-export async function updateItemBySKU(SKU, updatedItem) {
+//UPDATE item. Pass in id and new object with SKU, expDate, and listId
+export async function updateItemById(id, updatedItem) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.put(
-        `${baseURL}/item/${SKU}`,
+        `${baseURL}/item/${id}`,
         updatedItem,
         { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -55,12 +55,12 @@ export async function updateItemBySKU(SKU, updatedItem) {
     return response;
 };
 
-//DELETE item by SKU
-export async function deleteItemBySKU(SKU) {
+//DELETE item by id
+export async function deleteItemById(id) {
     const token = sessionStorage.getItem("token");
 
     const response = await axios.delete(
-        `${baseURL}/item/${SKU}`,
+        `${baseURL}/item/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
     );
 

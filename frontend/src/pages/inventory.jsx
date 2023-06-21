@@ -8,6 +8,7 @@ import IVModal from "../components/IVModal";
 import Header from "../components/header";
 import { createItemList, deleteItemList, getAllItemLists, getItemList, updateItemList } from "../api/itemList";
 import { fetchUser } from "../api/fetchUser";
+import { useNavigate } from "react-router-dom";
 // import { useLoaderData } from "react-router-dom"
 
 // let sampleData = [
@@ -39,6 +40,8 @@ function InventoryCard(props) {
   const [name, setName] = useState(props.name);
   const [count, setCount] = useState(props.count);
 
+  const navigate = useNavigate();
+
   const handleHover = (direction, e) => {
     if (direction === "in") {
       e.target.nextElementSibling.childNodes[2].classList.add("btnHover");
@@ -55,6 +58,7 @@ function InventoryCard(props) {
     <Card className="invCard" style={{ position: "relative" }} key={props.key} >
       <Card.Img
         style={{transform: "scale(1.15)"}}
+        onClick={() => {navigate(`/inventory/${props.id}/products`)}}
         onMouseEnter={(e) => handleHover("in", e)}
         onMouseLeave={(e) => handleHover("out", e)}
         className="mb-3"
@@ -140,7 +144,7 @@ export default function Inventory() {
       <div className="subheader1">
         <div className="input-group">
           <div className="form-outline">
-            <input type="search" id="form1" className="form-control" placeholder="Search all items" />
+            <input type="search" id="form1" className="form-control" placeholder="Search all categories" />
             {/* <label class="form-label" for="form1">Search</label> */}
           </div>
           {/* <button type="button" class="btn btn-primary">
