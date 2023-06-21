@@ -111,11 +111,10 @@ const Products = () => {
           <h3>Total Value: {formattedTotalValue}</h3>
         </Col>
       </Row>
-      <Row xs={4} md={4} className="g-4 mt-3">
+      <Container style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", alignItems: "center", justifyContent: "center"}}>
         {
           items.length > 0 ?
         items.map((productItem) => (
-          <Col key={productItem.id}>
             <SingleItem
               id={productItem.id}
               name={productItem.name}
@@ -125,14 +124,11 @@ const Products = () => {
               tags={productItem.tags}
               refresh={() => setRefresh(!refresh)}
             />
-          </Col>
         ))
         : 
-        <Container>
-        <Alert variant="secondary">No Existing Items. Add new to manage your inventory!</Alert>
-        </Container>
+        <Alert style={{width: "fit-content"}} variant="secondary">No Existing Items. Add new to manage your inventory!</Alert>
         }
-      </Row>
+      </Container>
     </>
   );
 };
