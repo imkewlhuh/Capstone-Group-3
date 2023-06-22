@@ -57,23 +57,23 @@ function InventoryCard(props) {
   return (
     <Card className="invCard" style={{ position: "relative" }} key={props.key} >
       <Card.Img
-        style={{transform: "scale(1.15)"}}
-        onClick={() => {navigate(`/inventory/${props.id}/products`)}}
+        style={{ transform: "scale(1.15)" }}
+        onClick={() => { navigate(`/inventory/${props.id}/products`) }}
         onMouseEnter={(e) => handleHover("in", e)}
         onMouseLeave={(e) => handleHover("out", e)}
         className="mb-3"
         variant="top"
         src={
           name.includes("shirt") ?
-          "/images/shirt.png"
-          :
-          name.includes("jacket") ?
-          "/images/jacket.png"
-          :
-          name.includes("coat") ?
-          "/images/coat.png"
-          :
-          "https://via.placeholder.com/600x365"
+            "/images/shirt.png"
+            :
+            name.includes("jacket") ?
+              "/images/jacket.png"
+              :
+              name.includes("coat") ?
+                "/images/coat.png"
+                :
+                "https://via.placeholder.com/600x365"
         }
       />
       <Card.Body>
@@ -113,6 +113,7 @@ export default function Inventory() {
   const [businessId, setBusinessId] = useState();
   const [itemLists, setItemLists] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
@@ -144,7 +145,7 @@ export default function Inventory() {
       <div className="subheader1">
         <div className="input-group">
           <div className="form-outline">
-            <input type="search" id="form1" className="form-control" placeholder="Search all categories" />
+            <input onChange={(e) => setSearch(e.target.value)} type="search" id="form1" className="form-control" placeholder="Search all categories" />
             {/* <label class="form-label" for="form1">Search</label> */}
           </div>
           {/* <button type="button" class="btn btn-primary">
@@ -170,14 +171,27 @@ export default function Inventory() {
         {
           itemLists.length > 0 ?
             itemLists.map((list, i) => {
-              return (
-                <div key={i}>
-                  <InventoryCard
-                    {...list}
-                    refresh={() => setRefresh(!refresh)}
-                  />
-                </div>
-              )
+              if (search === "") {
+                return (
+                  <div key={i}>
+                    <InventoryCard
+                      {...list}
+                      refresh={() => setRefresh(!refresh)}
+                    />
+                  </div>
+                )
+              } else {
+                if (list.name.includes(search)) {
+                  return (
+                    <div key={i}>
+                      <InventoryCard
+                        {...list}
+                        refresh={() => setRefresh(!refresh)}
+                      />
+                    </div>
+                  )
+                }
+              }
             })
             :
             <Alert variant="secondary">No Existing Categories. Add new to manage your inventory!</Alert>

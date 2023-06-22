@@ -45,7 +45,7 @@
     position: relative;
 }
 
-.hipanel::before{
+/* .hipanel::before{
     content: '';
     width: 30%;
     height: 10%;
@@ -54,7 +54,7 @@
     bottom: -1em;
     left: -8em;
     border-radius: 50%;
-}
+} */
 
 .hiside{
     height: 15em;
@@ -98,7 +98,7 @@
     position: relative;
 }
 
-.secondpanel::before{
+/* .secondpanel::before{
     content: '';
     position: absolute;
     left: 4em;
@@ -108,7 +108,7 @@
     width: 115%;
     border-radius: 50%;
     z-index: 5;
-}
+} */
 
 .secondpanel img{
     z-index: 5;

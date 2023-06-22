@@ -21,6 +21,7 @@ const Products = () => {
   const [listName, setListName] = useState();
   const [items, setItems] = useState([]);
   const [refresh, setRefresh] = useState();
+  const [search, setSearch] = useState("");
   const productdata = useLoaderData();
   const matches = useMatches();
 
@@ -83,14 +84,15 @@ const Products = () => {
                 placeholder="Search all items"
                 className="mr-sm-2 search-input"
                 style={{ paddingLeft: "30px", width: "300px" }}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
           </Form>
         </Col>
         <Col>
           <ButtonToolbar className="float-end gap-3 mt-3">
-          <button type="button" className="importBtn">IMPORT FILES</button>{' '}
-            <SingleModal  
+            <button type="button" className="importBtn">IMPORT FILES</button>{' '}
+            <SingleModal
               list={matches[1].params.listId}
               refresh={() => setRefresh(!refresh)}
             />
@@ -111,22 +113,41 @@ const Products = () => {
           <h3>Total Value: {formattedTotalValue}</h3>
         </Col>
       </Row>
-      <Container style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", alignItems: "center", justifyContent: "center"}}>
+      <Container style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", alignItems: "center", justifyContent: "center" }}>
         {
           items.length > 0 ?
-        items.map((productItem) => (
-            <SingleItem
-              id={productItem.id}
-              name={productItem.name}
-              units={productItem.quantity}
-              image={productItem.images}
-              price={productItem.price}
-              tags={productItem.tags}
-              refresh={() => setRefresh(!refresh)}
-            />
-        ))
-        : 
-        <Alert style={{width: "fit-content"}} variant="secondary">No Existing Items. Add new to manage your inventory!</Alert>
+            items.map((productItem) => {
+              if (search === "") {
+                return (
+                  <SingleItem
+                    id={productItem.id}
+                    name={productItem.name}
+                    units={productItem.quantity}
+                    image={productItem.images}
+                    price={productItem.price}
+                    tags={productItem.tags}
+                    refresh={() => setRefresh(!refresh)}
+                  />
+                )
+              } else {
+                if (productItem.name.includes(search)) {
+                  return (
+                    <SingleItem
+                      id={productItem.id}
+                      name={productItem.name}
+                      units={productItem.quantity}
+                      image={productItem.images}
+                      price={productItem.price}
+                      tags={productItem.tags}
+                      refresh={() => setRefresh(!refresh)}
+                    />
+                  )
+                }
+              }
+
+            })
+            :
+            <Alert style={{ width: "fit-content" }} variant="secondary">No Existing Items. Add new to manage your inventory!</Alert>
         }
       </Container>
     </>
