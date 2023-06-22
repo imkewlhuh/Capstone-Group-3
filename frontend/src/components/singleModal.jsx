@@ -39,7 +39,7 @@ export default function SingleModal(props) {
           <Modal.Title >Add Item</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body className='mbody'>
         <div className='ivsearch'>
             <Row>
                 Product Name
@@ -59,7 +59,6 @@ export default function SingleModal(props) {
 
         <Form.Group as={Col} controlId="formGridMin">
           <Form.Label>Minimum Quantity</Form.Label>
-          <Form.Control placeholder="EX:19293"/>
           <Form.Control onChange={(e)=>setMinimumQuantity(e.target.value)}/>
         </Form.Group>
 
@@ -120,7 +119,7 @@ export default function SingleModal(props) {
         </div>
         </Modal.Body>
 
-        <Modal.Footer>
+        <Modal.Footer className='mfooter'>
         <button type='button' className='invaddb' onClick={handleAdd}>
             ADD
           </button>

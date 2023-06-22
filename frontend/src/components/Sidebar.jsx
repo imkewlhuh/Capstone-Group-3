@@ -2,15 +2,17 @@ import { useState } from 'react';
 import  '../../css/Sidebar.css';
 
 const Sidebar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(sessionStorage.getItem("darkMode"));
 
   const handleDarkMode = e => {
     e.preventDefault();
 
     if (!darkMode) {
       document.querySelector("body").classList.add("dark");
+      sessionStorage.setItem("darkMode", true);
     } else {
       document.querySelector("body").classList.remove("dark");
+      sessionStorage.setItem("darkMode", false);
     }
 
     setDarkMode(!darkMode);

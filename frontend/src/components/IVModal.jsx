@@ -30,7 +30,7 @@ export default function IVModal(props) {
           <Modal.Title >Add Category</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body style={{padding: "1em 3em"}}>
+        <Modal.Body className='mbody' style={{padding: "1em 3em"}}>
         <div className='ivsearch'>
             <Row>
                 Category Name
@@ -98,7 +98,7 @@ export default function IVModal(props) {
         </div> */}
         </Modal.Body>
 
-        <Modal.Footer>
+        <Modal.Footer className='mfooter'>
           <button type='button' className='invaddb' onClick={handleAdd}>
             ADD
           </button>

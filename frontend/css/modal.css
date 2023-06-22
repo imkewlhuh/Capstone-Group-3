@@ -1,10 +1,20 @@
 .mymodal {
     min-width: 50vw;
     box-shadow: 10px 10px 10px var(--box-shadow);
-} 
+}
+
+.dark .mbody {
+    background-color: var(--dark-bg);
+    color: white;
+}
+
+.dark .mfooter {
+    background-color: var(--dark-bg);
+}
 
 .mheader{
     background-color: #FFC107;
+    color: black;
     padding: 1em 2em;
 }
 
